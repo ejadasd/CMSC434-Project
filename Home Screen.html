@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>Your App Name</title>
+    <style>
+        /* CSS for simulating a phone screen */
+        .phone-container {
+            width: 375px; 
+            height: 800px; 
+            margin: 0 auto;
+            border: 2px solid #000;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        #welcome {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        .profile-circle {
+            width: 40px; 
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ccc; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+        }
+        .profile-icon {
+            color: #fff; 
+            font-size: 24px; 
+        }
+        main {
+            text-align: center;
+            margin: 20px;
+            flex: 1; 
+        }
+        .box {
+            max-width: 340px;
+            max-height: 387px;
+            background-color: #f0f0f0;
+            margin: 10px auto;
+            margin-top: 90px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+        }
+        .tab-button {
+            padding: 11px;
+            margin: 1px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 50%; 
+            background-color: #555; 
+            color: #fff; 
+        }
+        .rankings-button {
+            padding: 11px;
+            margin: 1px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #555; 
+            color: #fff; 
+        }
+        .nutrition-icons {
+            text-align: center;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .nutrition-icons i {
+            margin: 0 20px;
+        }
+        .protein-icon {
+            color: #DAA520
+        }
+        .carbs-icon {
+            color: #D2B48C;
+        }
+        .fats-icon {
+            color: #FFA500;
+        }
+        .icon-container {
+            text-align: center;
+        }
+        .icon-label {
+            font-size: 14px; 
+            margin-top: 5px; 
+        }
+
+        @media (max-width: 480px) {
+            /* Adjust styles for smaller screens (e.g., typical phone screen) */
+            #welcome {
+                font-size: 14px;
+            }
+            #profile-icon {
+                width: 15px;
+                height: 15px;
+            }
+            .box {
+                max-width: 90%;
+                max-height: 387px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <header>
+            <p id="welcome">Welcome, John Doe</p>
+            <div class="profile-circle">
+                <i class="fas fa-person profile-icon"></i>
+            </div>
+        </header>
+        <main>
+            <div class="box">You're Ranked
+            <p>Number 12 in Arm Workouts</p>
+            <div class="rankings-button">Overall Rankings</div>
+            </div>
+            <div class="box">Your <br><br>
+                <div class="nutrition-icons">
+                    <div class="icon-container">
+                        <i class="fas fa-drumstick-bite protein-icon"></i> <!-- Protein -->
+                        <div class="icon-label">Protein</div>
+                    </div>
+                    <div class="icon-container">
+                        <i class="fas fa-bread-slice carbs-icon"></i> <!-- Carbs -->
+                        <div class="icon-label">Carbs</div>
+                    </div>
+                    <div class="icon-container">
+                        <i class="fas fa-cheese fats-icon"></i> <!-- Fats -->
+                        <div class="icon-label">Fats</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="tab-button">Workout Database</div>
+            <div class="tab-button">Nutrition Database</div>
+            <div class="tab-button">Buddy System</div>
+            <div class="tab-button">Settings</div>
+        </footer>
+    </div>
+</body>
+</html>
