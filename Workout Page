@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workout App</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container mt-4">
+    <h1>Workout App</h1>
+    <!-- List of workouts -->
+    <ul id="workout-list" class="list-group">
+      <!-- Workouts will go here -->
+    </ul>
+
+    <!-- User's workouts -->
+    <h2>Your Workouts</h2>
+    <ul id="user-workout-list" class="list-group">
+      <!-- User's workouts will go here -->
+    </ul>
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
