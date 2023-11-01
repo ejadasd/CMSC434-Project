@@ -1,13 +1,15 @@
 function openProfilePage() {
     window.location.href = 'profilepage.html';
+    loadProfileValues();
 }
 
 document.getElementById('userName').textContent = localStorage.getItem('name') || '';
 
 document.getElementById('profile-icon').addEventListener('click', openProfilePage);
 
-// Rest of your JavaScript code
 function openTab(event, tabName) {
+    loadProfileValues();
+
     // Get all elements with class "box" and hide them
     var tabs = document.querySelectorAll(".box");
     tabs.forEach(function (tab) {

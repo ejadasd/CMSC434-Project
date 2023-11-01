@@ -1,30 +1,5 @@
 document.getElementById('userName').textContent = localStorage.getItem('name') || '';
  
- // Function to load user data into input fields
- function loadUserData() {
-    // Fetch user data from a database or any other source
-    const userData = {
-      name: "Brian Perry",
-      dob: "10/10/1991",
-      age: 31,
-      weight: 165,
-      height: "5'9",
-      sex: "Male",
-      rank: "Beginner",
-      gym: "Epply",
-    };
-
-    // Populate input fields with user data
-    document.getElementById('nameInput').value = userData.name;
-    document.getElementById('dobInput').value = userData.dob;
-    document.getElementById('ageInput').value = userData.age;
-    document.getElementById('weightInput').value = userData.weight;
-    document.getElementById('heightInput').value = userData.height;
-    document.getElementById('sexInput').value = userData.sex;
-    document.getElementById('rankInput').value = userData.rank;
-    document.getElementById('gymInput').value = userData.gym;
-  }
-
 // Function to update the user's profile
 function updateProfile() {
 // Get updated data from input fields
@@ -46,8 +21,6 @@ localStorage.setItem('height', updatedHeight);
 localStorage.setItem('sex', updatedSex);
 localStorage.setItem('rank', updatedRank);
 localStorage.setItem('gym', updatedGym);
-
-// You can also send the updated data to your server here if needed
 }
 
 // Function to populate input fields with saved profile data
@@ -66,16 +39,9 @@ document.getElementById('gymInput').value = localStorage.getItem('gym') || '';
 populateProfileData();
 
 
-  // Attach a click event listener to the profile icon element
-  document.getElementById('profile-icon').addEventListener('click', openProfilePage);
+document.getElementById('profile-icon').addEventListener('click', openProfilePage);
 
-  // Function to navigate to the profile page
-  function openProfilePage() {
-    // Replace 'profile.html' with the actual URL of your profile page
-    window.location.href = 'profilepage.html';
-  }
-
-  function openTab(event, tabName) {
+function openTab(event, tabName) {
     // Get all elements with class "box" and hide them
     var tabs = document.querySelectorAll(".box");
     tabs.forEach(function (tab) {
@@ -92,3 +58,6 @@ populateProfileData();
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.classList.add("active");
 }
+
+// Initially, show the Home tab and set the Home button as "active"
+openTab(null, "homeScreen");

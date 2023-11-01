@@ -108,6 +108,7 @@ p {
     background-color: #333;
     color: #fff;
     font-size: 40px;
+    border: none;
 }
 
 .tab-button i {

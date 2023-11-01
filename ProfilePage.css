@@ -45,7 +45,41 @@ main {
     flex-direction: column;
 }
 
+h1#profile {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
 
+span {
+    font-size: 30px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 24px;
+    margin-top: 5px;
+    height: 50px;
+}
+
+label[for="heightFeet"], label[for="heightInches"] {
+    font-size: 30px;
+}
+
+#updateButton {
+    padding: 10px 20px;
+    font-size: 25px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+}
 
 .tab-button {
     padding: 11px;
@@ -53,6 +87,7 @@ main {
     background-color: #333;
     color: #fff;
     font-size: 40px;
+    border: none;
 }
 
 .tab-button i {
