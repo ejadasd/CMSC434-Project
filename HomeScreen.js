@@ -10,6 +10,13 @@ function loadProfileData() {
       // Now you have access to the profileData object
       const userName = profileData.name;
       document.getElementById('userName').textContent = userName;
+      const userWeight = profileData.weight;
+      document.getElementById('userWeight').textContent = userWeight;
+      const userHeightFeet = profileData.heightFeet;
+      const userHeightInches = profileData.heightInches;
+      const userHeight = (userHeightFeet * 12) + userHeightInches/10;
+      const userBMI = (703 * userWeight)/(userHeight*userHeight);
+      document.getElementById('userBMI').textContent = userBMI.toFixed(4);
     }
   }
   
