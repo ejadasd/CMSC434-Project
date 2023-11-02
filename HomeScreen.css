@@ -1,0 +1,130 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+#welcome {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+}
+
+.profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon {
+    color: #fff;
+    font-size: 40px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    text-align: center;
+    margin: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    max-width: 600px;
+    max-height: auto;
+    background-color: #f0f0f0;
+    margin: 10px auto;
+    margin-top: 90px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    flex: 1;
+}
+
+p {
+    font-size: 30px;
+}
+
+.rankings-button {
+    padding: 11px;
+    margin: 1px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #555;
+    color: #fff;
+    font-size: 30px;
+}
+
+.nutrition-icons {
+    text-align: center;
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.nutrition-icons i {
+    margin: 0 40px;
+}
+
+.protein-icon {
+    color: #DAA520;
+}
+
+.carbs-icon {
+    color: #D2B48C;
+}
+
+.fats-icon {
+    color: #FFA500;
+}
+
+.icon-container {
+    text-align: center;
+}
+
+.icon-label {
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+.tab-button {
+    padding: 11px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    font-size: 40px;
+    border: none;
+}
+
+.tab-button i {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
