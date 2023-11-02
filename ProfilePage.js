@@ -1,45 +1,59 @@
-document.getElementById('userName').textContent = localStorage.getItem('name') || '';
- 
-// Function to update the user's profile
+// Function to update the profile
 function updateProfile() {
-// Get updated data from input fields
-const updatedName = document.getElementById('nameInput').value;
-const updatedDob = document.getElementById('dobInput').value;
-const updatedAge = document.getElementById('ageInput').value;
-const updatedWeight = document.getElementById('weightInput').value;
-const updatedHeight = document.getElementById('heightInput').value;
-const updatedSex = document.getElementById('sexInput').value;
-const updatedRank = document.getElementById('rankInput').value;
-const updatedGym = document.getElementById('gymInput').value;
-
-// Save the updated data to local storage
-localStorage.setItem('name', updatedName);
-localStorage.setItem('dob', updatedDob);
-localStorage.setItem('age', updatedAge);
-localStorage.setItem('weight', updatedWeight);
-localStorage.setItem('height', updatedHeight);
-localStorage.setItem('sex', updatedSex);
-localStorage.setItem('rank', updatedRank);
-localStorage.setItem('gym', updatedGym);
-}
-
-// Function to populate input fields with saved profile data
-function populateProfileData() {
-document.getElementById('nameInput').value = localStorage.getItem('name') || '';
-document.getElementById('dobInput').value = localStorage.getItem('dob') || '';
-document.getElementById('ageInput').value = localStorage.getItem('age') || '';
-document.getElementById('weightInput').value = localStorage.getItem('weight') || '';
-document.getElementById('heightInput').value = localStorage.getItem('height') || '';
-document.getElementById('sexInput').value = localStorage.getItem('sex') || '';
-document.getElementById('rankInput').value = localStorage.getItem('rank') || '';
-document.getElementById('gymInput').value = localStorage.getItem('gym') || '';
-}
-
-// Call populateProfileData when the page loads to fill in the input fields with saved data
-populateProfileData();
-
-
-document.getElementById('profile-icon').addEventListener('click', openProfilePage);
+    // Get the values from the input fields
+    const name = document.getElementById("nameInput").value;
+    const dob = document.getElementById("dobInput").value;
+    const age = document.getElementById("ageInput").value;
+    const weight = document.getElementById("weightInput").value;
+    const heightFeet = document.getElementById("heightFeet").value;
+    const heightInches = document.getElementById("heightInches").value;
+    const sex = document.getElementById("sexInput").value;
+    const rank = document.getElementById("rankInput").value;
+    const gym = document.getElementById("gymInput").value;
+  
+    // Save the updated profile data to localStorage
+    const profileData = {
+      name,
+      dob,
+      age,
+      weight,
+      heightFeet,
+      heightInches,
+      sex,
+      rank,
+      gym,
+    };
+    localStorage.setItem("profileData", JSON.stringify(profileData));
+  
+    // Update the displayed name
+    document.getElementById("userName").textContent = name;
+  }
+  
+  // Function to load the profile data when the page loads
+  function loadProfileData() {
+    const storedProfileData = localStorage.getItem("profileData");
+    if (storedProfileData) {
+      const profileData = JSON.parse(storedProfileData);
+  
+      // Set the input field values
+      document.getElementById("nameInput").value = profileData.name;
+      document.getElementById("dobInput").value = profileData.dob;
+      document.getElementById("ageInput").value = profileData.age;
+      document.getElementById("weightInput").value = profileData.weight;
+      document.getElementById("heightFeet").value = profileData.heightFeet;
+      document.getElementById("heightInches").value = profileData.heightInches;
+      document.getElementById("sexInput").value = profileData.sex;
+      document.getElementById("rankInput").value = profileData.rank;
+      document.getElementById("gymInput").value = profileData.gym;
+  
+      // Update the displayed name
+      document.getElementById("userName").textContent = profileData.name;
+    }
+  }
+  
+  // Call the loadProfileData function when the page loads
+  window.addEventListener("load", loadProfileData);
+  
 
 function openTab(event, tabName) {
     // Get all elements with class "box" and hide them
@@ -58,6 +72,3 @@ function openTab(event, tabName) {
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.classList.add("active");
 }
-
-// Initially, show the Home tab and set the Home button as "active"
-openTab(null, "homeScreen");

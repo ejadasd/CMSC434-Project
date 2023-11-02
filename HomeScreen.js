@@ -1,9 +1,20 @@
 function openProfilePage() {
     window.location.href = 'profilepage.html';
-    loadProfileValues();
+    populateProfileData();
 }
 
-document.getElementById('userName').textContent = localStorage.getItem('name') || '';
+function loadProfileData() {
+    const storedProfileData = localStorage.getItem("profileData");
+    if (storedProfileData) {
+      const profileData = JSON.parse(storedProfileData);
+      // Now you have access to the profileData object
+      const userName = profileData.name;
+      document.getElementById('userName').textContent = userName;
+    }
+  }
+  
+  // Call the loadProfileData function when the page loads
+  window.addEventListener("load", loadProfileData);  
 
 document.getElementById('profile-icon').addEventListener('click', openProfilePage);
 
