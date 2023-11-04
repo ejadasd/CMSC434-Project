@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<div>
+  <label for="newYValue">Y Value:</label>
+  <input type="number" id="newYValue">
+  <button onclick="addData()">Add Point</button>
+</div>
+
+<div>
+  <label for="targetWeight">Target Weight (kg):</label>
+  <input type="number" id="targetWeight">
+</div>
+
+<div>
+  <label for="userEmail">Email:</label>
+  <input type="email" id="userEmail">
+</div>
+
+<div>
+  <label for="timePeriod">Time Period:</label>
+  <select id="timePeriod">
+    <option value="4000">4 seconds</option>
+    <option value="604800000">1 week</option>
+    <option value="1209600000">2 weeks</option>
+    <option value="2419200000">1 month</option>
+  </select>
+</div>
+
+<button onclick="sendEmails()">Send Email</button>
+
+<script>
+const yValues = [];
+const targetValues = [];
+
+const chartData = {
+  labels: [], // Empty array for storing dates
+  datasets: [{
+    fill: false,
+    lineTension: 0.1,
+    backgroundColor: "rgba(0,0,255,1.0)",
+    borderColor: "rgb(75, 192, 192)",
+    data: yValues
+  }, {
+    fill: false,
+    lineTension: 0.1,
+    backgroundColor: "rgba(0,0,0,1.0)",
+    borderColor: "rgb(255, 0, 0)",
+    data: targetValues
+  }]
+};
+
+const ctx = document.getElementById("myChart").getContext("2d");
+const chart = new Chart(ctx, {
+  type: "line",
+  data: chartData,
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 0, max: 200}}],
+    },
+  },
+});
+
+function addData() {
+  const newYValue = document.getElementById("newYValue").value;
+  const targetWeight = document.getElementById("targetWeight").value;
+  const userEmail = document.getElementById("userEmail").value;
+
+  if (newYValue !== "") {
+    // Calculate the next date one week apart from the last date
+    const lastDate = chartData.labels.length === 0 ? new Date() : new Date(chartData.labels[chartData.labels.length - 1]);
+    const nextDate = new Date(lastDate);
+    nextDate.setDate(lastDate.getDate() + 7);
+    
+    chartData.labels.push(nextDate.toISOString().split('T')[0]);
+    chartData.datasets[0].data.push(parseFloat(newYValue));
+    chart.update();
+  }
+
+  if (targetWeight !== "") {
+    targetValues.push(parseFloat(targetWeight));
+    chartData.datasets[1].data = targetValues;
+    chart.update();
+  }
+}
+
+function sendEmails() {
+  const userEmail = document.getElementById("userEmail").value;
+  const timePeriod = document.getElementById("timePeriod").value;
+
+  // Send the message 4 times spaced apart by the selected time period
+  let count = 0;
+  const intervalId = setInterval(function() {
+    count++;
+    alert(`Email sent to: ${userEmail} - Message ${count}`);
+    if (count === 4) {
+      clearInterval(intervalId); // Stop after 4 messages
+    }
+  }, parseInt(timePeriod));
+}
+</script>
+</body>
+</html>
