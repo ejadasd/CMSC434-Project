@@ -4,21 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrition Database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="style-workout.css">
 </head>
 <body>
+    <header>
+        <p id="welcome">Welcome, <span id="userName"></span></p>
+        <div class="profile-circle" id="profile-icon">
+            <i class="fas fa-person profile-icon"></i>
+        </div>
+    </header>
     <section>
         <div class="container">
             <h1 class="brand">Nutrition Database</h1>
-            <button class="btn" onclick="view()">Saved List</button>
+            <div class="save">
+                <button class="btn" onclick="view()">Saved List</button>
+            </div>
+            <div class="filter">
+                <p>To filter based on feature, select below:</p>
+                <select id="feature">
+                    <option value="Calories">Calories</option>
+                    <option value="Carbs">Carbs</option>
+                    <option value="Fat">Fat</option>
+                    <option value="Protein">Protein</option>
+                </select>
+                <select id="sort">
+                    <option value="Ascending">Ascending</option>
+                    <option value="Descending">Descending</option>
+                </select>
+            </div>
+            <div class="save">
+                <button class="btn" onclick="sort_arr()">Submit</button>
+            </div>
             <form>
                 <input type="text" placeholder="Search Your Recipe...">
                 <ion-icon name="search"></ion-icon>
             </form> 
             <div class="search-result">
+                <div class="item">
+                    <img src="recipeImage/PomeloNoodleSalad.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Pomelo Noodle Salad</h1>
+                        <a class="view-button" href="http://www.101cookbooks.com/archives/pomelo-noodles-recipe.html" target="_blank">View Recipe</a>
+                        <button onclick="save('http://www.101cookbooks.com/archives/pomelo-noodles-recipe.html','Pomelo Noodle Salad')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 1482</p>
+                    <p class="item-data">Carbs: 177</p>
+                    <p class="item-data">Fat: 63</p>
+                    <p class="item-data">Protein: 79</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/PastaCarbonaraLight.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Pasta Carbonara Light</h1>
+                        <a class="view-button" href="http://www.self.com/fooddiet/recipes/2010/03/pasta-carbonara-light" target="_blank">View Recipe</a>
+                        <button onclick="save('http://www.self.com/fooddiet/recipes/2010/03/pasta-carbonara-light','Pasta Carbonara Light')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 2749</p>
+                    <p class="item-data">Carbs: 388</p>
+                    <p class="item-data">Fat: 63</p>
+                    <p class="item-data">Protein: 69</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/BakedTofu.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Baked Tofu</h1>
+                        <a class="view-button" href="https://www.marthastewart.com/1049665/baked-tofu" target="_blank">View Recipe</a>
+                        <button onclick="save('https://www.marthastewart.com/1049665/baked-tofu','Baked Tofu')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 755</p>
+                    <p class="item-data">Carbs: 13</p>
+                    <p class="item-data">Fat: 54</p>
+                    <p class="item-data">Protein: 72</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/ChiaOats.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Chia & Almond Overnight Oats</h1>
+                        <a class="view-button" href="https://www.bbcgoodfood.com/recipes/chia-almond-overnight-oats" target="_blank">View Recipe</a>
+                        <button onclick="save('https://www.bbcgoodfood.com/recipes/chia-almond-overnight-oats','Chia & Almond Overnight Oats')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 1538</p>
+                    <p class="item-data">Carbs: 223</p>
+                    <p class="item-data">Fat: 53</p>
+                    <p class="item-data">Protein: 57</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/Burrito.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Black Bean & Feta Stuffed Burrito</h1>
+                        <a class="view-button" href="https://www.realsimple.com/food-recipes/browse-all-recipes/black-bean-feta-stuffed-burrito" target="_blank">View Recipe</a>
+                        <button onclick="save('https://www.realsimple.com/food-recipes/browse-all-recipes/black-bean-feta-stuffed-burrito','Black Bean & Feta Stuffed Burrito')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 2904</p>
+                    <p class="item-data">Carbs: 251</p>
+                    <p class="item-data">Fat: 155</p>
+                    <p class="item-data">Protein: 144</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/LettuceWrap.png" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Vegetarian Lettuce Wraps</h1>
+                        <a class="view-button" href="http://www.eatingwell.com/recipe/278135/vegetarian-lettuce-wraps/" target="_blank">View Recipe</a>
+                        <button onclick="save('http://www.eatingwell.com/recipe/278135/vegetarian-lettuce-wraps/','Vegetarian Lettuce Wraps')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 701</p>
+                    <p class="item-data">Carbs: 53</p>
+                    <p class="item-data">Fat: 37</p>
+                    <p class="item-data">Protein: 50</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/EggSandwich.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Egg Salad Sandwich</h1>
+                        <a class="view-button" href="http://www.myrecipes.com/recipe/egg-salad-sandwich" target="_blank">View Recipe</a>
+                        <button onclick="save('http://www.myrecipes.com/recipe/egg-salad-sandwich','Egg Salad Sandwich')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 1991</p>
+                    <p class="item-data">Carbs: 171</p>
+                    <p class="item-data">Fat: 103</p>
+                    <p class="item-data">Protein: 90</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/BakedCauli.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Baked Cauliflower</h1>
+                        <a class="view-button" href="http://honestcooking.com/delicious-side-dish-baked-cauliflower/" target="_blank">View Recipe</a>
+                        <button onclick="save('http://honestcooking.com/delicious-side-dish-baked-cauliflower/','Baked Cauliflower')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 221</p>
+                    <p class="item-data">Carbs: 31</p>
+                    <p class="item-data">Fat: 9</p>
+                    <p class="item-data">Protein: 11</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/pizza.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Chorizo, Caper & Rocket Pizza</h1>
+                        <a class="view-button" href="http://www.bbcgoodfood.com/recipes/1506638/chorizo-caper-and-rocket-pizza" target="_blank">View Recipe</a>
+                        <button onclick="save('http://www.bbcgoodfood.com/recipes/1506638/chorizo-caper-and-rocket-pizza','Chorizo, Caper & Rocket Pizza')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 1029</p>
+                    <p class="item-data">Carbs: 119</p>
+                    <p class="item-data">Fat: 42</p>
+                    <p class="item-data">Protein: 39</p>
+                </div>
+                <div class="item">
+                    <img src="recipeImage/salmon.jpg" alt="">
+                    <div class="flex-container">
+                        <h1 class="title">Red Pistou Salmon</h1>
+                        <a class="view-button" href="http://www.frenchrevolutionfood.com/2011/05/french-in-a-flash-so-easy-red-pistou-salmon/" target="_blank">View Recipe</a>
+                        <button onclick="save('http://www.frenchrevolutionfood.com/2011/05/french-in-a-flash-so-easy-red-pistou-salmon/','Red Pistou Salmon')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    </div>
+                    <p class="item-data">Calories: 1029</p>
+                    <p class="item-data">Carbs: 119</p>
+                    <p class="item-data">Fat: 42</p>
+                    <p class="item-data">Protein: 39</p>
+                </div>
             </div>
         </div>
     </section>
+    <footer>
+        <button class="tab-button" onclick="openTab(event, 'homeScreen')">
+            <i class="fas fa-home"></i>
+        </button>
+        <button class="tab-button" onclick="openTab(event, 'goalsTab')">
+            <i class="fas fa-bullseye"></i>
+          </button>
+        <button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+            <i class="fas fa-dumbbell"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+            <i class="fas fa-utensils"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+            <i class="fas fa-users"></i>
+        </button>
+        <button class="tab-button" onclick="openTab(event, 'settings')">
+            <i class="fas fa-cog"></i>
+        </button>
+    </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="./nutritionDataBase.js"></script>
 </body>
