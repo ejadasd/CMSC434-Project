@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Your App Name</title>
+    <style>
+        /* CSS for simulating a phone screen */
+        .phone-container {
+            width: 375px; 
+            height: 800px; 
+            margin: 0 auto;
+            border: 2px solid #000;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        #welcome {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        .profile-circle {
+            width: 40px; 
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ccc; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+        }
+        .profile-icon {
+            color: #fff; 
+            font-size: 24px; 
+        }
+        main {
+            text-align: center;
+            margin: 20px;
+            flex: 1; 
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space around;
+            padding: 10px;
+        }
+        .tab-button {
+            padding: 11px;
+            margin: 1px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 50%; 
+            background-color: #555; 
+            color: #fff; 
+        }
+        
+        /* CSS for the chart container */
+        .chart-container {
+            overflow-x: auto; /* Enable horizontal scrolling */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        #myChart {
+            height: 250px;
+            width: 100%; /* Allow the chart to grow horizontally */
+            max-width: 375px; /* Set the maximum width to prevent horizontal scaling */
+        }
+
+        /* CSS for the input boxes */
+        .input-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .input-label {
+            font-size: 14px;
+        }
+        .input-box {
+            width: 80%;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+		.compact-input {
+			margin-top: 2px;
+            width: 35%;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #767676;
+            border-radius: 5px;
+        }
+        .input-button {
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+        }
+		.checkmark {
+		  margin-right: -26%;
+		  height: 28px;
+		  width: 28px;
+		  outline: 1px solid #1e5180;
+          background-color: #fff;
+          border-color: #fff;
+		}
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <header>
+            <p id="welcome">Welcome, John Doe</p>
+            <div class="profile-circle" id="profile-icon">
+                <i class="fas fa-person profile-icon"></i>
+            </div>
+        </header>
+        <main>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+			
+			<div>
+				<button class="input-button" id="toggle" onclick="toggleProgress()">Show Recent Progress</button>
+			</div>
+
+            <div class="input-container">
+                <label class="input-label" for="userWeight">Your Weight (kg):</label>
+                <input type="number" id="userWeight" class="input-box">
+				<br>
+                <label class="input-label" for="targetWeight">Target Weight (kg):</label>
+                <input type="number" id="targetWeight" class="input-box">
+                <button class="input-button" onclick="addData()">Add Data</button>
+            </div>
+			<div>
+			  <label class="left" for="timePeriod">Time Period (days):</label>
+			  <input type="number" id="timePeriod" class="compact-input">
+			</div>
+			<div>
+				<button id="notificationButton" class="input-button" onclick="toggleNotifications()">Start Reminders</button>
+			</div>
+			<div>
+			</div>
+        </main>
+        <footer>
+            <button class="tab-button" onclick="openTab(event, 'homeScreen')">
+                Home
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'workoutDatabase')">
+                Workout Database
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'nutritionDatabse')">
+                Nutrition Database
+            </button>
+            <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+                Buddy System
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'settings')">
+                Settings
+            </button>
+        </footer>
+    </div>
+
+<script>
+    const height = 1.8;
+    const maxDataPoints = 7; // Maximum number of data points to display
+    const ctx = document.getElementById("myChart").getContext("2d");
+    const chart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: 'User Weight',
+                    data: [],
+                    borderColor: "rgba(0, 0, 255, 1)",
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Target Weight',
+                    data: [],
+                    borderColor: "rgba(255, 0, 0, 1)",
+                    borderWidth: 1,
+                    borderDash: [5, 5], // Add a dashed line
+                    fill: false,
+                },
+                {
+                    label: 'Bmi',
+                    data: [],
+                    borderColor: "rgba(0, 255, 0, 1)",
+                    borderWidth: 1,
+                },
+            ],
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 200
+                }
+            }
+        }
+    });
+
+    let notificationIntervalId = null;
+    const userWeightHistory = [];
+    const targetWeightHistory = [];
+    const bmiHistory = [];
+    const dateLabelsHistory = [];
+    let targetWeight = 0;
+
+    // Variable to track the currently displayed progress type
+    let currentProgress = "Recent Progress";
+    let isPastProgressShown = false; // Track if past progress is shown
+    let currentData = {  // Save the current data
+        userWeight: [],
+        targetWeight: [],
+        bmi: [],
+        labels: [],
+    };
+
+    // Function to toggle between "Recent Progress" and "Past Progress"
+    function toggleProgress() {
+        const button = document.getElementById("toggle");
+        if (isPastProgressShown) {
+            button.innerText = "Show Recent Progress";
+            showRecentProgress();
+            currentProgress = "Recent Progress";
+        } else {
+            button.innerText = "Show Past Progress";
+            showAllData();
+            currentProgress = "Past Progress";
+        }
+        isPastProgressShown = !isPastProgressShown;
+    }
+
+    // Function to update the graph with new data
+    function updateGraph(data1, data2, data3, labels) {
+        chart.data.datasets[0].data = data1;
+        chart.data.datasets[1].data = data2;
+        chart.data.datasets[2].data = data3;
+        chart.data.labels = labels;
+        chart.update();
+    }
+
+    // Function to show the recent progress
+    function showRecentProgress() {
+        updateGraph(currentData.userWeight, currentData.targetWeight, currentData.bmi, currentData.labels);
+    }
+
+    // Function to show all the previously removed data
+    function showAllData() {
+        updateGraph(userWeightHistory, targetWeightHistory, bmiHistory, dateLabelsHistory);
+    }
+
+    // Function to add weight data to the chart
+    function addData() {
+        const userWeight = document.getElementById("userWeight").value;
+        targetWeight = document.getElementById("targetWeight").value;
+        if (userWeight !== "") {
+            // Save the removed data points into history arrays
+            if (chart.data.labels.length >= maxDataPoints) {
+                const removedUserWeight = chart.data.datasets[0].data.shift();
+                const removedTargetWeight = chart.data.datasets[1].data.shift();
+                const removedBmi = chart.data.datasets[2].data.shift();
+                const removedLabel = chart.data.labels.shift();
+                userWeightHistory.push(removedUserWeight);
+                targetWeightHistory.push(removedTargetWeight);
+                bmiHistory.push(removedBmi);
+                dateLabelsHistory.push(removedLabel);
+            }
+
+            // Add the new data point to the user weight dataset
+            chart.data.datasets[0].data.push(userWeight);
+
+            // Use the stored target weight
+            chart.data.datasets[1].data.push(targetWeight);
+            chart.data.datasets[2].data.push((userWeight) / (height ** 2));
+
+            // Add date label for the new data point (assuming the current date)
+            const currentDate = new Date();
+            const label = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
+            chart.data.labels.push(label);
+
+            // Save the current data
+            currentData.userWeight = chart.data.datasets[0].data.slice();
+            currentData.targetWeight = chart.data.datasets[1].data.slice();
+            currentData.bmi = chart.data.datasets[2].data.slice();
+            currentData.labels = chart.data.labels.slice();
+
+            showRecentProgress(); // Always show the recent progress
+
+            // Clear the user weight input field
+            document.getElementById("userWeight").value = "";
+
+            // Set the focus back to the user weight input box
+            document.getElementById("userWeight").focus();
+        }
+    }
+
+    // Function to toggle notifications
+    function toggleNotifications() {
+        const notificationButton = document.getElementById("notificationButton");
+        const timePeriod = document.getElementById("timePeriod").value;
+
+        if (notificationButton.innerText === "Start Reminders") {
+            if (timePeriod > 0) {
+                notificationIntervalId = setInterval(sendNotifications, parseInt(timePeriod) * 1000); // Convert seconds to milliseconds
+                notificationButton.innerText = "Stop Reminders";
+            } else {
+                alert("Please enter a valid time period (greater than 0) before starting reminders.");
+            }
+        } else {
+            clearInterval(notificationIntervalId);
+            notificationButton.innerText = "Start Reminders";
+        }
+    }
+
+    function sendNotifications() {
+        alert("This is your reminder!");
+    }
+    </script>
+
+
+
+
+
+</body>
+</html>
