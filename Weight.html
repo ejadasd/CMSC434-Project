@@ -178,7 +178,7 @@
     </div>
 
 <script>
-    const height = 1.8;
+    const height = 1.8; //dont forget to edit to profile height!
     const maxDataPoints = 7; // Maximum number of data points to display
     const ctx = document.getElementById("myChart").getContext("2d");
     const chart = new Chart(ctx, {
@@ -322,7 +322,7 @@
 
         if (notificationButton.innerText === "Start Reminders") {
             if (timePeriod > 0) {
-                notificationIntervalId = setInterval(sendNotifications, parseInt(timePeriod) * 1000); // Convert seconds to milliseconds
+                notificationIntervalId = setInterval(sendNotifications, parseInt(timePeriod) * 1000); // Convert seconds to milliseconds dont forget * 86400!
                 notificationButton.innerText = "Stop Reminders";
             } else {
                 alert("Please enter a valid time period (greater than 0) before starting reminders.");
