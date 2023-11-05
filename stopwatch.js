@@ -42,3 +42,4 @@ function reset() {
     seconds = 0;
     time_el.innerText = "00:00:00";
 }
+

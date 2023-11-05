@@ -4,12 +4,10 @@ h1 {
     text-align: center;
 }
 
-body {
-    background: #1F2937;
-    color: #F3F4F6;
-}
+
 
 .container {
+    color: #F3F4F6;
     width: 100%;
     max-width: 360px;
     background-color: #111827;
@@ -21,7 +19,7 @@ body {
 }
 
 /*label*/
-.label {
+.container .label {
     margin: 0;
 
     justify-self: center;
@@ -29,20 +27,20 @@ body {
     font-size: 30px;
 }
 
-#hour-label {
+.container #hour-label {
     grid-area: 1 / 2 / 1 / 3;
 }
 
-#min-label {
+.container #min-label {
     grid-area: 1 / 3 / 1 / 4;
 }
 
-#sec-label {
+.container #sec-label {
     grid-area: 1 / 4 / 1 / 5;
 }
 
 /*times*/
-.time {
+.container .time {
     justify-self: center;
     align-self: center;
     color: white;
@@ -53,36 +51,36 @@ body {
     height: 50px;
 }
 
-#hour {
+.container #hour {
     grid-area: 2 / 2 / 2 / 3;
 }
 
-.semicolon {
+.container .semicolon {
     justify-self: center;
     align-self: center;
 
     font-size: 30px;
     margin: 0;
 }
-#p1 {
+.container #p1 {
     grid-area: 2 / 2 / 2 / 4;
 }
 
-#minute {
+.container #minute {
     grid-area: 2 / 3 / 2 / 4;
 }
 
-#p2 {
+.container #p2 {
     grid-area: 2 / 3 / 2 / 5;
 }
 
-#sec {
+.container #sec {
     grid-area: 2 / 4 / 2 / 5;
 }
 
 /*buttons*/
 
-.btn {
+.container .btn {
     align-self: center;
     background-color: crimson;
     color: #F3F4F6;
@@ -93,10 +91,10 @@ body {
     transition: 0.4s;
 }
 
-#start {
+.container #start_time {
     grid-area: 3 / 2 / 3 / 4;
 }
 
-#reset {
+.container #reset_time {
     grid-area: 3 / 3 / 3 / 5;
 }

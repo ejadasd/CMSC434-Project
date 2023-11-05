@@ -1,5 +1,5 @@
-var start = document.getElementById('start');
-var reset = document.getElementById('reset');
+var start = document.getElementById('start_time');
+var reset = document.getElementById('reset_time');
 
 var h = document.getElementById("hour");
 var m = document.getElementById("minute");

@@ -11,12 +11,8 @@
     font-family: 'Fira sans', sans-serif;
 }
 
-body {
-    background: var(--dark);
-    color: var(--light);
-}
-
 .watch {
+    color: var(--light);
     text-align: center;
     background-color: #111827;
     width: 100%;
@@ -26,19 +22,19 @@ body {
     border-radius: 1rem;
 }
 
-.time {
+.watch .time {
     font-size: 5rem;
     font-weight: 300;
     margin-bottom: 1rem;
 }
 
-.controls {
+.watch .controls {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.controls button {
+.watch .controls button {
     appearance: none;
     background: none;
     border: none;
@@ -53,10 +49,10 @@ body {
     transition: 0.4s;
 }
 
-button:hover {
+.watch button:hover {
     opacity: 0.7;
 }
 
-button:active {
+.watch button:active {
     background-color: var(--dark);
 }
