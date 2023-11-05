@@ -1,3 +1,5 @@
+window.addEventListener("load", loadProfileData);  
+
 function openProfilePage() {
     window.location.href = 'profilepage.html';
     populateProfileData();
@@ -10,16 +12,27 @@ function loadProfileData() {
       // Now you have access to the profileData object
       const userName = profileData.name;
       document.getElementById('userName').textContent = userName;
-      const userWeight = profileData.weight;
+      const userStartWeight = profileData.startWeight;
       document.getElementById('userWeight').textContent = userWeight;
       const userHeightFeet = profileData.heightFeet;
       const userHeightInches = profileData.heightInches;
       const userHeight = (userHeightFeet * 12) + userHeightInches/10;
-      const userBMI = (703 * userWeight)/(userHeight*userHeight);
-      document.getElementById('userBMI').textContent = userBMI.toFixed(4);
+      const userStartBMI = (703 * userStartWeight)/(userHeight*userHeight);
+      document.getElementById('userStartBMI').textContent = userStartBMI.toFixed(4);
     }
   }
-  
+
+//   //comes from anthonys work
+//     const userCurrBMI = (703 * userCurrWeight)/(userHeight*userHeight);
+//     document.getElementById('userCurrBMI').textContent = userCurrBMI.toFixed(4);
+
+//     //comes from anthony work
+//     const waterDrank = userWaterDrank;
+//     const calories = userCalories;
+//   const totalCalories = totalCalories;
+
+//   const totalWater = userCurrWeight/2;
+
   // Call the loadProfileData function when the page loads
   window.addEventListener("load", loadProfileData);  
 

@@ -4,7 +4,7 @@ function updateProfile() {
     const name = document.getElementById("nameInput").value;
     const dob = document.getElementById("dobInput").value;
     const age = document.getElementById("ageInput").value;
-    const weight = document.getElementById("weightInput").value;
+    const startWeight = document.getElementById("weightInput").value;
     const heightFeet = document.getElementById("heightFeet").value;
     const heightInches = document.getElementById("heightInches").value;
     const sex = document.getElementById("sexInput").value;
@@ -16,7 +16,7 @@ function updateProfile() {
       name,
       dob,
       age,
-      weight,
+      startWeight,
       heightFeet,
       heightInches,
       sex,

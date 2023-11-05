@@ -18,8 +18,10 @@
         <main>
             <div class="box" id="homeScreen">
                 <div class="weight-box">
-                    <p>Your current weight is: <span id="userWeight"></span></p>
-                    <p>Your current BMI is: <span id="userBMI"></span></p>
+                    <p>Your starting weight was: <span id="userStartWeight"></span></p>
+                    <p>Your starting BMI was: <span id="userStartBMI"></span></p>
+                    <p>Your current weight is: <span id="userCurrWeight"></span></p>
+                    <p>Your current BMI is: <span id="userCurrBMI"></span></p>
                 </div>
                 <br><br><br><br>
                 <div class="rankings-box">
@@ -28,20 +30,13 @@
                 </div>
                 <br><br><br><br>
                 <div class="nutrition-box">
-                    <p>Your</p> <br>
-                    <div class="nutrition-icons">
-                        <div class="icon-container">
-                            <i class="fas fa-drumstick-bite protein-icon"></i> <!-- Protein -->
-                            <div class="icon-label">Protein</div>
+                    <h1> Hydration: </h1>
+                        <div>
+                            <p>You've dranken <span id="waterDrank"></span>/<span id="totalWater"></span> ounces today</p>
                         </div>
-                        <div class="icon-container">
-                            <i class="fas fa-bread-slice carbs-icon"></i> <!-- Carbs -->
-                            <div class="icon-label">Carbs</div>
-                        </div>
-                        <div class="icon-container">
-                            <i class="fas fa-cheese fats-icon"></i> <!-- Fats -->
-                            <div class="icon-label">Fats</div>
-                        </div>
+                    <h1> Calories: </h1>
+                    <div>
+                        <p>You've consumed <span id="calories"></span>/<span id="totalCalories"></span> today</p>
                     </div>
                 </div>
             </div>                
