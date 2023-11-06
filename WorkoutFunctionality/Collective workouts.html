@@ -140,20 +140,9 @@
     </footer>
 
     <script>
+        // JavaScript function to toggle exercise details
         function toggleExerciseDetails(element) {
             element.classList.toggle("active");
-        }
-         
-         // JavaScript function to toggle comments section
-         function toggleComments(element) {
-            const comments = element.querySelector('.comments');
-            comments.style.display = comments.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // JavaScript function to toggle comments section
-        function toggleComments(element) {
-            const comments = element.querySelector('.comments');
-            comments.style.display = comments.style.display === 'none' ? 'block' : 'none';
         }
 
         // JavaScript code for handling comments
@@ -171,7 +160,6 @@
                         input.value = '';
                     }
                 }
-                
             });
 
             // Stop click event propagation from the comment input
