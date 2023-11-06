@@ -10,7 +10,7 @@
 <body>
     <div>
         <header>
-            <p id="welcome">Welcome, <span id="userName"></span></p>
+            <p1 id="welcome">Welcome, <span id="userName"></span></p1>
             <div class="profile-circle" id="profile-icon">
                 <i class="fas fa-person profile-icon"></i>
             </div>
@@ -18,23 +18,22 @@
         <main>
             <div class="box" id="homeScreen">
                 <div class="weight-box">
+                    <h1>Weight <i class="fas fa-weight"></i>:</h1>
                     <p>Your starting weight was: <span id="userStartWeight"></span></p>
                     <p>Your starting BMI was: <span id="userStartBMI"></span></p>
                     <p>Your current weight is: <span id="userCurrWeight"></span></p>
                     <p>Your current BMI is: <span id="userCurrBMI"></span></p>
                 </div>
-                <br><br><br><br>
-                <div class="rankings-box">
-                    <p>You're Ranked Number 12 in Arm Workouts</p>
-                    <div class="rankings-button">Overall Rankings</div>
+                <div class="chart-container">
+                    <canvas id="myChart"></canvas>
                 </div>
                 <br><br><br><br>
                 <div class="nutrition-box">
-                    <h1> Hydration: </h1>
+                    <h1> Hydration <i class="fas fa-bottle-water"></i>: </h1>
                         <div>
                             <p>You've dranken <span id="waterDrank"></span>/<span id="totalWater"></span> ounces today</p>
                         </div>
-                    <h1> Calories: </h1>
+                    <h1> Calories <i class="fas fa-fire"></i>: </h1>
                     <div>
                         <p>You've consumed <span id="calories"></span>/<span id="totalCalories"></span> today</p>
                     </div>

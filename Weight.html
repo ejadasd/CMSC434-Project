@@ -258,6 +258,7 @@
         chart.data.datasets[2].data = data3;
         chart.data.labels = labels;
         chart.update();
+        localStorage.setItem("weightGraph", JSON.stringify(chart.data));
     }
 
     // Function to show the recent progress
