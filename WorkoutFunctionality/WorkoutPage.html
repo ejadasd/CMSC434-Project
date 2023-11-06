@@ -1,0 +1,83 @@
+<!-- WorkoutPage.html -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise App</title>
+<link rel="stylesheet" href="WorkoutPage.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <p id="welcome">Welcome, <span id="userName"></span></p>
+    <div class="profile-circle" id="profile-icon">
+        <i class="fas fa-person profile-icon"></i>
+    </div>
+  </header>
+  <a href="WorkoutHomePage.html" class="back-arrow">&#8592; Home</a>
+
+
+<div id="filter-options">
+  <label for="difficulty-filter"><strong>Filter by difficulty:</strong></label>
+  <select id="difficulty-filter">
+    <option value="all">All</option>
+    <option value="Beginner">Beginner</option>
+    <option value="Intermediate">Intermediate</option>
+    <option value="Advanced">Advanced</option>
+  </select>
+</div>
+<div id="exercise-list"></div>
+
+
+<button id="show-form-btn">Add New Exercise</button>
+
+<div id="exercise-form" style="display: none;">
+  <form id="new-exercise-form" class="exercise-form">
+    <label>Name:</label> <input type="text" id="exercise-name" class="editable" placeholder="Exercise Name" required><br>
+    <label>Muscles:</label> <input type="text" id="muscles-targeted" class="editable" placeholder="Muscles Targeted" required><br>
+    <label>Instructions:</label> <textarea id="instructions" class="editable" placeholder="Instructions" required></textarea><br>
+    <label>Weight (lbs):</label> <input type="number" id="weight" class="editable" placeholder="Weight" required><br>
+    <label>Reps:</label> <input type="number" id="reps" class="editable" placeholder="Reps" required><br>
+    <label>Difficulty:</label>
+    <select id="difficulty" class="editable">
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+    </select><br>
+    <button type="submit" class="exercise-form button">Add Exercise</button>
+  </form>
+</div>
+
+
+
+<!-- <button id = "WorkoutPageGraphButton">Workout Page Graph Button</button> -->
+<!-- the localStorage will pull the data from all of the object in their current states right before clicking WorkoutGraphButton-->
+<!-- Basically the localStorage only stays updated with the current workout after moving from WorkoutPage to WorkoutGraph page. This means that theoretically you would have to leave the graph page and come back to the Workout Page. Then change some stuff. Then go back to the graph page. -->
+<footer>
+  <button class="tab-button" onclick="location.href = '../HomeScreen.html'">
+      <i class="fas fa-home"></i>
+  </button>
+  <button class="tab-button" onclick="location.href = '../GoalsFunctionality/MainPage.html'">
+      <i class="fas fa-bullseye"></i>
+    </button>
+  <button class="tab-button" onclick="location.href = 'WorkoutHomePage.html';">
+      <i class="fas fa-dumbbell"></i>
+  </button>
+  <button class="tab-button" onclick="location.href = '../nutritionDataBase.html';">
+      <i class="fas fa-utensils"></i>
+  </button>
+  <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+      <i class="fas fa-users"></i>
+  </button>
+  <button class="tab-button" onclick="openTab(event, 'settings')">
+      <i class="fas fa-cog"></i>
+  </button>
+</footer>
+<script src="WorkoutJSFiles/WorkoutPage.js"></script>
+</body>
+</html>
+
+

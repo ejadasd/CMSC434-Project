@@ -258,6 +258,7 @@
         chart.data.datasets[2].data = data3;
         chart.data.labels = labels;
         chart.update();
+        localStorage.setItem("weightGraph", JSON.stringify(chart.data));
     }
 
     // Function to show the recent progress
@@ -273,6 +274,7 @@
     // Function to add weight data to the chart
     function addData() {
         const userWeight = document.getElementById("userWeight").value;
+        localStorage.setItem("userWeight", userWeight);
         targetWeight = document.getElementById("targetWeight").value;
         if (userWeight !== "") {
             // Save the removed data points into history arrays

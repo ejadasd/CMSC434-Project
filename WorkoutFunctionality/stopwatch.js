@@ -1,3 +1,7 @@
+// stopwatch.js
+
+
+
 const time_el = document.querySelector('.watch .time');
 const start_button = document.getElementById('start');
 const stop_button = document.getElementById('stop');
@@ -10,7 +14,7 @@ start_button.addEventListener('click', start);
 stop_button.addEventListener('click', stop);
 reset_button.addEventListener('click', reset);
 
-function timer() {
+function stopwatchTimer() {
     seconds++;
 
     let hrs = Math.floor(seconds / 3600);
@@ -29,7 +33,7 @@ function start() {
         return
     }
 
-    interval = setInterval(timer, 1000);
+    interval = setInterval(stopwatchTimer, 1000);
 }
 
 function stop() {

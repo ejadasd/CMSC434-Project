@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #094067;
     color: #fff;
     padding: 10px;
 }
@@ -17,14 +17,14 @@ header {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #90b4ce;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .profile-icon {
-    color: #fff;
+    color: #ef4565;
     font-size: 40px;
 }
 
@@ -43,54 +43,34 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    background-color: #fffffe;
 }
 
 .box {
     max-width: 600px;
     max-height: auto;
-    background-color: #f0f0f0;
     margin: 10px auto;
     margin-top: 90px;
     padding: 10px;
-    border: 1px solid #ccc;
     flex: 1;
 }
 
 p {
     font-size: 30px;
+    color: #5f6c7b;
 }
 
-.rankings-button {
-    padding: 11px;
-    margin: 1px;
-    text-align: center;
-    cursor: pointer;
-    background-color: #555;
-    color: #fff;
+p1 {
     font-size: 30px;
+    color: #90b4ce;
 }
 
-.nutrition-icons {
-    text-align: center;
-    font-size: 70px;
-    display: flex;
-    justify-content: center;
+.fas.fa-bottle-water {
+    color: blue;
 }
 
-.nutrition-icons i {
-    margin: 0 40px;
-}
-
-.protein-icon {
-    color: #DAA520;
-}
-
-.carbs-icon {
-    color: #D2B48C;
-}
-
-.fats-icon {
-    color: #FFA500;
+.fas.fa-fire {
+    color: orange;
 }
 
 .icon-container {
@@ -105,8 +85,8 @@ p {
 .tab-button {
     padding: 11px;
     text-align: center;
-    background-color: #333;
-    color: #fff;
+    background-color: #094067;
+    color: #90b4ce;
     font-size: 40px;
     border: none;
 }
@@ -117,7 +97,7 @@ p {
 }
 
 footer {
-    background-color: #333;
+    background-color: #094067;
     color: #fff;
     padding: 10px;
     justify-content: space-between;
