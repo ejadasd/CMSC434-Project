@@ -1,3 +1,7 @@
+// timer.js
+
+
+
 var start = document.getElementById('start_time');
 var reset = document.getElementById('reset_time');
 

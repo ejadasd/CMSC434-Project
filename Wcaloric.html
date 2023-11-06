@@ -257,7 +257,9 @@
 
         function addData() {
 			const userCalorie = document.getElementById("userCalorie").value;
+            localStorage.setItem('userCalories', userCalorie);
 			targetCalorie = document.getElementById("targetCalorie").value;
+            localStorage.setItem('totalCalories', targetCalorie);
 			if (userCalorie !== "") {
 				const currentDate = new Date();
 				const label = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;

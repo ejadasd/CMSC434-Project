@@ -39,7 +39,7 @@ function updateProfile() {
       document.getElementById("nameInput").value = profileData.name;
       document.getElementById("dobInput").value = profileData.dob;
       document.getElementById("ageInput").value = profileData.age;
-      document.getElementById("weightInput").value = profileData.weight;
+      document.getElementById("weightInput").value = profileData.startWeight;
       document.getElementById("heightFeet").value = profileData.heightFeet;
       document.getElementById("heightInches").value = profileData.heightInches;
       document.getElementById("sexInput").value = profileData.sex;

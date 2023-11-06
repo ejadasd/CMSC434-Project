@@ -1,3 +1,6 @@
+/* style-stopwatch.css */
+
+
 :root {
     --primary: crimson;
     --dark: #1F2937;
@@ -5,11 +8,7 @@
     --light: #F3F4F6;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    font-family: 'Fira sans', sans-serif;
-}
+
 
 .watch {
     color: var(--light);
@@ -17,7 +16,7 @@
     background-color: #111827;
     width: 100%;
     max-width: 360px;
-    margin: 4rem auto;
+    margin-left: 10rem;
     padding: 1rem 2rem;
     border-radius: 1rem;
 }
