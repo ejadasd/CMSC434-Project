@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Sets</title>
+    <link rel="stylesheet" href="WorkoutPage.css">
+    <style>
+        /* Custom styles for exercise sets */
+        .exercise-set {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exercise-set:hover {
+            background-color: #eaeaea;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .exercise-set h2 {
+            margin: 0;
+            font-size: 30px;
+            color: #094067;
+        }
+
+        /* Create a separate page for exercise details */
+        .exercise-details {
+            display: none;
+            padding: 20px;
+        }
+        
+        .exercise-set.active .exercise-details {
+            display: block;
+        }
+
+        .exercise-details h3 {
+            font-size: 24px;
+            color: #094067;
+        }
+
+        .exercise-details p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p id="welcome">Welcome, User</p>
+        <div class="profile-circle" id="profile-icon">
+            <i class="fas fa-person profile-icon"></i>
+        </div>
+    </header>
+    <main>
+        <div class="exercise-set">
+            <h2>Exercise Set 1</h2>
+            <div class="exercise-details">
+                <h3>Exercises in Set 1</h3>
+                <p>1. Exercise A</p>
+                <p>2. Exercise B</p>
+                <p>3. Exercise C</p>
+            </div>
+        </div>
+        <div class="exercise-set">
+            <h2>Exercise Set 2</h2>
+            <div class="exercise-details">
+                <h3>Exercises in Set 2</h3>
+                <p>1. Exercise X</p>
+                <p>2. Exercise Y</p>
+                <p>3. Exercise Z</p>
+            </div>
+        </div>
+        <!-- Add more exercise sets here -->
+    </main>
+    <footer>
+        <button class="tab-button" onclick="openTab(event, 'homeScreen')">
+            <i class="fas fa-home"></i>
+        </button>
+        <!-- Add your other footer buttons here -->
+    </footer>
+</body>
+</html>
