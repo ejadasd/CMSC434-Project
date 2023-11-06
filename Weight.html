@@ -137,7 +137,7 @@
             </div>
 			
 			<div>
-				<button class="input-button" id="toggle" onclick="toggleProgress()">Show Recent Progress</button>
+				<button class="input-button" id="toggle" onclick="toggleProgress()">Show Past Progress</button>
 			</div>
 
             <div class="input-container">
@@ -240,11 +240,11 @@
     function toggleProgress() {
         const button = document.getElementById("toggle");
         if (isPastProgressShown) {
-            button.innerText = "Show Recent Progress";
+            button.innerText = "Show Past Progress";
             showRecentProgress();
             currentProgress = "Recent Progress";
         } else {
-            button.innerText = "Show Past Progress";
+            button.innerText = "Show Recent Progress";
             showAllData();
             currentProgress = "Past Progress";
         }

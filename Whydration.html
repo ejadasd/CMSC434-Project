@@ -97,14 +97,6 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .compact-input {
-            margin-top: 2px;
-            width: 35%;
-            padding: 5px;
-            font-size: 16px;
-            border: 1px solid #767676;
-            border-radius: 5px;
-        }
         .input-button {
             margin-top: 10px;
             padding: 10px;
@@ -112,14 +104,6 @@
             border-radius: 5px;
             background-color: #555;
             color: #fff;
-        }
-        .checkmark {
-            margin-right: -26%;
-            height: 28px;
-            width: 28px;
-            outline: 1px solid #1e5180;
-            background-color: #fff;
-            border-color: #fff;
         }
     </style>
 </head>
@@ -141,10 +125,10 @@
             </div>
 
             <div class="input-container">
-                <label class="input-label" for="userWeight">Recent Caloric Intake</label>
+                <label class="input-label" for="userWeight">Water Intake (oz)</label>
                 <input type="number" id="userWeight" class="input-box">
                 <br>
-                <label class="input-label" for="targetWeight">Daily Target Intake:</label>
+                <label class="input-label" for="targetWeight">Daily Target Intake (oz):</label>
                 <input type="number" id="targetWeight" class="input-box">
                 <button class="input-button" onclick="addData()">Add Data</button>
             </div>
@@ -174,7 +158,6 @@
     </div>
 
 <script>
-        const height = 1.8;
         const maxDataPoints = 7;
         const ctx = document.getElementById("myChart").getContext("2d");
         const chart = new Chart(ctx, {
@@ -183,13 +166,13 @@
                 labels: [],
                 datasets: [
                     {
-                        label: 'Caloric Intake',
+                        label: 'Water Intake (oz)',
                         data: [],
                         borderColor: "rgba(0, 0, 255, 1)",
                         borderWidth: 1,
                     },
                     {
-                        label: 'Target Intake',
+                        label: 'Target Intake (oz)',
                         data: [],
                         borderColor: "rgba(255, 0, 0, 1)",
                         borderWidth: 1,
@@ -203,7 +186,7 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 4000
+                        max: 200, // Set the maximum value to 200
                     }
                 }
             }
