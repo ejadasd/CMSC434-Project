@@ -16,11 +16,16 @@ header {
     background-attachment: scroll;
 }
 
+#welcome {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+}
+
 footer {
     background-color: #333;
     color: #fff;
     padding: 10px;
-    justify-content: space-between;
     text-align: center;
     margin-top: auto;
     display: flex;
@@ -30,6 +35,35 @@ footer {
     background-attachment: scroll;
     left: 0;
     bottom: 0;
+}
+
+.tab-button {
+    padding: 11px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    font-size: 40px;
+    border: none;
+}
+
+.tab-button i {
+    margin: 0;
+    padding: 0;
+}
+
+.profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon {
+    color: #fff;
+    font-size: 40px;
 }
 
 img {
