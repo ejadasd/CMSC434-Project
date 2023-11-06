@@ -22,25 +22,23 @@ function loadProfileData() {
     }
   }
 
-function loadWaterCaloriesData() {
+  //this is currrent weight, water, and calories
+function loadData() {
     const userCurrWeight = localStorage.getItem("userWeight");
     document.getElementById('userCurrWeight').textContent = userCurrWeight;
     const userCurrBMI = (703 * userCurrWeight)/(userHeight*userHeight);
     document.getElementById('userCurrBMI').textContent = userCurrBMI.toFixed(4);
 
-    
+    const waterDrank = localStorage.getItem("userWater");
+    document.getElementById('waterDrank').textContent = waterDrank;
+    const totalWater = userCurrWeight/2;
+    document.getElementById('totalWater', totalWater);
+
+    const calories = localStorage.getItem("userCalories");
+    document.getElementById('calories').textContent = calories;
+    const totalCalories = localStorage.getItem("totalCalories");
+    document.getElementById('totalCalories', totalCalories);
 }
-
-//   //comes from anthonys work
-  
-//     document.getElementById('userCurrBMI').textContent = userCurrBMI.toFixed(4);
-
-//     //comes from anthony work
-//     const waterDrank = userWaterDrank;
-//     const calories = userCalories;
-//   const totalCalories = totalCalories;
-
-//   const totalWater = userCurrWeight/2;
 
 
 document.getElementById('profile-icon').addEventListener('click', openProfilePage);

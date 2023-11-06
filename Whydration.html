@@ -240,6 +240,7 @@
 
         function addData() {
 			const userWater = document.getElementById("userWater").value;
+            localStorage.setItem("userWater", userWater);
 			targetWater = document.getElementById("targetWater").value;
 			if (userWater !== "") {
 				const currentDate = new Date();
