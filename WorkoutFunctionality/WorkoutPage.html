@@ -57,16 +57,16 @@
 <!-- the localStorage will pull the data from all of the object in their current states right before clicking WorkoutGraphButton-->
 <!-- Basically the localStorage only stays updated with the current workout after moving from WorkoutPage to WorkoutGraph page. This means that theoretically you would have to leave the graph page and come back to the Workout Page. Then change some stuff. Then go back to the graph page. -->
 <footer>
-  <button class="tab-button" onclick="openTab(event, 'homeScreen')">
+  <button class="tab-button" onclick="location.href = '../HomeScreen.html'">
       <i class="fas fa-home"></i>
   </button>
-  <button class="tab-button" onclick="openTab(event, 'goalsTab')">
+  <button class="tab-button" onclick="location.href = '../GoalsFunctionality/MainPage.html'">
       <i class="fas fa-bullseye"></i>
     </button>
-  <button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+  <button class="tab-button" onclick="location.href = 'WorkoutHomePage.html';">
       <i class="fas fa-dumbbell"></i>
   </button>
-  <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+  <button class="tab-button" onclick="location.href = '../nutritionDataBase.html';">
       <i class="fas fa-utensils"></i>
   </button>
   <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
@@ -76,7 +76,6 @@
       <i class="fas fa-cog"></i>
   </button>
 </footer>
-
 <script src="WorkoutJSFiles/WorkoutPage.js"></script>
 </body>
 </html>

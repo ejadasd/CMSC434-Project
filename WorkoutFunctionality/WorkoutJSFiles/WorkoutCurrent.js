@@ -5,7 +5,7 @@ let curr_exercises = []
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    let data = localStorage.getItem("exercise");
+    let data = localStorage.getItem("exercise195");
     curr_exercises = JSON.parse(data);
     console.log(curr_exercises);
     displayCurrExercises()
@@ -26,7 +26,7 @@ function deleteExercise2(exerciseId) {
 
 function storeAndProcessExercisesInLocalStorage(){
   let storedExercise = JSON.stringify(curr_exercises);
-  localStorage.setItem("exercise", storedExercise);
+  localStorage.setItem("exercise195", storedExercise);
 }
 function saveExercise2(exerciseId) {
     const form = document.getElementById(`form-${exerciseId}2`);

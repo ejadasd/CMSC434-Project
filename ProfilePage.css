@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #094067;
     color: #fff;
     padding: 10px;
 }
@@ -17,15 +17,20 @@ header {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #90b4ce;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .profile-icon {
-    color: #fff;
+    color: #ef4565;
     font-size: 40px;
+}
+
+p {
+    font-size: 30px;
+    color: #90b4ce;
 }
 
 body {
@@ -48,10 +53,12 @@ main {
 h1#profile {
     font-size: 36px;
     margin-bottom: 25px;
+    color: #094067;
 }
 
 span {
     font-size: 30px;
+    color: #094067;
 }
 
 input[type="text"],
@@ -60,22 +67,24 @@ input[type="number"],
 select {
     width: 100%;
     padding: 0px;
-    border: 1px solid #ccc;
+    border: 1px solid #094067;
     border-radius: 5px;
     font-size: 24px;
     margin-top: 5px;
     height: 50px;
+    color: #5f6c7b;
 }
 
 label[for="heightFeet"], label[for="heightInches"] {
     font-size: 30px;
+    color: #094067;
 }
 
 #updateButton {
     padding: 10px 20px;
     font-size: 25px;
-    background-color: #333;
-    color: #fff;
+    background-color: #3da9fc;
+    color: #fffffe;
     border: none;
     border-radius: 5px;
     margin-top: 30px;
@@ -84,8 +93,8 @@ label[for="heightFeet"], label[for="heightInches"] {
 .tab-button {
     padding: 11px;
     text-align: center;
-    background-color: #333;
-    color: #fff;
+    background-color: #094067;
+    color: #90b4ce;
     font-size: 40px;
     border: none;
 }
@@ -96,7 +105,7 @@ label[for="heightFeet"], label[for="heightInches"] {
 }
 
 footer {
-    background-color: #333;
+    background-color: #094067;
     color: #fff;
     padding: 10px;
     justify-content: space-between;

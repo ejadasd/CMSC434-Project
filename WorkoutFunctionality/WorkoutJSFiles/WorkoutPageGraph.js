@@ -1,24 +1,29 @@
 // WorkoutPageGraph.js
 document.addEventListener("DOMContentLoaded", (event) => {
     // need to process exercise objects into data used by chart.js
-    let data = localStorage.getItem("exercise");
+    let data = localStorage.getItem("exercise195");
 
     curr_exercises = JSON.parse(data);
     processed_exercises = processExerciseData(curr_exercises);
+    // This is hardcoded data to show the previous work
+    if(processed_exercises.hasOwnProperty("Dumbbell-Press")){
+      processed_exercises["Dumbbell-Press"].reps.push(...[5, 10, 12, 15])
+      processed_exercises["Dumbbell-Press"].weight.push(...[80, 50, 30, 20])
+    } else {
+      processed_exercises["Dumbbell-Press"] = {reps: [5, 10, 12, 15], weight: [80, 50, 30, 20]}
+    }
+    
+
     document.getElementById("exerciseSelect").addEventListener("change", (e) => {
-        console.log(e.target);
         let selectedExercise = processed_exercises[e.target.value];
         updateGraph(selectedExercise)
       })
     let first_option_element = populateSelect(processed_exercises)
-    console.log(first_option_element.textContent);
     updateGraph(processed_exercises[first_option_element.textContent])
 })
 
 
 function updateGraph(selectedExercise){
-    console.log("Here 12");
-    console.log(selectedExercise);
     let context = document.getElementById("exerciseChart").getContext("2d");
     let sortedExerciseData = selectedExercise.reps.map((rep, index) => {
       return {rep: rep, weight: selectedExercise.weight[index]};}).sort((a, b) => a.rep - b.rep)
@@ -106,7 +111,6 @@ function populateSelect(processed_exercises){
     let select_element = document.getElementById("exerciseSelect");
     let last_text_content_element;
 
-        console.log(processed_exercises);
     for (let exerciseName in processed_exercises){
             let curr_option = document.createElement("option");
             curr_option.value = exerciseName;
