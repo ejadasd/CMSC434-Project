@@ -9,11 +9,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #094067;
     color: #fff;
     padding: 10px;
     position: fixed;
     background-attachment: scroll;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 #welcome {
@@ -23,7 +26,7 @@ header {
 }
 
 footer {
-    background-color: #333;
+    background-color: #094067;
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -40,8 +43,8 @@ footer {
 .tab-button {
     padding: 11px;
     text-align: center;
-    background-color: #333;
-    color: #fff;
+    background-color: #094067;
+    color: #90b4ce;
     font-size: 40px;
     border: none;
 }
@@ -55,14 +58,14 @@ footer {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #90b4ce;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .profile-icon {
-    color: #fff;
+    color: #ef4565;
     font-size: 40px;
 }
 
@@ -85,12 +88,14 @@ section{
     padding: 100px 0;
     
 }
+
 .container {
     width: 90%;
     height:auto;
     max-width: 1200px;
     margin: 0 auto;
 }
+
 .brand {
     text-align: center;
     font-size: 4rem;
@@ -126,9 +131,20 @@ section{
     position: relative;
 }
 
+.filter p {
+    font-size: 30px;
+}
+
 #feature {
-    width:100px;
+    width:120px;
     margin:10px;
+    font-size: 25px;
+}
+
+#sort {
+    width:160px;
+    margin:10px;
+    font-size: 25px;
 }
 
 form {
