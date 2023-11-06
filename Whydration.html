@@ -97,14 +97,6 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .compact-input {
-            margin-top: 2px;
-            width: 35%;
-            padding: 5px;
-            font-size: 16px;
-            border: 1px solid #767676;
-            border-radius: 5px;
-        }
         .input-button {
             margin-top: 10px;
             padding: 10px;
@@ -112,14 +104,6 @@
             border-radius: 5px;
             background-color: #555;
             color: #fff;
-        }
-        .checkmark {
-            margin-right: -26%;
-            height: 28px;
-            width: 28px;
-            outline: 1px solid #1e5180;
-            background-color: #fff;
-            border-color: #fff;
         }
     </style>
 </head>
@@ -141,11 +125,11 @@
             </div>
 
             <div class="input-container">
-                <label class="input-label" for="userCalorie">Recent Caloric Intake</label>
-                <input type="number" id="userCalorie" class="input-box">
+                <label class="input-label" for="userWater">Water Intake (oz)</label>
+                <input type="number" id="userWater" class="input-box">
                 <br>
-                <label class="input-label" for="targetCalorie">Daily Target Intake:</label>
-                <input type="number" id="targetCalorie" class="input-box">
+                <label class="input-label" for="targetWater">Daily Target Intake (oz):</label>
+                <input type="number" id="targetWater" class="input-box">
                 <button class="input-button" onclick="addData()">Add Data</button>
             </div>
             <div>
@@ -174,7 +158,6 @@
     </div>
 
 <script>
-        const height = 1.8;
         const maxDataPoints = 7;
         const ctx = document.getElementById("myChart").getContext("2d");
         const chart = new Chart(ctx, {
@@ -183,13 +166,13 @@
                 labels: [],
                 datasets: [
                     {
-                        label: 'Caloric Intake',
+                        label: 'Water Intake (oz)',
                         data: [],
                         borderColor: "rgba(0, 0, 255, 1)",
                         borderWidth: 1,
                     },
                     {
-                        label: 'Target Intake',
+                        label: 'Target Intake (oz)',
                         data: [],
                         borderColor: "rgba(255, 0, 0, 1)",
                         borderWidth: 1,
@@ -203,23 +186,23 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 4000
+                        max: 200, // Set the maximum value to 200
                     }
                 }
             }
         });
 
         let notificationIntervalId = null;
-        const userCalorieHistory = [];
-        const targetCalorieHistory = [];
+        const userWaterHistory = [];
+        const targetWaterHistory = [];
         const dateLabelsHistory = [];
-        let targetCalorie = 0;
+        let targetWater = 0;
 
         let currentProgress = "Recent Progress";
         let isPastProgressShown = false;
         let currentData = {
-            userCalorie: [],
-            targetCalorie: [],
+            userWater: [],
+            targetWater: [],
             labels: [],
         };
 
@@ -248,17 +231,17 @@
         }
 
         function showRecentProgress() {
-            updateGraph(currentData.userCalorie, currentData.targetCalorie, currentData.labels);
+            updateGraph(currentData.userWater, currentData.targetWater, currentData.labels);
         }
 
         function showAllData() {
-            updateGraph(userCalorieHistory, targetCalorieHistory, dateLabelsHistory);
+            updateGraph(userWaterHistory, targetWaterHistory, dateLabelsHistory);
         }
 
         function addData() {
-			const userCalorie = document.getElementById("userCalorie").value;
-			targetCalorie = document.getElementById("targetCalorie").value;
-			if (userCalorie !== "") {
+			const userWater = document.getElementById("userWater").value;
+			targetWater = document.getElementById("targetWater").value;
+			if (userWater !== "") {
 				const currentDate = new Date();
 				const label = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
 				const labels = chart.data.labels;
@@ -267,27 +250,27 @@
 				if (labels.includes(label)) {
 					// Update the existing entry
 					const index = labels.indexOf(label);
-					chart.data.datasets[0].data[index] = parseFloat(chart.data.datasets[0].data[index]) + parseFloat(userCalorie);
+					chart.data.datasets[0].data[index] = parseFloat(chart.data.datasets[0].data[index]) + parseFloat(userWater);
 				} else {
 					if (chart.data.labels.length >= maxDataPoints) {
-						const removeduserCalorie = chart.data.datasets[0].data.shift();
-						const removedtargetCalorie = chart.data.datasets[1].data.shift();
+						const removeduserWater = chart.data.datasets[0].data.shift();
+						const removedtargetWater = chart.data.datasets[1].data.shift();
 						const removedLabel = chart.data.labels.shift();
-						userCalorieHistory.push(removeduserCalorie);
-						targetCalorieHistory.push(removedtargetCalorie);
+						userWaterHistory.push(removeduserWater);
+						targetWaterHistory.push(removedtargetWater);
 						dateLabelsHistory.push(removedLabel);
 					}
 
-					chart.data.datasets[0].data.push(userCalorie);
-					chart.data.datasets[1].data.push(targetCalorie);
+					chart.data.datasets[0].data.push(userWater);
+					chart.data.datasets[1].data.push(targetWater);
 					chart.data.labels.push(label);
 				}
 
 				// Update the chart
 				chart.update();
 
-				document.getElementById("userCalorie").value = "";
-				document.getElementById("userCalorie").focus();
+				document.getElementById("userWater").value = "";
+				document.getElementById("userWater").focus();
 			}
 		}
 
