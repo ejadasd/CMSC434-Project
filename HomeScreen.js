@@ -40,6 +40,27 @@ function loadData() {
     document.getElementById('totalCalories', totalCalories);
 }
 
+function loadWeightGraph() {
+// Retrieve the dynamic graph data from local storage
+const graphData = JSON.parse(localStorage.getItem("weightGraph"));
+
+// Create a new chart using the retrieved data
+const ctx = document.getElementById("myChart").getContext("2d");
+const chart = new Chart(ctx, {
+    type: "line",
+    data: graphData,
+    options: {
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 200,
+            },
+        },
+    },
+});
+}
+
 
 document.getElementById('profile-icon').addEventListener('click', openProfilePage);
 
