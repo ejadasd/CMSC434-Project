@@ -7,69 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Your App Name</title>
     <style>
-        /* CSS for simulating a phone screen */
-        .phone-container {
-            width: 375px; 
-            height: 800px; 
-            margin: 0 auto;
-            border: 2px solid #000;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
-        #welcome {
-            margin: 0;
-            padding: 0;
-            font-size: 16px;
-        }
-        .profile-circle {
-            width: 40px; 
-            height: 40px;
-            border-radius: 50%;
-            background-color: #ccc; 
-            display: flex;
-            justify-content: center; 
-            align-items: center; 
-        }
-        .profile-icon {
-            color: #fff; 
-            font-size: 24px; 
-        }
-        main {
-            text-align: center;
-            margin: 20px;
-            flex: 1; 
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            display: flex;
-            justify-content: space around;
-            padding: 10px;
-        }
-        .tab-button {
-            padding: 11px;
-            margin: 1px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 50%; 
-            background-color: #555; 
-            color: #fff; 
-        }
+/* CSS for simulating a phone screen */
         
         /* CSS for the chart container */
         .chart-container {
@@ -97,6 +35,14 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+		.compact-input {
+			margin-top: 2px;
+            width: 35%;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #767676;
+            border-radius: 5px;
+        }
         .input-button {
             margin-top: 10px;
             padding: 10px;
@@ -105,17 +51,163 @@
             background-color: #555;
             color: #fff;
         }
+		.checkmark {
+		  margin-right: -26%;
+		  height: 28px;
+		  width: 28px;
+		  outline: 1px solid #1e5180;
+          background-color: #fff;
+          border-color: #fff;
+		}
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #333;
+			color: #fff;
+			height: 40px; /* Set a specific height for the header */
+		}
+
+	#welcome {
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+	}
+
+	.profile-circle {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: #ccc;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.profile-icon {
+		color: #fff;
+		font-size: 30px;
+	}
+
+	body {
+		font-family: Arial, sans-serif;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	main {
+		text-align: center;
+		margin: 20px;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.box {
+		max-width: 600px;
+		max-height: auto;
+		background-color: #f0f0f0;
+		margin: 10px auto;
+		margin-top: 90px;
+		padding: 10px;
+		border: 1px solid #ccc;
+		flex: 1;
+	}
+
+	p {
+		font-size: 30px;
+	}
+
+	.rankings-button {
+		padding: 11px;
+		margin: 1px;
+		text-align: center;
+		cursor: pointer;
+		background-color: #555;
+		color: #fff;
+		font-size: 30px;
+	}
+
+	.nutrition-icons {
+		text-align: center;
+		font-size: 70px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.nutrition-icons i {
+		margin: 0 40px;
+	}
+
+	.protein-icon {
+		color: #DAA520;
+	}
+
+	.carbs-icon {
+		color: #D2B48C;
+	}
+
+	.fats-icon {
+		color: #FFA500;
+	}
+
+	.icon-container {
+		text-align: center;
+	}
+
+	.icon-label {
+		font-size: 30px;
+		margin-top: 5px;
+	}
+
+	.tab-button {
+		padding: 11px;
+		text-align: center;
+		background-color: #333;
+		color: #fff;
+		font-size: 20px;
+		border: none;
+	}
+
+	.tab-button i {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.back-arrow {
+	  cursor: pointer;
+	  font-size: 20px;
+	  text-decoration: none;
+	  color: black;
+	  text-align: right
+	}
+
+	footer {
+		background-color: #333;
+		color: #fff;
+		height: 45px; /* Set a specific height for the header */
+		justify-content: space-between;
+		text-align: center;
+		margin-top: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
     </style>
 </head>
 <body>
-    <div class="phone-container">
+    <div>
         <header>
-            <p id="welcome">Welcome, John Doe</p>
+            <p id="welcome">Welcome, <span id="userName"></span></p>
             <div class="profile-circle" id="profile-icon">
                 <i class="fas fa-person profile-icon"></i>
             </div>
         </header>
         <main>
+			<a href="WorkoutHomePage.html" class="back-arrow">&#8592; Home</a>
             <div class="chart-container">
                 <canvas id="myChart"></canvas>
             </div>
@@ -139,21 +231,24 @@
             </div>
         </main>
         <footer>
-            <button class="tab-button" onclick="openTab(event, 'homeScreen')">
-                Home
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'workoutDatabase')">
-                Workout Database
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'nutritionDatabse')">
-                Nutrition Database
-            </button>
-            <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
-                Buddy System
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'settings')">
-                Settings
-            </button>
+            <a href="MainHomePage.html" class="back-arrow">&#8592; Back</a>
+            <i class="fas fa-home"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+				<i class="fas fa-bullseye"></i>
+			  </button>
+			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+				<i class="fas fa-dumbbell"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+				<i class="fas fa-utensils"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+				<i class="fas fa-users"></i>
+			</button>
+			<button class="tab-button" onclick="openTab(event, 'settings')">
+				<i class="fas fa-cog"></i>
+			</button>
         </footer>
     </div>
 
