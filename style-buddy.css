@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap");
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Nunito';
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+.container{
+    width: 360px;
+    padding: 33px;
+    text-align: center;
+    background-color: #fff;
+    margin-left: 33%;
+    margin-top: 5px;
+    height:auto;
+}
+
+input{
+    width: 270px;
+    padding: 8px;
+    border: 2px solid rgb(6, 145, 145);
+    outline: none;
+    font-size: 20px;
+}
+
+section{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+}
+
+.container {
+    width: 90%;
+    height:auto;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+button{
+    width: 60px;
+    height: 41px;
+    background-color: rgb(4, 29, 29);
+    color: white;
+    border: none;
+    cursor: pointer;
+
+    outline: none;
+    border-radius: 2px;
+    font-size: 20px;
+}
+.text ul{
+    position: relative;
+    background-color: rgb(5, 31, 31);
+    color: white;
+    font-size: 30px;
+    padding: 7px;
+    text-align: left;
+    margin-top: 20px;
+    
+}
+.text ul i{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #094067;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    background-attachment: scroll;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+#welcome {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+}
+
+footer {
+    background-color: #094067;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    background-attachment: scroll;
+    left: 0;
+    bottom: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.tab-button {
+    padding: 11px;
+    text-align: center;
+    background-color: #094067;
+    color: #90b4ce;
+    font-size: 40px;
+    border: none;
+}
+
+.tab-button i {
+    margin: 0;
+    padding: 0;
+}
+
+.profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #90b4ce;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon {
+    color: #ef4565;
+    font-size: 40px;
+}
+
+@media (max-width: 768px) {
+    .search-result {
+      grid-gap: 10px;
+    }
+    .container.initial .brand {
+      font-size: 4rem;
+    }
+    .container.initial form {
+      max-width: 500px;
+    }
+    .container.initial form input {
+      padding: 10px;
+      font-size: 2rem;
+    }
+  }
