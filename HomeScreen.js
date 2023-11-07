@@ -19,20 +19,21 @@ function loadProfileData() {
       const userHeight = (userHeightFeet * 12) + userHeightInches/10;
       const userStartBMI = (703 * userStartWeight)/(userHeight*userHeight);
       document.getElementById('userStartBMI').textContent = userStartBMI.toFixed(4);
+
+      const userCurrWeight = profileData.currWeight;
+      document.getElementById('userCurrWeight').textContent = userCurrWeight;
+      const userCurrBMI = (703 * userCurrWeight)/(userHeight*userHeight);
+      document.getElementById('userCurrBMI').textContent = userCurrBMI.toFixed(4);  
+
+      const totalWater = userCurrWeight/2;
+      document.getElementById('totalWater').textContent = totalWater;
     }
   }
 
   //this is currrent weight, water, and calories
 function loadData() {
-    const userCurrWeight = localStorage.getItem("userWeight");
-    document.getElementById('userCurrWeight').textContent = userCurrWeight;
-    const userCurrBMI = (703 * userCurrWeight)/(userHeight*userHeight);
-    document.getElementById('userCurrBMI').textContent = userCurrBMI.toFixed(4);
-
     const waterDrank = localStorage.getItem("userWater");
     document.getElementById('waterDrank').textContent = waterDrank;
-    const totalWater = userCurrWeight/2;
-    document.getElementById('totalWater', totalWater);
 
     const calories = localStorage.getItem("userCalories");
     document.getElementById('calories').textContent = calories;

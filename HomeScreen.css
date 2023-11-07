@@ -5,6 +5,11 @@ header {
     background-color: #333;
     color: #fff;
     padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 #welcome {
@@ -21,6 +26,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 15px;
 }
 
 .profile-icon {
@@ -69,6 +75,11 @@ span1 {
     color: #fff; 
 }
 
+span2 {
+    font-size: 30px;
+    color: #3da9fc; 
+}
+
 .fas.fa-bottle-water {
     color: blue;
 }
@@ -110,5 +121,10 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
