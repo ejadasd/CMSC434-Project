@@ -49,6 +49,7 @@
           border-color: #fff;
 		}
 		header {
+			font-family: Arial, sans-serif;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -83,6 +84,7 @@
 	}
 
 	body{
+		font-family: Arial, sans-serif;
 		padding-top: 100px;
 		padding-bottom: 100px;
 		margin: 0;

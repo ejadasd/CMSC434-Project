@@ -15,6 +15,7 @@ body {
 }
 
 header {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -86,7 +87,7 @@ img {
     object-fit: cover;
 }
 html {
-    font-family: 'Nunito';
+    font-family: Arial, sans-serif;
     font-size: 12px;
     font-weight: 600;
 }

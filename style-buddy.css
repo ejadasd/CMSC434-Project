@@ -6,7 +6,7 @@
 }
 
 html {
-    font-family: 'Nunito';
+    font-family: Arial, sans-serif;
     font-size: 30px;
     font-weight: 600;
 }
@@ -75,6 +75,7 @@ button{
 }
 
 header {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
