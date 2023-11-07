@@ -175,12 +175,7 @@ form input {
     font-size: 2rem;
     display: inline-block;
 }
-form ion-icon {
-    width: 9%;
-    font-size: 3rem;
-    margin: -9px;
-    color: rgb(75, 75, 75);
-}
+
 .search-result {
     margin-top: 50px;
     width: 100%;
@@ -188,6 +183,9 @@ form ion-icon {
     grid-gap: 25px;
     grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
 }
+
+
+
 .item {
     width: 100%;
     border-radius: 8px;
@@ -198,9 +196,8 @@ form ion-icon {
 
 .item ion-icon {
     color: whitesmoke;
-    font-size: 1.8rem;
+    font-size: 3rem;
     font-weight: 400;
-
 }
 
 .item button {
