@@ -48,6 +48,7 @@
           background-color: #fff;
           border-color: #fff;
 		}
+
 		header {
 			font-family: Arial, sans-serif;
 			display: flex;
@@ -55,6 +56,7 @@
 			align-items: center;
 			background-color: #333;
 			color: #fff;
+			padding: 10px;
 			position: fixed;
 			top: 0;
 			left: 0;
