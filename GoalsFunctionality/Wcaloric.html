@@ -5,62 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<link rel="stylesheet" href="MainPage.css">
+	<link rel="stylesheet" href="GraphStyling.css">
     <title>Weight Progress</title>
 </head>
 <body>
-    <div class="phone-container">
         <header>
             <p id="welcome">Welcome, <span id="userName"></span></p>
             <div class="profile-circle" id="profile-icon">
                 <i class="fas fa-person profile-icon"></i>
-            </div>
+			<div>
         </header>
-        <main>
+            <div class = "container-11">
+        
 			<a href="MainPage.html" class="back-arrow">&#8592; Back</a>
+
             <div class="chart-container">
                 <canvas id="myChart"></canvas>
             </div>
             
-            <div>
+            <div class="centered-container">
                 <button class="input-button" id="toggle" onclick="toggleProgress()">Show Past Progress</button>
             </div>
 
             <div class="input-container">
                 <label class="input-label" for="userCalorie">Recent Caloric Intake</label>
+				<br>
                 <input type="number" id="userCalorie" class="input-box">
                 <br>
                 <label class="input-label" for="targetCalorie">Daily Target Intake:</label>
+				<br>
                 <input type="number" id="targetCalorie" class="input-box">
+				<br>
                 <button class="input-button" onclick="addData()">Add Data</button>
             </div>
-            <div>
+            
+            <div class="centered-container">
                 <button id="notificationButton" class="input-button" onclick="toggleNotifications()">Start Daily Reminders</button>
             </div>
-            <div>
-            </div>
-        </main>
-        <footer>
-            <button class="tab-button" onclick="openTab(event, 'homeScreen')">
-            <i class="fas fa-home"></i>
-			</button>
-			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
-				<i class="fas fa-bullseye"></i>
-			  </button>
-			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
-				<i class="fas fa-dumbbell"></i>
-			</button>
-			<button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
-				<i class="fas fa-utensils"></i>
-			</button>
-			<button class="tab-button" onclick="location.href = 'BuddySystem.html';">
-				<i class="fas fa-users"></i>
-			</button>
-			<button class="tab-button" onclick="openTab(event, 'settings')">
-				<i class="fas fa-cog"></i>
-			</button>
-        </footer>
-    </div>
+        
+			<footer>
+				<button class="tab-button" onclick="location.href = 'HomeScreen.html';">
+					<i class="fas fa-home"></i>
+				</button>
+				<button class="tab-button" onclick="location.href = 'MainPage.html'">
+					<i class="fas fa-bullseye"></i>
+				  </button>
+				<button class="tab-button" onclick="location.href = 'WorkoutFunctionality/WorkoutPage.html';">
+					<i class="fas fa-dumbbell"></i>
+				</button>
+				<button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+					<i class="fas fa-utensils"></i>
+				</button>
+				<button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+					<i class="fas fa-users"></i>
+				</button>
+			</footer>
 
 <script>
         const height = 1.8;
@@ -92,8 +91,16 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 4000
-                    }
+                        max: 4000,
+                        ticks: {
+                            fontSize: 24, // Set the font size for y-axes labels
+                        }
+                    },
+                    yAxes: [{
+                        ticks: {
+                            fontSize: 24, // Set the font size for y-axes labels
+                        }
+                    }]
                 }
             }
         });
