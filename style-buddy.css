@@ -11,7 +11,6 @@ html {
     font-weight: 600;
 }
 
-
 .container{
     width: 360px;
     padding: 33px;
@@ -83,7 +82,6 @@ header {
     color: #fff;
     padding: 10px;
     position: fixed;
-    background-attachment: scroll;
     top: 0;
     left: 0;
     width: 100%;
@@ -94,6 +92,22 @@ header {
     margin: 0;
     padding: 0;
     font-size: 30px;
+}
+
+.profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.profile-icon {
+    color: #fff;
+    font-size: 40px;
 }
 
 footer {
@@ -133,21 +147,6 @@ body {
 .tab-button i {
     margin: 0;
     padding: 0;
-}
-
-.profile-circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-icon {
-    color: #fff;
-    font-size: 40px;
 }
 
 @media (max-width: 768px) {
