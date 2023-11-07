@@ -36,10 +36,10 @@
             <div class="save">
                 <button class="btn" onclick="sort_arr()">Submit</button>
             </div>
-            <form>
+            <!--<form>
                 <input type="text" placeholder="Search Your Recipe...">
                 <ion-icon name="search"></ion-icon>
-            </form> 
+            </form> -->
             <div class="search-result">
                 <div class="item">
                     <img src="recipeImage/PomeloNoodleSalad.jpg" alt="">
@@ -165,13 +165,13 @@
         </div>
     </section>
     <footer>
-        <button class="tab-button" onclick="openTab(event, 'homeScreen')">
+        <button class="tab-button" onclick="location.href = '/HomeScreen.html';">
             <i class="fas fa-home"></i>
         </button>
-        <button class="tab-button" onclick="openTab(event, 'goalsTab')">
+        <button class="tab-button" onclick="location.href = '../GoalsFunctionality/MainPage.html'">
             <i class="fas fa-bullseye"></i>
           </button>
-        <button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+        <button class="tab-button" onclick="location.href = '/WorkoutFunctionality/WorkoutHomePage.html';">
             <i class="fas fa-dumbbell"></i>
         </button>
         <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
@@ -180,11 +180,9 @@
         <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
             <i class="fas fa-users"></i>
         </button>
-        <button class="tab-button" onclick="openTab(event, 'settings')">
-            <i class="fas fa-cog"></i>
-        </button>
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script src="./nutritionDataBase.js"></script>
+    <script src="nutritionDataBase.js"></script>
+    <script src="HomeScreen.js"></script>
 </body>
 </html>

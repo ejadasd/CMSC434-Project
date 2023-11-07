@@ -10,7 +10,7 @@
 <body>
     <div>
         <header>
-            <p1 id="welcome">Welcome, <span id="userName"></span></p1>
+            <p1 id="welcome">Welcome, <span1 id="userName"></span1></p1>
             <div class="profile-circle" id="profile-icon">
                 <i class="fas fa-person profile-icon"></i>
             </div>
@@ -19,10 +19,10 @@
             <div class="box" id="homeScreen">
                 <div class="weight-box">
                     <h1>Weight <i class="fas fa-weight"></i>:</h1>
-                    <p>Your starting weight was: <span id="userStartWeight"></span></p>
-                    <p>Your starting BMI was: <span id="userStartBMI"></span></p>
-                    <p>Your current weight is: <span id="userCurrWeight"></span></p>
-                    <p>Your current BMI is: <span id="userCurrBMI"></span></p>
+                    <p>Your starting weight was: <span2 id="userStartWeight"></span2></p>
+                    <p>Your starting BMI was: <span2 id="userStartBMI"></span2></p>
+                    <p>Your current weight is: <span2 id="userCurrWeight"></span2></p>
+                    <p>Your current BMI is: <span2 id="userCurrBMI"></span2></p>
                 </div>
                 <div class="chart-container">
                     <canvas id="myChart"></canvas>
@@ -31,24 +31,24 @@
                 <div class="nutrition-box">
                     <h1> Hydration <i class="fas fa-bottle-water"></i>: </h1>
                         <div>
-                            <p>You've dranken <span id="waterDrank"></span>/<span id="totalWater"></span> ounces today</p>
+                            <p>You've dranken <span2 id="waterDrank"></span2><span2>/</span2><span2 id="totalWater"></span2> ounces today</p>
                         </div>
                     <h1> Calories <i class="fas fa-fire"></i>: </h1>
                     <div>
-                        <p>You've consumed <span id="calories"></span>/<span id="totalCalories"></span> today</p>
+                        <p>You've consumed <span2 id="calories"></span2><span2>/</span2><span2 id="totalCalories"></span2> today</p>
                     </div>
                 </div>
             </div>                
         </main>
     </div>
     <footer>
-        <button class="tab-button" onclick="openTab(event, 'homeScreen')">
+        <button class="tab-button" onclick="location.href = 'HomeScreen.html';">
             <i class="fas fa-home"></i>
         </button>
-        <button class="tab-button" onclick="openTab(event, 'goalsTab')">
+        <button class="tab-button" onclick="location.href = '../GoalsFunctionality/MainPage.html'">
             <i class="fas fa-bullseye"></i>
           </button>
-        <button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+        <button class="tab-button" onclick="location.href = 'WorkoutFunctionality/WorkoutPage.html';">
             <i class="fas fa-dumbbell"></i>
         </button>
         <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
@@ -56,9 +56,6 @@
         </button>
         <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
             <i class="fas fa-users"></i>
-        </button>
-        <button class="tab-button" onclick="openTab(event, 'settings')">
-            <i class="fas fa-cog"></i>
         </button>
     </footer>
     <script src="HomeScreen.js"></script>

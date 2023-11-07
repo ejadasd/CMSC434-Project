@@ -9,18 +9,27 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #094067;
     color: #fff;
     padding: 10px;
     position: fixed;
     background-attachment: scroll;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+#welcome {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
 }
 
 footer {
-    background-color: #333;
+    background-color: #094067;
     color: #fff;
     padding: 10px;
-    justify-content: space-between;
     text-align: center;
     margin-top: auto;
     display: flex;
@@ -30,6 +39,35 @@ footer {
     background-attachment: scroll;
     left: 0;
     bottom: 0;
+}
+
+.tab-button {
+    padding: 11px;
+    text-align: center;
+    background-color: #094067;
+    color: #90b4ce;
+    font-size: 40px;
+    border: none;
+}
+
+.tab-button i {
+    margin: 0;
+    padding: 0;
+}
+
+.profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #90b4ce;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon {
+    color: #ef4565;
+    font-size: 40px;
 }
 
 img {
@@ -51,12 +89,14 @@ section{
     padding: 100px 0;
     
 }
+
 .container {
     width: 90%;
     height:auto;
     max-width: 1200px;
     margin: 0 auto;
 }
+
 .brand {
     text-align: center;
     font-size: 4rem;
@@ -92,9 +132,20 @@ section{
     position: relative;
 }
 
+.filter p {
+    font-size: 30px;
+}
+
 #feature {
-    width:100px;
+    width:120px;
     margin:10px;
+    font-size: 25px;
+}
+
+#sort {
+    width:160px;
+    margin:10px;
+    font-size: 25px;
 }
 
 form {

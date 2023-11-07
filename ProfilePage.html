@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="stylesheet" href="ProfilePage.css">
+  <title>Health App</title>
+  <script src="ProfilePage.js"></script>
+</head>
+<body>
+  <div>
+    <header>
+      <p id="welcome">Welcome, <span1 id="userName"></span1></p>
+      <div class="profile-circle" id="profile-icon">
+        <i class="fas fa-person profile-icon"></i>
+      </div>
+    </header>
+    <main>
+      <div>
+        <br><br><br><br><br>
+          <div>
+            <div>
+              <span>Name:</span>
+              <input id="nameInput" type="text" value="John Doe">
+            </div>
+            <div>
+              <span>D.O.B:</span>
+              <input id="dobInput" type="date" value="01/01/2001">
+            </div>
+            <div>
+              <span>Age:</span>
+              <input id="ageInput" type="number" value="0">
+            </div>
+            <div>
+              <span>Starting Weight:</span>
+              <input id="weightInputStart" type="number" value="0">
+            </div>
+            <div>
+              <span>Current Weight:</span>
+              <input id="weightInputCurr" type="number" value="0">
+            </div>
+            <div>
+              <span>Height:</span><br>
+                <label for="heightFeet">Feet:</label>
+                <input id="heightFeet" type="number" min="0" max="10" step="1" value="0">
+                <label for="heightInches">Inches:</label>
+                <input id="heightInches" type="number" min="0" max="11" step="1" value="0">
+            </div>
+            <div>
+              <span>Sex:</span>
+              <select id="sexInput">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <div>
+              <span>Rank:</span>
+              <select id="rankInput">
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+              </select>
+            </div>
+            <div>
+              <span>Gym:</span>
+              <input id="gymInput" type="text" value="None">
+            </div>
+          </div>
+          <div>
+            <button id="updateButton" onclick="updateProfile()">Update</button>
+          </div>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <button class="tab-button" onclick="location.href = 'HomeScreen.html';">
+      <i class="fas fa-home"></i>
+    </button>
+    <button class="tab-button" onclick="openTab(event, 'goalsTab')">
+      <i class="fas fa-bullseye"></i>
+    </button>
+    <button class="tab-button" onclick="location.href = 'WorkoutFunctionality/WorkoutPage.html';">
+      <i class="fas fa-dumbbell"></i>
+    </button>
+    <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+      <i class="fas fa-utensils"></i>
+    </button>
+    <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+      <i class="fas fa-users"></i>
+    </button>
+  </footer>
+</body>
+</html>
+    
