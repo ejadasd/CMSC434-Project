@@ -55,16 +55,30 @@ function generateHTML(results){
 }
 
 function save(link, label) {
-    var new_data = {name: label, url: link};
 
+
+    var new_data = {name: label, url: link};
+    var test =[];
     if (localStorage.getItem('data') == null) {
         localStorage.setItem('data', '[]');
+        var old_data = JSON.parse(localStorage.getItem('data'));
+        old_data.push(new_data);
+
+        localStorage.setItem('data', JSON.stringify(old_data));
+    }
+    else {
+        test = JSON.parse(localStorage.getItem('data'));
+        if (test.some(e => e.name == label)) {
+            alert("This recipe is already saved!");
+        }
+        else{
+            var old_data = JSON.parse(localStorage.getItem('data'));
+            old_data.push(new_data);
+
+            localStorage.setItem('data', JSON.stringify(old_data));
+        }
     }
 
-    var old_data = JSON.parse(localStorage.getItem('data'));
-    old_data.push(new_data);
-
-    localStorage.setItem('data', JSON.stringify(old_data));
 }
 
 function view() {
@@ -80,12 +94,52 @@ function view() {
             <div class="flex-container">
                 <h1 class="title">${value.name}</h1>
                 <a class="view-button" href="${value.url}" target="_blank">View Recipe</a>
+                <button onclick="delete_recipe('${value.name}')"><ion-icon name="close-circle-outline"></ion-icon></button>
             </div>
         </div>
         `;
     }
 
     searchResultDiv.innerHTML = genHTML;
+}
+
+function delete_recipe (label) {
+    var temp = [];
+    var index = 0;
+    var list = JSON.parse(localStorage.getItem('data'));
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].name == label) {
+            index = i;
+        }
+    }
+
+    list.splice(index,1);
+    localStorage.setItem('data', JSON.stringify(list));
+    temp = JSON.parse(localStorage.getItem('data'));
+    let genHTML = '';
+    if (temp.length == 0) {
+        searchResultDiv.innerHTML = 
+        `
+        <div class="item">
+        </div>
+        `
+    }
+    else {
+        for (let value of temp) {
+            genHTML += 
+            `
+            <div class="item">
+                <div class="flex-container">
+                    <h1 class="title">${value.name}</h1>
+                    <a class="view-button" href="${value.url}" target="_blank">View Recipe</a>
+                    <button onclick="delete_recipe('${value.name}')"><ion-icon name="close-circle-outline"></ion-icon></button>
+                </div>
+            </div>
+            `;
+        }
+
+        searchResultDiv.innerHTML = genHTML;
+    }
 }
 
 function sort_arr() {
@@ -112,7 +166,7 @@ function sort_arr() {
                 <div class="flex-container">
                     <h1 class="title">${value.label}</h1>
                     <a class="view-button" href="${value.link}" target="_blank">View Recipe</a>
-                    <button onclick="save('${value.link}','${value.label}')"><ion-icon name="bookmark-outline"></ion-icon></button>
+                    <button class="icon" onclick="save('${value.link}','${value.label}')"><ion-icon name="bookmark-outline"></ion-icon></button>
                 </div>
                 <p class="item-data">Calories: ${value.calo}</p>
                 <p class="item-data">Carbs: ${value.carbs}</p>

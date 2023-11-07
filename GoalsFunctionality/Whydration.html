@@ -17,11 +17,37 @@
         </div>
     </header>
 
-    <div class="container-11"></div>
-
-    <a href="MainPage.html" class="back-arrow">&#8592; Back</a>
-    <div class="chart-container">
-        <canvas id="myChart"></canvas>
+            <div class="input-container">
+                <label class="input-label" for="userWater">Water Intake (oz)</label>
+                <input type="number" id="userWater" class="input-box">
+                <br>
+                <label class="input-label" for="targetWater">Daily Target Intake (oz):</label>
+                <input type="number" id="targetWater" class="input-box">
+                <button class="input-button" onclick="addData()">Add Data</button>
+            </div>
+            <div>
+                <button id="notificationButton" class="input-button" onclick="toggleNotifications()">Start Daily Reminders</button>
+            </div>
+            <div>
+            </div>
+        </main>
+        <footer>
+            <button class="tab-button" onclick="location.href = '../HomeScreen.html';">
+                <i class="fas fa-home"></i>
+            </button>
+            <button class="tab-button" onclick="location.href = 'MainPage.html';">
+                <i class="fas fa-bullseye"></i>
+              </button>
+            <button class="tab-button" onclick="location.href = '../WorkoutFunctionality/WorkoutPage.html';">
+                <i class="fas fa-dumbbell"></i>
+            </button>
+            <button class="tab-button" onclick="location.href = '../nutritionDataBase.html';">
+                <i class="fas fa-utensils"></i>
+            </button>
+            <button class="tab-button" onclick="location.href = '../BuddySystem.html';">
+                <i class="fas fa-users"></i>
+            </button>
+          </footer>
     </div>
 
     <div class="centered-container">

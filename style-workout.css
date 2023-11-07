@@ -1,15 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap");
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 header {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #094067;
+    background-color: #333;
     color: #fff;
     padding: 10px;
     position: fixed;
@@ -27,7 +37,7 @@ header {
 }
 
 footer {
-    background-color: #094067;
+    background-color: #333;
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -39,13 +49,14 @@ footer {
     background-attachment: scroll;
     left: 0;
     bottom: 0;
+    z-index: 1000;
 }
 
 .tab-button {
     padding: 11px;
     text-align: center;
-    background-color: #094067;
-    color: #90b4ce;
+    background-color: #333;
+    color: #fff;
     font-size: 40px;
     border: none;
 }
@@ -59,14 +70,14 @@ footer {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #90b4ce;
+    background-color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .profile-icon {
-    color: #ef4565;
+    color: #fff;
     font-size: 40px;
 }
 
@@ -76,7 +87,7 @@ img {
     object-fit: cover;
 }
 html {
-    font-family: 'Nunito';
+    font-family: Arial, sans-serif;
     font-size: 12px;
     font-weight: 600;
 }
@@ -165,12 +176,7 @@ form input {
     font-size: 2rem;
     display: inline-block;
 }
-form ion-icon {
-    width: 9%;
-    font-size: 3rem;
-    margin: -9px;
-    color: rgb(75, 75, 75);
-}
+
 .search-result {
     margin-top: 50px;
     width: 100%;
@@ -178,6 +184,9 @@ form ion-icon {
     grid-gap: 25px;
     grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
 }
+
+
+
 .item {
     width: 100%;
     border-radius: 8px;
@@ -188,9 +197,8 @@ form ion-icon {
 
 .item ion-icon {
     color: whitesmoke;
-    font-size: 1.8rem;
+    font-size: 3rem;
     font-weight: 400;
-
 }
 
 .item button {

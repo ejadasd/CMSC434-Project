@@ -9,7 +9,58 @@
 	overflow: hidden;
 }
 
-body { min-height: 100vh; }
+        /* CSS for the input boxes */
+        .input-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .input-label {
+            font-size: 14px;
+        }
+        .input-box {
+            width: 80%;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+		.compact-input {
+			margin-top: 2px;
+            width: 35%;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #767676;
+            border-radius: 5px;
+        }
+        .input-button {
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+        }
+		.checkmark {
+		  margin-right: -26%;
+		  height: 28px;
+		  width: 28px;
+		  outline: 1px solid #1e5180;
+          background-color: #fff;
+          border-color: #fff;
+		}
+		header {
+			font-family: Arial, sans-serif;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #333;
+			color: #fff;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1000;
+		}
 
 /* Adjusted styles */
 .input-container {
@@ -32,16 +83,13 @@ body { min-height: 100vh; }
     border-radius: 5px;
 }
 
-.input-button {
-    margin-top: 16px;
-    padding: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: #3da9fc;
-    color: #fffffe;
-    font-size: 30px;
-	border: 0;
-}
+	body{
+		font-family: Arial, sans-serif;
+		padding-top: 100px;
+		padding-bottom: 100px;
+		margin: 0;
+		background-color: #fffffe;
+	}
 
 .centered-container {
     display: flex;

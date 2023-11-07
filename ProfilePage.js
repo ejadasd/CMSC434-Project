@@ -4,7 +4,8 @@ function updateProfile() {
     const name = document.getElementById("nameInput").value;
     const dob = document.getElementById("dobInput").value;
     const age = document.getElementById("ageInput").value;
-    const startWeight = document.getElementById("weightInput").value;
+    const startWeight = document.getElementById("weightInputStart").value;
+    const currWeight = document.getElementById("weightInputCurr").value;
     const heightFeet = document.getElementById("heightFeet").value;
     const heightInches = document.getElementById("heightInches").value;
     const sex = document.getElementById("sexInput").value;
@@ -17,6 +18,7 @@ function updateProfile() {
       dob,
       age,
       startWeight,
+      currWeight,
       heightFeet,
       heightInches,
       sex,
@@ -39,7 +41,8 @@ function updateProfile() {
       document.getElementById("nameInput").value = profileData.name;
       document.getElementById("dobInput").value = profileData.dob;
       document.getElementById("ageInput").value = profileData.age;
-      document.getElementById("weightInput").value = profileData.startWeight;
+      document.getElementById("weightInputStart").value = profileData.startWeight;
+      document.getElementById("weightInputCurr").value = profileData.currWeight;
       document.getElementById("heightFeet").value = profileData.heightFeet;
       document.getElementById("heightInches").value = profileData.heightInches;
       document.getElementById("sexInput").value = profileData.sex;
