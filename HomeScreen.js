@@ -1,7 +1,7 @@
 window.addEventListener("load", loadProfileData);  
 
 function openProfilePage() {
-    window.location.href = 'profilepage.html';
+    window.location.href = 'ProfilePage.html';
     populateProfileData();
 }
 
