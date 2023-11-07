@@ -78,7 +78,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #094067;
+    background-color: #333;
     color: #fff;
     padding: 10px;
     position: fixed;
@@ -96,7 +96,7 @@ header {
 }
 
 footer {
-    background-color: #094067;
+    background-color: #333;
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -108,6 +108,7 @@ footer {
     background-attachment: scroll;
     left: 0;
     bottom: 0;
+    z-index: 1000;
 }
 
 body {
@@ -122,8 +123,8 @@ body {
 .tab-button {
     padding: 11px;
     text-align: center;
-    background-color: #094067;
-    color: #90b4ce;
+    background-color: #333;
+    color: #fff;
     font-size: 40px;
     border: none;
 }
@@ -137,14 +138,14 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #90b4ce;
+    background-color: #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .profile-icon {
-    color: #ef4565;
+    color: #fff;
     font-size: 40px;
 }
 
