@@ -1,121 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Your App Name</title>
-    <style>
-        /* CSS for simulating a phone screen */
-        .phone-container {
-            width: 375px; 
-            height: 800px; 
-            margin: 0 auto;
-            border: 2px solid #000;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
-        #welcome {
-            margin: 0;
-            padding: 0;
-            font-size: 16px;
-        }
-        .profile-circle {
-            width: 40px; 
-            height: 40px;
-            border-radius: 50%;
-            background-color: #ccc; 
-            display: flex;
-            justify-content: center; 
-            align-items: center; 
-        }
-        .profile-icon {
-            color: #fff; 
-            font-size: 24px; 
-        }
-        main {
-            text-align: center;
-            margin: 20px;
-            flex: 1; 
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            display: flex;
-            justify-content: space around;
-            padding: 10px;
-        }
-        .tab-button {
-            padding: 11px;
-            margin: 1px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 50%; 
-            background-color: #555; 
-            color: #fff; 
-        }
-        
-        /* CSS for the chart container */
-        .chart-container {
-            overflow-x: auto; /* Enable horizontal scrolling */
-            white-space: nowrap; /* Prevent text wrapping */
-        }
-        #myChart {
-            height: 250px;
-            width: 100%; /* Allow the chart to grow horizontally */
-            max-width: 375px; /* Set the maximum width to prevent horizontal scaling */
-        }
-
-        /* CSS for the input boxes */
-        .input-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .input-label {
-            font-size: 14px;
-        }
-        .input-box {
-            width: 80%;
-            padding: 5px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .input-button {
-            margin-top: 10px;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            background-color: #555;
-            color: #fff;
-        }
-    </style>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<link rel="stylesheet" href="MainPage.css">
+		<title>Weight Progress</title>
+	</head>
 <body>
-    <div class="phone-container">
+    <div>
         <header>
-            <p id="welcome">Welcome, John Doe</p>
+            <p id="welcome">Welcome, <span id="userName"></span></p>
             <div class="profile-circle" id="profile-icon">
                 <i class="fas fa-person profile-icon"></i>
             </div>
         </header>
         <main>
+			<a href="MainPage.html" class="back-arrow">&#8592; Back</a>
             <div class="chart-container">
                 <canvas id="myChart"></canvas>
             </div>
@@ -140,20 +42,23 @@
         </main>
         <footer>
             <button class="tab-button" onclick="openTab(event, 'homeScreen')">
-                Home
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'workoutDatabase')">
-                Workout Database
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'nutritionDatabse')">
-                Nutrition Database
-            </button>
-            <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
-                Buddy System
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'settings')">
-                Settings
-            </button>
+            <i class="fas fa-home"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+				<i class="fas fa-bullseye"></i>
+			  </button>
+			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+				<i class="fas fa-dumbbell"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+				<i class="fas fa-utensils"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+				<i class="fas fa-users"></i>
+			</button>
+			<button class="tab-button" onclick="openTab(event, 'settings')">
+				<i class="fas fa-cog"></i>
+			</button>
         </footer>
     </div>
 
@@ -240,7 +145,6 @@
 
         function addData() {
 			const userWater = document.getElementById("userWater").value;
-            localStorage.setItem("userWater", userWater);
 			targetWater = document.getElementById("targetWater").value;
 			if (userWater !== "") {
 				const currentDate = new Date();

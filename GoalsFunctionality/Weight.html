@@ -1,137 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Your App Name</title>
-    <style>
-        /* CSS for simulating a phone screen */
-        .phone-container {
-            width: 375px; 
-            height: 800px; 
-            margin: 0 auto;
-            border: 2px solid #000;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-        }
-        #welcome {
-            margin: 0;
-            padding: 0;
-            font-size: 16px;
-        }
-        .profile-circle {
-            width: 40px; 
-            height: 40px;
-            border-radius: 50%;
-            background-color: #ccc; 
-            display: flex;
-            justify-content: center; 
-            align-items: center; 
-        }
-        .profile-icon {
-            color: #fff; 
-            font-size: 24px; 
-        }
-        main {
-            text-align: center;
-            margin: 20px;
-            flex: 1; 
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            display: flex;
-            justify-content: space around;
-            padding: 10px;
-        }
-        .tab-button {
-            padding: 11px;
-            margin: 1px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 50%; 
-            background-color: #555; 
-            color: #fff; 
-        }
-        
-        /* CSS for the chart container */
-        .chart-container {
-            overflow-x: auto; /* Enable horizontal scrolling */
-            white-space: nowrap; /* Prevent text wrapping */
-        }
-        #myChart {
-            height: 250px;
-            width: 100%; /* Allow the chart to grow horizontally */
-            max-width: 375px; /* Set the maximum width to prevent horizontal scaling */
-        }
-
-        /* CSS for the input boxes */
-        .input-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .input-label {
-            font-size: 14px;
-        }
-        .input-box {
-            width: 80%;
-            padding: 5px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-		.compact-input {
-			margin-top: 2px;
-            width: 35%;
-            padding: 5px;
-            font-size: 16px;
-            border: 1px solid #767676;
-            border-radius: 5px;
-        }
-        .input-button {
-            margin-top: 10px;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            background-color: #555;
-            color: #fff;
-        }
-		.checkmark {
-		  margin-right: -26%;
-		  height: 28px;
-		  width: 28px;
-		  outline: 1px solid #1e5180;
-          background-color: #fff;
-          border-color: #fff;
-		}
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="MainPage.css">
+        <title>Weight Progress</title>
+    </head>
 <body>
-    <div class="phone-container">
+    <div>
         <header>
-            <p id="welcome">Welcome, John Doe</p>
+            <p id="welcome">Welcome, <span id="userName"></span></p>
             <div class="profile-circle" id="profile-icon">
                 <i class="fas fa-person profile-icon"></i>
             </div>
         </header>
         <main>
+			<a href="MainPage.html" class="back-arrow">&#8592; Back</a>
             <div class="chart-container">
                 <canvas id="myChart"></canvas>
             </div>
@@ -141,10 +27,10 @@
 			</div>
 
             <div class="input-container">
-                <label class="input-label" for="userWeight">Your Weight (kg):</label>
+                <label class="input-label" for="userWeight">Your Weight (lbs):</label>
                 <input type="number" id="userWeight" class="input-box">
 				<br>
-                <label class="input-label" for="targetWeight">Target Weight (kg):</label>
+                <label class="input-label" for="targetWeight">Target Weight (lbs):</label>
                 <input type="number" id="targetWeight" class="input-box">
                 <button class="input-button" onclick="addData()">Add Data</button>
             </div>
@@ -160,20 +46,23 @@
         </main>
         <footer>
             <button class="tab-button" onclick="openTab(event, 'homeScreen')">
-                Home
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'workoutDatabase')">
-                Workout Database
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'nutritionDatabse')">
-                Nutrition Database
-            </button>
-            <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
-                Buddy System
-            </button>
-            <button class="tab-button" onclick="openTab(event, 'settings')">
-                Settings
-            </button>
+            <i class="fas fa-home"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'MainPage.html';">
+				<i class="fas fa-bullseye"></i>
+			  </button>
+			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
+				<i class="fas fa-dumbbell"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+				<i class="fas fa-utensils"></i>
+			</button>
+			<button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+				<i class="fas fa-users"></i>
+			</button>
+			<button class="tab-button" onclick="openTab(event, 'settings')">
+				<i class="fas fa-cog"></i>
+			</button>
         </footer>
     </div>
 
@@ -213,7 +102,7 @@
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: 200
+                    max: 400
                 }
             }
         }
@@ -274,7 +163,6 @@
     // Function to add weight data to the chart
     function addData() {
         const userWeight = document.getElementById("userWeight").value;
-        localStorage.setItem("userWeight", userWeight);
         targetWeight = document.getElementById("targetWeight").value;
         if (userWeight !== "") {
             // Save the removed data points into history arrays
@@ -294,7 +182,7 @@
 
             // Use the stored target weight
             chart.data.datasets[1].data.push(targetWeight);
-            chart.data.datasets[2].data.push((userWeight) / (height ** 2));
+            chart.data.datasets[2].data.push((0.45359237 * userWeight) / (height ** 2));
 
             // Add date label for the new data point (assuming the current date)
             const currentDate = new Date();
@@ -339,10 +227,5 @@
         alert("This is your reminder!");
     }
     </script>
-
-
-
-
-
 </body>
 </html>
