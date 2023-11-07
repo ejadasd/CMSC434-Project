@@ -5,13 +5,7 @@ let searchQuery = '';
 const APP_ID = 'f7fc2024';
 const APP_key = '0eed8476b12866be3ebb676637ee23b2';
 
-document.getElementById('profile-icon').addEventListener('click', openProfilePage);
-window.addEventListener("load", loadProfileData);  
 
-function openProfilePage() {
-    window.location.href = '.../profilepage.html';
-    populateProfileData();
-}
 
 let recipeList = [{image: "recipeImage/PomeloNoodleSalad.jpg", label: "Pomelo Noodle Salad", link: "http://www.101cookbooks.com/archives/pomelo-noodles-recipe.html", calo: 1482, carbs: 177, fat: 63, protein: 79},
                 {image: "recipeImage/PastaCarbonaraLight.jpg", label: "Pasta Carbonara Light", link: "http://www.self.com/fooddiet/recipes/2010/03/pasta-carbonara-light", calo: 2749, carbs: 388, fat: 69, protein: 134},
