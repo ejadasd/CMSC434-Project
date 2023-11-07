@@ -7,10 +7,16 @@
   width: 600px;
   padding: 10px;
   font-size: 20px;
+  color: #5f6c7b;
 }
-#exercise-list button {
-  margin-right: 5px;
+#exercise-list button, #curr-exercise-list button {
+  
+  margin-right: 10px;
+  min-width: 60px;
+  min-height: 50px;
+  font-size: .8em;
 }
+
 
 #curr-exercise-list .exercise2 {
   border: 1px solid #ddd;
@@ -19,10 +25,9 @@
   width: 600px;
   padding: 10px;
   font-size: 20px;
+  color: #5f6c7b;
 }
-#curr-exercise-list button {
-  margin-right: 5px;
-}
+
 #curr-exercise-list{
   margin-top: 30px;
 }
@@ -34,6 +39,7 @@ input.editable{
 }
 #filter-options{
   font-size: 30px;
+  color: #094067;
 }
 select#difficulty-filter{
   width: 200px;
@@ -41,6 +47,7 @@ select#difficulty-filter{
   font-size: 15px;
 }
 .exercise-form, .exercise-form2 {
+  color: #5f6c7b;
   background-color: #f3f3f3;
   padding: 15px;
   margin-top: 10px;
@@ -60,7 +67,7 @@ select#difficulty-filter{
 }
 .exercise-form button, .exercise-form2 button {
   padding: 10px 15px;
-  background-color: #4caf50;
+  background-color: #3da9fc;
   color: white;
   border: none;
   border-radius: 4px;
@@ -108,7 +115,9 @@ header {
   font-size: 40px;
 }
 
-
+#WorkoutHomePageHeader{
+  color: #094067;
+}
 
 .rankings-button {
   padding: 11px;
@@ -169,6 +178,12 @@ body{
   padding-top: 100px;
   padding-bottom: 100px;
   margin: 0;
+  background-color: #fffffe;
+}
+button{
+  background-color: #3da9fc;
+  color: #fffffe;
+  border: 0;
 }
 footer {
   background-color: #333;
@@ -209,14 +224,16 @@ margin-left: 40px;
   margin: 20px 0px 20px 20px;
 }
 
-.clickable-container {
+.clickable-container{
   background-color: #f0f0f0;
   font-size: 30px;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px;
-  margin: 30px; /* Updated margin for centering */
+  margin-top: 30px;
+  height: 120px;
   width: 500px;
+  margin-left: 100px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -224,6 +241,7 @@ margin-left: 40px;
   align-items: center;
   text-align: center;
   text-decoration: none;
+  color: #094067;
 }
 
 .clickable-container:hover{
@@ -256,6 +274,7 @@ margin-left: 40px;
   font-size: 24px;
   text-decoration: none;
   color: black;
+  margin-left: 30px;
 }
 
 *{
@@ -263,10 +282,12 @@ margin-left: 40px;
 }
 .container-10{
   margin-top: 150px;
-  align-items: center;
 }
 
-
+#WorkoutHomePageClipArt{
+  margin-left: 110px;
+  margin-top: 30px;
+}
 #container-13{
   margin-top: 50px;
 }
@@ -279,4 +300,8 @@ margin-left: 40px;
   font-size: 30px;
   margin-top: 100px;
   margin-left: 100px;
+  color: #094067;
+}
+#exerciseSelect{
+  color: #094067;
 }

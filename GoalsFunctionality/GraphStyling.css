@@ -54,7 +54,11 @@
 			align-items: center;
 			background-color: #333;
 			color: #fff;
-			height: 40px; /* Set a specific height for the header */
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1000;
 		}
 
 	#welcome {
@@ -78,13 +82,11 @@
 		font-size: 30px;
 	}
 
-	body {
-		font-family: Arial, sans-serif;
+	body{
+		padding-top: 100px;
+		padding-bottom: 100px;
 		margin: 0;
-		padding: 0;
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
+		background-color: #fffffe;
 	}
 
 	main {
@@ -177,11 +179,15 @@
 	footer {
 		background-color: #333;
 		color: #fff;
-		height: 45px; /* Set a specific height for the header */
+		padding: 10px;
 		justify-content: space-between;
 		text-align: center;
-		margin-top: auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-	}
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1000;
+	  }
