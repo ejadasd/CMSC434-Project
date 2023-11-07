@@ -1,13 +1,13 @@
 /* CSS for the chart container */
-        .chart-container {
-            overflow-x: auto; /* Enable horizontal scrolling */
-            white-space: nowrap; /* Prevent text wrapping */
-        }
-        #myChart {
-            height: 250px;
-            width: 100%; /* Allow the chart to grow horizontally */
-            max-width: 375px; /* Set the maximum width to prevent horizontal scaling */
-        }
+.container {
+	width: 768px;
+	max-height: 1280px;
+	margin: 0 auto;
+	padding: 10px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
 
         /* CSS for the input boxes */
         .input-container {
@@ -63,28 +63,27 @@
 			width: 100%;
 			z-index: 1000;
 		}
-		
-		#welcome {
-			margin: 0;
-			padding: 0;
-			font-size: 30px;
-		}
-		
-		.profile-circle {
-			width: 60px;
-			height: 60px;
-			border-radius: 50%;
-			background-color: #ccc;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-right: 15px;
-		}
-		
-		.profile-icon {
-			color: #fff;
-			font-size: 40px;
-		}
+
+/* Adjusted styles */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh; /* Center vertically on the screen */
+}
+
+.input-label {
+    font-size: 30px;
+}
+
+.input-box {
+    width: 80%;
+    padding: 8px;
+    font-size: 30px;
+    border: 1px solid #5f6c7b;
+    border-radius: 5px;
+}
 
 	body{
 		font-family: Arial, sans-serif;
@@ -94,105 +93,215 @@
 		background-color: #fffffe;
 	}
 
-	main {
-		text-align: center;
-		margin: 20px;
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 72px; /* Set the desired height, for example, 64px */
+}
 
-	.box {
-		max-width: 600px;
-		max-height: auto;
-		background-color: #f0f0f0;
-		margin: 10px auto;
-		margin-top: 90px;
-		padding: 10px;
-		border: 1px solid #ccc;
-		flex: 1;
-	}
 
-	p {
-		font-size: 30px;
-	}
+.back-arrow {
+	cursor: pointer;
+	font-size: 24px;
+	text-decoration: none;
+	color: black;
+}
 
-	.rankings-button {
-		padding: 11px;
-		margin: 1px;
-		text-align: center;
-		cursor: pointer;
-		background-color: #555;
-		color: #fff;
-		font-size: 30px;
-	}
+/* Chart container */
+.chart-container {
+    overflow-y: auto; /* Allow vertical scrolling if content exceeds height */
+    max-height: 500px; /* Set the maximum height to 600px */
+    width: 100%; /* Expand horizontally to fill available space */
+}
 
-	.nutrition-icons {
-		text-align: center;
-		font-size: 70px;
-		display: flex;
-		justify-content: center;
-	}
+#myChart {
+    height: 450px; /* Double the height */
+    width: 100%;
+    max-width: 740px;
+}
 
-	.nutrition-icons i {
-		margin: 0 40px;
-	}
+.container-11{
+	margin-top: 75px;
+  }
 
-	.protein-icon {
-		color: #DAA520;
-	}
+.compact-input {
+    margin-top: 4px; /* Double the margin-top */
+    width: 35%; /* Adjusted width */
+    padding: 10px;
+    font-size: 32px; /* Double the font size */
+    border: 1px solid #5f6c7b; /* Double the border */
+    border-radius: 10px;
+}
 
-	.carbs-icon {
-		color: #D2B48C;
-	}
+.checkmark {
+    margin-right: -26%; /* Adjusted margin */
+    height: 56px; /* Double the height */
+    width: 56px; /* Double the width */
+    outline: 2px solid #1e5180; /* Double the outline width */
+    background-color: #fff;
+    border-color: #fff;
+}
 
-	.fats-icon {
-		color: #FFA500;
-	}
+main {
+	max-width: 768px;
+    height: 1280px;
+    text-align: center;
+    margin: 40px; /* Double the margin */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 
-	.icon-container {
-		text-align: center;
-	}
+.box {
+    max-width: 1200px; /* Double the maximum width */
+    max-height: auto;
+    background-color: #f0f0f0;
+    margin: 20px auto; /* Double the margin-top */
+    margin-top: 180px; /* Double the margin-top */
+    padding: 20px; /* Double the padding */
+    border: 2px solid #ccc; /* Double the border */
+    flex: 1;
+}
 
-	.icon-label {
-		font-size: 30px;
-		margin-top: 5px;
-	}
+p {
+    font-size: 60px; /* Double the font size */
+}
 
-	.tab-button {
-		padding: 11px;
-		text-align: center;
-		background-color: #333;
-		color: #fff;
-		font-size: 20px;
-		border: none;
-	}
+.rankings-button {
+    padding: 22px; /* Double the padding */
+    margin: 2px; /* Double the margin */
+    text-align: center;
+    cursor: pointer;
+    background-color: #555;
+    color: #fff;
+    font-size: 60px; /* Double the font size */
+}
 
-	.tab-button i {
-		margin: 0;
-		padding: 0;
-	}
-	
-	.back-arrow {
-	  cursor: pointer;
-	  font-size: 20px;
-	  text-decoration: none;
-	  color: black;
-	  text-align: right
-	}
+.nutrition-icons {
+    text-align: center;
+    font-size: 140px; /* Double the font size */
+    display: flex;
+    justify-content: center;
+}
 
-	footer {
-		background-color: #333;
-		color: #fff;
-		padding: 10px;
-		justify-content: space-between;
-		text-align: center;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		z-index: 1000;
-	  }
+.nutrition-icons i {
+    margin: 0 80px; /* Double the margin */
+}
+
+.protein-icon {
+    color: #DAA520;
+    font-size: 80px; /* Double the font size */
+}
+
+.carbs-icon {
+    color: #D2B48C;
+    font-size: 80px;
+}
+
+.fats-icon {
+    color: #FFA500;
+    font-size: 80px;
+}
+
+.icon-container {
+    text-align: center;
+}
+
+.icon-label {
+    font-size: 60px; /* Double the font size */
+    margin-top: 10px; /* Double the margin-top */
+}
+
+.tab-button {
+    padding: 22px; /* Double the padding */
+    text-align: center;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    font-size: 40px; /* Double the font size */
+}
+
+.tab-button i {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px; /* Double the padding */
+    justify-content: space-between;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.profile-circle {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+
+  #welcome {
+	margin: 0;
+	padding: 0;
+	font-size: 30px;
+  }
+
+  .profile-icon {
+	color: #fff;
+	font-size: 40px;
+  }
+
+  header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #333;
+	color: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+  }
+
+  footer {
+	background-color: #333;
+	color: #fff;
+	padding: 10px;
+	justify-content: space-between;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+  }
+
+  .tab-button {
+	padding: 11px;
+	text-align: center;
+	background-color: #333;
+	color: #fff;
+	font-size: 40px;
+	border: none;
+  }
+
+  *{
+	font-family: Arial, sans-serif;
+  }
