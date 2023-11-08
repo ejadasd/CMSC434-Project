@@ -32,7 +32,7 @@
         <label class="input-label" for="userWater">Water Intake (oz)</label>
         <input type="number" id="userWater" class="input-box">
         <br>
-        <label class "input-label" for="targetWater">Daily Target Intake (oz):</label>
+        <label class="input-label" for="targetWater">Daily Target Intake (oz):</label>
         <input type="number" id="targetWater" class="input-box">
         <button class="input-button" onclick="addData()">Add Data</button>
     </div>
@@ -118,7 +118,6 @@
     const dateLabelsHistory = [];
 
     let notificationIntervalId = null;
-    let targetWater = 0;
     let currentProgress = "Recent Progress";
     let isPastProgressShown = false;
     let currentData = {
@@ -165,7 +164,7 @@
         const userWaterInput = document.getElementById("userWater");
         const targetWaterInput = document.getElementById("targetWater");
         const userWater = userWaterInput.value;
-        targetWater = targetWaterInput.value;
+        let targetWater = targetWaterInput.value;
         if (userWater !== "") {
             const currentDate = new Date();
             const label = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
