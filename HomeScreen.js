@@ -6,7 +6,7 @@ function openProfilePage() {
 }
 
 function loadProfileData() {
-    const storedProfileData = localStorage.getItem("profileData");
+    const storedProfileData = localStorage.getItem("profileData0101-02");
     if (storedProfileData) {
       const profileData = JSON.parse(storedProfileData);
 
