@@ -1,27 +1,70 @@
+window.addEventListener("load", loadProfileData);
+window.addEventListener("load", loadData);
+window.addEventListener("load", loadWeightGraph);
+
 function openProfilePage() {
-    window.location.href = '../profilepage.html';
+    window.location.href = '../ProfilePage.html';
     populateProfileData();
 }
 
 function loadProfileData() {
-    const storedProfileData = localStorage.getItem("profileData");
+    const storedProfileData = localStorage.getItem("profileData0101-02");
     if (storedProfileData) {
       const profileData = JSON.parse(storedProfileData);
-      // Now you have access to the profileData object
+
       const userName = profileData.name;
       document.getElementById('userName').textContent = userName;
-      const userWeight = profileData.weight;
-      document.getElementById('userWeight').textContent = userWeight;
+      const userStartWeight = profileData.startWeight;
+      document.getElementById('userStartWeight').textContent = userStartWeight;
       const userHeightFeet = profileData.heightFeet;
       const userHeightInches = profileData.heightInches;
       const userHeight = (userHeightFeet * 12) + userHeightInches/10;
-      const userBMI = (703 * userWeight)/(userHeight*userHeight);
-      document.getElementById('userBMI').textContent = userBMI.toFixed(4);
+      const userStartBMI = (703 * userStartWeight)/(userHeight*userHeight);
+      document.getElementById('userStartBMI').textContent = userStartBMI.toFixed(4);
+
+      const userCurrWeight = profileData.currWeight;
+      document.getElementById('userCurrWeight').textContent = userCurrWeight;
+      const userCurrBMI = (703 * userCurrWeight)/(userHeight*userHeight);
+      document.getElementById('userCurrBMI').textContent = userCurrBMI.toFixed(4);  
+
+      const totalWater = userCurrWeight/2;
+      document.getElementById('totalWater').textContent = totalWater;
     }
   }
-  
-  // Call the loadProfileData function when the page loads
-  window.addEventListener("load", loadProfileData);  
+
+  //this is currrent weight, water, and calories
+function loadData() {
+    const waterDrank = JSON.parse(localStorage.getItem('userWater')) || [];
+    document.getElementById('waterDrank').textContent = waterDrank;
+
+    const calories = JSON.parse(localStorage.getItem('userCalorie')) || [];
+    document.getElementById('calories').textContent = calories;
+
+    const storedTargetCalorie = JSON.parse(localStorage.getItem('targetCalorie')) || [];
+    document.getElementById('totalCalories').textContent = storedTargetCalorie;
+}
+
+function loadWeightGraph() {
+// Retrieve the dynamic graph data from local storage
+const graphData = JSON.parse(localStorage.getItem("weightGraph"));
+
+// Create a new chart using the retrieved data
+const ctx = document.getElementById("myChart").getContext("2d");
+const chart = new Chart(ctx, {
+    type: "line",
+    data: graphData,
+    options: {
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 200,
+            },
+        },
+    },
+});
+}
+
 
 document.getElementById('profile-icon').addEventListener('click', openProfilePage);
 

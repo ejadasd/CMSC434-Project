@@ -5,198 +5,225 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<link rel="stylesheet" href="MainPage.css">
+    <link rel="stylesheet" href="GraphStyling.css">
     <title>Weight Progress</title>
 </head>
 <body>
-    <div class="phone-container">
-        <header>
-            <p id="welcome">Welcome, <span id="userName"></span></p>
-            <div class="profile-circle" id="profile-icon">
-                <i class="fas fa-person profile-icon"></i>
-            </div>
-        </header>
-        <main>
-			<a href="MainPage.html" class="back-arrow">&#8592; Back</a>
-            <div class="chart-container">
-                <canvas id="myChart"></canvas>
-            </div>
-            
-            <div>
-                <button class="input-button" id="toggle" onclick="toggleProgress()">Show Past Progress</button>
-            </div>
+<div>
+    <header>
+        <p id="welcome">Welcome, <span id="userName"></span></p>
+        <div class="profile-circle" id="profile-icon">
+            <i class="fas fa-person profile-icon"></i>
+        </div>
+    </header>
 
-            <div class="input-container">
-                <label class="input-label" for="userCalorie">Recent Caloric Intake</label>
-                <input type="number" id="userCalorie" class="input-box">
-                <br>
-                <label class="input-label" for="targetCalorie">Daily Target Intake:</label>
-                <input type="number" id="targetCalorie" class="input-box">
-                <button class="input-button" onclick="addData()">Add Data</button>
-            </div>
-            <div>
-                <button id="notificationButton" class="input-button" onclick="toggleNotifications()">Start Daily Reminders</button>
-            </div>
-            <div>
-            </div>
-        </main>
-        <footer>
-            <button class="tab-button" onclick="openTab(event, 'homeScreen')">
-            <i class="fas fa-home"></i>
-			</button>
-			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
-				<i class="fas fa-bullseye"></i>
-			  </button>
-			<button class="tab-button" onclick="location.href = 'WorkoutPage.html';">
-				<i class="fas fa-dumbbell"></i>
-			</button>
-			<button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
-				<i class="fas fa-utensils"></i>
-			</button>
-			<button class="tab-button" onclick="location.href = 'BuddySystem.html';">
-				<i class="fas fa-users"></i>
-			</button>
-			<button class="tab-button" onclick="openTab(event, 'settings')">
-				<i class="fas fa-cog"></i>
-			</button>
-        </footer>
+    <div class="container-11"></div>
+
+    <a href="MainPage.html" class="back-arrow">&#8592; Back</a>
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
     </div>
 
+    <div class="centered-container">
+        <button class="input-button" id="toggle" onclick="toggleProgress()">Show Past Progress</button>
+    </div>
+
+    <div class="input-container">
+        <label class="input-label" for="userCalorie">Calorie Intake (oz)</label>
+        <input type="number" id="userCalorie" class="input-box">
+        <br>
+        <label class="input-label" for="targetCalorie">Daily Target Intake (oz):</label>
+        <input type="number" id="targetCalorie" class="input-box">
+        <button class="input-button" onclick="addData()">Add Data</button>
+    </div>
+
+    <div class="centered-container">
+        <button id="notificationButton" class="input-button" onclick="toggleNotifications()">Start Daily Reminders</button>
+    </div>
+
+    <footer>
+        <button class="tab-button" onclick="location.href = 'HomeScreen.html';">
+            <i class="fas fa-home"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'MainPage.html'">
+            <i class="fas fa-bullseye"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'WorkoutFunctionality/WorkoutPage.html';">
+            <i class="fas fa-dumbbell"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+            <i class="fas fa-utensils"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+            <i class="fas fa-users"></i>
+        </button>
+    </footer>
+</div>
+
 <script>
-        const height = 1.8;
-        const maxDataPoints = 7;
-        const ctx = document.getElementById("myChart").getContext("2d");
-        const chart = new Chart(ctx, {
-            type: "line",
-            data: {
-                labels: [],
-                datasets: [
-                    {
-                        label: 'Caloric Intake',
-                        data: [],
-                        borderColor: "rgba(0, 0, 255, 1)",
-                        borderWidth: 1,
-                    },
-                    {
-                        label: 'Target Intake',
-                        data: [],
-                        borderColor: "rgba(255, 0, 0, 1)",
-                        borderWidth: 1,
-                        borderDash: [5, 5],
-                        fill: false,
-                    },
-                ],
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 4000
-                    }
+    // Check if it's the first load
+    if (!localStorage.getItem("firstLoadDone921")) {
+        const CalorieConsumption = [2100, 2400, 2345, 1987];
+        const CalorieTarget = [2200, 2200, 2200, 2200];
+        const CalorieDate = ['11/3', '11/4', '11/5', '11/6'];
+        localStorage.setItem("userCalorie", JSON.stringify(CalorieConsumption));
+        localStorage.setItem("targetCalorie", JSON.stringify(CalorieTarget));
+        localStorage.setItem("dateLabels", JSON.stringify(CalorieDate));
+        localStorage.setItem("firstLoadDone921", "true");
+    }
+
+    // Get stored data
+    const storedUserCalorie = JSON.parse(localStorage.getItem('userCalorie')) || [];
+    const storedTargetCalorie = JSON.parse(localStorage.getItem('targetCalorie')) || [];
+    const storedDateLabels = JSON.parse(localStorage.getItem('dateLabels')) || [];
+
+    // Initialize chart with stored data
+    const maxDataPoints = 7;
+    const ctx = document.getElementById("myChart").getContext("2d");
+    const chart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: storedDateLabels,
+            datasets: [
+                {
+                    label: 'Calorie Intake (oz)',
+                    data: storedUserCalorie,
+                    borderColor: "rgba(0, 0, 255, 1)",
+                    borderWidth: 1,
+                },
+                {
+                    label: 'Target Intake (oz)',
+                    data: storedTargetCalorie,
+                    borderColor: "rgba(255, 0, 0, 1)",
+                    borderWidth: 1,
+                    borderDash: [5, 5],
+                    fill: false,
+                },
+            ],
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 4000, // Set the maximum value to 200
                 }
             }
-        });
-
-        let notificationIntervalId = null;
-        const userCalorieHistory = [];
-        const targetCalorieHistory = [];
-        const dateLabelsHistory = [];
-        let targetCalorie = 0;
-
-        let currentProgress = "Recent Progress";
-        let isPastProgressShown = false;
-        let currentData = {
-            userCalorie: [],
-            targetCalorie: [],
-            labels: [],
-        };
-
-        let remindersActive = false;
-
-		// Function to toggle between "Recent Progress" and "Past Progress"
-		function toggleProgress() {
-			const button = document.getElementById("toggle");
-			if (isPastProgressShown) {
-				button.innerText = "Show Past Progress";
-				showRecentProgress();
-				currentProgress = "Recent Progress";
-			} else {
-				button.innerText = "Show Recent Progress";
-				showAllData();
-				currentProgress = "Past Progress";
-			}
-			isPastProgressShown = !isPastProgressShown;
-		}
-
-        function updateGraph(data1, data2, labels) {
-            chart.data.datasets[0].data = data1;
-            chart.data.datasets[1].data = data2;
-            chart.data.labels = labels;
-            chart.update();
         }
+    });
 
-        function showRecentProgress() {
-            updateGraph(currentData.userCalorie, currentData.targetCalorie, currentData.labels);
+    // Initialize data history
+    const userCalorieHistory = [];
+    const targetCalorieHistory = [];
+    const dateLabelsHistory = [];
+
+    let notificationIntervalId = null;
+    let currentProgress = "Recent Progress";
+    let isPastProgressShown = false;
+    let currentData = {
+        userCalorie: [],
+        targetCalorie: [],
+        labels: [],
+    };
+    let remindersActive = false;
+
+    // Function to toggle between "Recent Progress" and "Past Progress"
+    function toggleProgress() {
+        const button = document.getElementById("toggle");
+        if (isPastProgressShown) {
+            button.innerText = "Show Past Progress";
+            currentData.userCalorie = storedUserCalorie;
+            currentData.targetCalorie = storedTargetCalorie;
+            currentData.labels = storedDateLabels;
+        } else {
+            button.innerText = "Show Recent Progress";
+            currentData.userCalorie = userCalorieHistory;
+            currentData.targetCalorie = targetCalorieHistory;
+            currentData.labels = dateLabelsHistory;
         }
+        isPastProgressShown = !isPastProgressShown;
+        showRecentProgress(); // Show the currently selected progress
+    }
 
-        function showAllData() {
-            updateGraph(userCalorieHistory, targetCalorieHistory, dateLabelsHistory);
-        }
+    function updateGraph(data1, data2, labels) {
+        chart.data.datasets[0].data = data1;
+        chart.data.datasets[1].data = data2;
+        chart.data.labels = labels;
+        chart.update();
+    }
 
-        function addData() {
-			const userCalorie = document.getElementById("userCalorie").value;
-			targetCalorie = document.getElementById("targetCalorie").value;
-			if (userCalorie !== "") {
-				const currentDate = new Date();
-				const label = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
-				const labels = chart.data.labels;
+    function showRecentProgress() {
+        updateGraph(currentData.userCalorie, currentData.targetCalorie, currentData.labels);
+    }
 
-				// Check if an entry for the current day already exists
-				if (labels.includes(label)) {
-					// Update the existing entry
-					const index = labels.indexOf(label);
-					chart.data.datasets[0].data[index] = parseFloat(chart.data.datasets[0].data[index]) + parseFloat(userCalorie);
-				} else {
-					if (chart.data.labels.length >= maxDataPoints) {
-						const removeduserCalorie = chart.data.datasets[0].data.shift();
-						const removedtargetCalorie = chart.data.datasets[1].data.shift();
-						const removedLabel = chart.data.labels.shift();
-						userCalorieHistory.push(removeduserCalorie);
-						targetCalorieHistory.push(removedtargetCalorie);
-						dateLabelsHistory.push(removedLabel);
-					}
+    function showAllData() {
+        updateGraph(userCalorieHistory, targetCalorieHistory, dateLabelsHistory);
+    }
 
-					chart.data.datasets[0].data.push(userCalorie);
-					chart.data.datasets[1].data.push(targetCalorie);
-					chart.data.labels.push(label);
-				}
+    function addData() {
+        const userCalorieInput = document.getElementById("userCalorie");
+        const targetCalorieInput = document.getElementById("targetCalorie");
+        const userCalorie = userCalorieInput.value;
+        let targetCalorie = targetCalorieInput.value;
+        if (userCalorie !== "") {
+            const currentDate = new Date();
+            const label = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
+            const labels = chart.data.labels;
 
-				// Update the chart
-				chart.update();
-
-				document.getElementById("userCalorie").value = "";
-				document.getElementById("userCalorie").focus();
-			}
-		}
-
-        function toggleNotifications() {
-            const notificationButton = document.getElementById("notificationButton");
-
-            if (!remindersActive) {
-                remindersActive = true;
-                notificationButton.innerText = "Stop Reminders";
-                notificationIntervalId = setInterval(sendNotifications, 10000); // Automatically send every 10 seconds
+            // Check if an entry for the current day already exists
+            if (labels.includes(label)) {
+                // Update the existing entry
+                const index = labels.indexOf(label);
+                chart.data.datasets[0].data[index] = parseFloat(chart.data.datasets[0].data[index]) + parseFloat(userCalorie);
             } else {
-                remindersActive = false;
-                notificationButton.innerText = "Start Daily Reminders";
-                clearInterval(notificationIntervalId);
-            }
-        }
+                if (chart.data.labels.length >= maxDataPoints) {
+                    // Move the oldest data points to history
+                    const removedUserCalorie = chart.data.datasets[0].data.shift();
+                    const removedTargetCalorie = chart.data.datasets[1].data.shift();
+                    const removedLabel = chart.data.labels.shift();
+                    userCalorieHistory.push(removedUserCalorie);
+                    targetCalorieHistory.push(removedTargetCalorie);
+                    dateLabelsHistory.push(removedLabel);
+                }
 
-        function sendNotifications() {
-            alert("This is your reminder!");
+                chart.data.datasets[0].data.push(userCalorie);
+                chart.data.datasets[1].data.push(targetCalorie);
+                chart.data.labels.push(label);
+            }
+
+            // Update the chart
+            chart.update();
+
+            // Store data in localStorage
+            localStorage.setItem('userCalorie', JSON.stringify(chart.data.datasets[0].data));
+            localStorage.setItem('targetCalorie', JSON.stringify(chart.data.datasets[1].data));
+            localStorage.setItem('dateLabels', JSON.stringify(chart.data.labels));
+            localStorage.setItem('userCalorieHistory', JSON.stringify(userCalorieHistory));
+            localStorage.setItem('targetCalorieHistory', JSON.stringify(targetCalorieHistory));
+            localStorage.setItem('dateLabelsHistory', JSON.stringify(dateLabelsHistory));
+
+            userCalorieInput.value = "";
+            userCalorieInput.focus();
         }
-    </script>
+    }
+
+    function toggleNotifications() {
+        const notificationButton = document.getElementById("notificationButton");
+
+        if (!remindersActive) {
+            remindersActive = true;
+            notificationButton.innerText = "Stop Reminders";
+            notificationIntervalId = setInterval(sendNotifications, 10000); // Automatically send every 10 seconds
+        } else {
+            remindersActive = false;
+            notificationButton.innerText = "Start Daily Reminders";
+            clearInterval(notificationIntervalId);
+        }
+    }
+
+    function sendNotifications() {
+        alert("This is your reminder!");
+    }
+</script>
 </body>
 </html>

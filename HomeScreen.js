@@ -1,4 +1,6 @@
-window.addEventListener("load", loadProfileData);  
+window.addEventListener("load", loadProfileData);
+window.addEventListener("load", loadData);
+window.addEventListener("load", loadWeightGraph);
 
 function openProfilePage() {
     window.location.href = 'ProfilePage.html';
@@ -6,7 +8,7 @@ function openProfilePage() {
 }
 
 function loadProfileData() {
-    const storedProfileData = localStorage.getItem("profileData");
+    const storedProfileData = localStorage.getItem("profileData0101-02");
     if (storedProfileData) {
       const profileData = JSON.parse(storedProfileData);
 
@@ -32,13 +34,17 @@ function loadProfileData() {
 
   //this is currrent weight, water, and calories
 function loadData() {
-    const waterDrank = localStorage.getItem("userWater");
+    let waterDrank = JSON.parse(localStorage.getItem('userWater')) || [];
+    waterDrank = waterDrank[waterDrank.length-1];
     document.getElementById('waterDrank').textContent = waterDrank;
 
-    const calories = localStorage.getItem("userCalories");
+    let calories = JSON.parse(localStorage.getItem('userCalorie')) || [];
+    calories = calories[calories.length-1];
     document.getElementById('calories').textContent = calories;
-    const totalCalories = localStorage.getItem("totalCalories");
-    document.getElementById('totalCalories', totalCalories);
+
+    let storedTargetCalorie = JSON.parse(localStorage.getItem('targetCalorie')) || [];
+    storedTargetCalorie = storedTargetCalorie[storedTargetCalorie.length-1];
+    document.getElementById('totalCalories').textContent = storedTargetCalorie;
 }
 
 function loadWeightGraph() {

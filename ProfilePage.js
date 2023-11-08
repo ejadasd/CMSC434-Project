@@ -25,7 +25,7 @@ function updateProfile() {
       rank,
       gym,
     };
-    localStorage.setItem("profileData", JSON.stringify(profileData));
+    localStorage.setItem("profileData0101-02", JSON.stringify(profileData));
   
     // Update the displayed name
     document.getElementById("userName").textContent = name;
@@ -33,7 +33,7 @@ function updateProfile() {
   
   // Function to load the profile data when the page loads
   function loadProfileData() {
-    const storedProfileData = localStorage.getItem("profileData");
+    const storedProfileData = localStorage.getItem("profileData0101-02");
     if (storedProfileData) {
       const profileData = JSON.parse(storedProfileData);
   

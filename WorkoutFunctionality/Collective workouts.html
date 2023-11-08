@@ -117,16 +117,18 @@
         </div>
         <div class="exercise-set" onclick="toggleComments(this)">
             <h2>Upper Body Workout</h2>
+            
+            <!-- Comments section at the bottom of the exercise set -->
+            <div class="comments">
+                <input class="comment-input" type="text" placeholder="Add a comment and press Enter">
+                <div class="comment-list"></div>
+            </div>
+
             <div class="exercise-details">
                 <h3>Exercises in Upper Body Workout</h3>
                 <p>1. Push-Ups (40 seconds)</p>
                 <p>2. Dumbbell Bicep Curls (40 seconds)</p>
                 <!-- Add more exercises here -->
-            </div>
-            <!-- Comments section at the bottom of the exercise set -->
-            <div class="comments">
-                <input class="comment-input" type="text" placeholder="Add a comment and press Enter">
-                <div class="comment-list"></div>
             </div>
         </div>
         
@@ -171,6 +173,7 @@
                         input.value = '';
                     }
                 }
+                
             });
 
             // Stop click event propagation from the comment input

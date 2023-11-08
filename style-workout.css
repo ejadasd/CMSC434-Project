@@ -15,6 +15,7 @@ body {
 }
 
 header {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,7 +23,6 @@ header {
     color: #fff;
     padding: 10px;
     position: fixed;
-    background-attachment: scroll;
     top: 0;
     left: 0;
     width: 100%;
@@ -33,6 +33,22 @@ header {
     margin: 0;
     padding: 0;
     font-size: 30px;
+}
+
+.profile-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.profile-icon {
+    color: #fff;
+    font-size: 40px;
 }
 
 footer {
@@ -63,21 +79,6 @@ footer {
 .tab-button i {
     margin: 0;
     padding: 0;
-}
-
-.profile-circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-icon {
-    color: #fff;
-    font-size: 40px;
 }
 
 img {
