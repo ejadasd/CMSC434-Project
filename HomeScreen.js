@@ -1,4 +1,6 @@
-window.addEventListener("load", loadProfileData);  
+window.addEventListener("load", loadProfileData);
+window.addEventListener("load", loadData);
+window.addEventListener("load", loadWeightGraph);
 
 function openProfilePage() {
     window.location.href = 'ProfilePage.html';
@@ -32,13 +34,14 @@ function loadProfileData() {
 
   //this is currrent weight, water, and calories
 function loadData() {
-    const waterDrank = localStorage.getItem("userWater");
+    const waterDrank = JSON.parse(localStorage.getItem('userWater')) || [];
     document.getElementById('waterDrank').textContent = waterDrank;
 
-    const calories = localStorage.getItem("userCalories");
+    const calories = JSON.parse(localStorage.getItem('userCalorie')) || [];
     document.getElementById('calories').textContent = calories;
-    const totalCalories = localStorage.getItem("totalCalories");
-    document.getElementById('totalCalories', totalCalories);
+
+    const storedTargetCalorie = JSON.parse(localStorage.getItem('targetCalorie')) || [];
+    document.getElementById('totalCalories').textContent = storedTargetCalorie;
 }
 
 function loadWeightGraph() {
