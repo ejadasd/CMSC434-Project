@@ -88,14 +88,14 @@
 
 <script>
     // Check if it's the first load
-    if (!localStorage.getItem("firstLoadDone921")) {
+    if (!localStorage.getItem("firstLoadDone941")) {
         const WaterConsumption = [100, 85, 110, 90];
         const WaterTarget = [95, 95, 95, 95];
         const WaterDate = ['11/3', '11/4', '11/5', '11/6'];
         localStorage.setItem("userWater", JSON.stringify(WaterConsumption));
         localStorage.setItem("targetWater", JSON.stringify(WaterTarget));
         localStorage.setItem("dateLabels", JSON.stringify(WaterDate));
-        localStorage.setItem("firstLoadDone921", "true");
+        localStorage.setItem("firstLoadDone941", "true");
     }
 
     // Get stored data

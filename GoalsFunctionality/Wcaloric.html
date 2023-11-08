@@ -55,48 +55,73 @@
     </footer>
 
     <script>
-        const height = 1.8;
         const maxDataPoints = 7;
         const ctx = document.getElementById("myChart").getContext("2d");
-        const chart = new Chart(ctx, {
-            type: "line",
-            data: {
-                labels: [],
-                datasets: [
-                    {
-                        label: 'Caloric Intake',
-                        data: [],
-                        borderColor: "rgba(0, 0, 255, 1)",
-                        borderWidth: 1,
-                    },
-                    {
-                        label: 'Target Intake',
-                        data: [],
-                        borderColor: "rgba(255, 0, 0, 1)",
-                        borderWidth: 1,
-                        borderDash: [5, 5],
-                        fill: false,
-                    },
-                ],
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 4000,
-                        ticks: {
-                            fontSize: 24,
-                        }
-                    },
-                    yAxes: [{
-                        ticks: {
-                            fontSize: 24,
-                        }
-                    }]
-                }
+        let chart = null; // Declare the chart variable
+        let isPastProgressShown = false;
+
+        // Check if it's the first load
+        if (!localStorage.getItem("firstLoadDone931")) {
+            const userCalorie = [2600, 2345, 1984, 2700];
+            const targetCalorie = [2200, 2200, 2200, 2200];
+            const dateLabels = ['11/3', '11/4', '11/5', '11/6'];
+            localStorage.setItem("userCalorie", JSON.stringify(userCalorie));
+            localStorage.setItem("targetCalorie", JSON.stringify(targetCalorie));
+            localStorage.setItem("dateLabels", JSON.stringify(dateLabels));
+            localStorage.setItem("firstLoadDone931", "true");
+        }
+
+        // Function to initialize or update the chart
+        function initializeChart() {
+            if (chart) {
+                chart.destroy(); // Destroy the existing chart if it exists
             }
-        });
+            const userCalorie = JSON.parse(localStorage.getItem("userCalorie"));
+            const targetCalorie = JSON.parse(localStorage.getItem("targetCalorie"));
+            const dateLabels = JSON.parse(localStorage.getItem("dateLabels"));
+
+            chart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: dateLabels,
+                    datasets: [
+                        {
+                            label: 'Caloric Intake',
+                            data: userCalorie,
+                            borderColor: "rgba(0, 0, 255, 1)",
+                            borderWidth: 1,
+                        },
+                        {
+                            label: 'Target Intake',
+                            data: targetCalorie,
+                            borderColor: "rgba(255, 0, 0, 1)",
+                            borderWidth: 1,
+                            borderDash: [5, 5],
+                            fill: false,
+                        },
+                    ],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 4000,
+                            ticks: {
+                                fontSize: 24,
+                            }
+                        },
+                        yAxes: [{
+                            ticks: {
+                                fontSize: 24,
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        initializeChart(); // Initialize the chart
 
         let notificationIntervalId = null;
         const userCalorieHistory = [];
@@ -105,7 +130,6 @@
         let targetCalorie = 0;
 
         let currentProgress = "Recent Progress";
-        let isPastProgressShown = false;
         let currentData = {
             userCalorie: [],
             targetCalorie: [],
@@ -179,6 +203,13 @@
                 currentData.userCalorie = chart.data.datasets[0].data.slice();
                 currentData.targetCalorie = chart.data.datasets[1].data.slice();
                 currentData.labels = chart.data.labels.slice();
+
+                localStorage.setItem('userCalorie', JSON.stringify(chart.data.datasets[0].data));
+                localStorage.setItem('targetCalorie', JSON.stringify(chart.data.datasets[1].data));
+                localStorage.setItem('dateLabels', JSON.stringify(chart.data.labels));
+                localStorage.setItem('userCalorieHistory', JSON.stringify(userCalorieHistory));
+                localStorage.setItem('targetCalorieHistory', JSON.stringify(targetCalorieHistory));
+                localStorage.setItem('dateLabelsHistory', JSON.stringify(dateLabelsHistory));
 
                 document.getElementById("userCalorie").value = "";
                 document.getElementById("userCalorie").focus();
