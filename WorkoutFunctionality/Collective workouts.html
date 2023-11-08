@@ -4,22 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise Sets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="WorkoutPage.css">
     <style>
         /* Custom styles for exercise sets */
+        .exercise-container {
+            display: flex;
+            flex-direction: column; /* Change to column */
+            gap: 20px;
+            max-height: 1000px; /* Add a max-height for scrolling */
+            overflow-y: scroll; /* Enable vertical scrolling */
+        }
+
         .exercise-set {
+            flex: 1;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            margin: 20px;
-            border: 1px solid #ddd;
+            border: 1px solid #fffffe;
             border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
         }
 
         .exercise-set:hover {
-            background-color: #eaeaea;
+            background-color: #fffffe;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -44,7 +54,8 @@
         }
 
         .exercise-details p {
-            font-size: 18px;
+            font-size: 24px;
+            color: #5f6c7b;
         }
 
         /* Comments section */
@@ -54,16 +65,51 @@
         }
 
         .comment-input {
-            border: 1px solid #ddd;
+            border: 1px solid #fffffe;
             border-radius: 4px;
             margin-top: 5px;
             padding: 5px;
-            font-size: 16px;
+            font-size: 24px;
         }
 
         .comment-list {
             margin-top: 10px;
-            font-size: 16px;
+            font-size: 24px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fffffe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #5f6c7b;
+            width: 60%;
+        }
+
+        .close {
+            color: #5f6c7b;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -75,112 +121,312 @@
         </div>
     </header>
     <main>
-        <div class="exercise-set" onclick="toggleExerciseDetails(this)">
-            <h2>Exercise Set 1</h2>
-            <div class="exercise-details">
-                <h3>Some lighter cardio work</h3>
-                <p>1. Jumping Jacks (40 seconds)</p>
-                <p>2. High Knees (40 seconds)</p>
-                <p>3. Burpees (40 seconds)</p>
-                <p>4. Mountain Climbers (40 seconds):</p>
-                <p>5. Squat Jumps (40 seconds):</p>
-                <p>6. Jump Rope (40 seconds)</p>
-                <p>7. Lunges (40 seconds)</p>
-                <p>8. Plank (40 seconds)</p>
-                <p>9. High Knees (40 seconds)</p>
-                <p>20 seconds rest between each</p>
-                <div class="comments">
-                    <input class="comment-input" type="text" placeholder="Add a comment and press Enter">
-                    <div class="comment-list"></div>
+        <a href="WorkoutHomePage.html" class="back-arrow">&#8592; Home</a>
+        <div class="exercise-container">
+            <div class="exercise-set" data-owner="Jordan Doe" onclick="toggleExerciseDetails(this)">
+                <h2>Exercise Set 1</h2>
+                <div class="exercise-details">
+                    <h3>Some lighter cardio work</h3>
+                    <p>1. Jumping Jacks (40 seconds)</p>
+                    <p>2. High Knees (40 seconds)</p>
+                    <p>3. Burpees (40 seconds)</p>
+                    <p>4. Mountain Climbers (40 seconds)</p>
+                    <p>5. Squat Jumps (40 seconds)</p>
+                    <p>6. Jump Rope (40 seconds)</p>
+                    <p>7. Lunges (40 seconds)</p>
+                    <p>8. Plank (40 seconds)</p>
+                    <p>9. High Knees (40 seconds)</p>
+                    <p>20 seconds rest between each</p>
+                    <div class="comments">
+                        <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
+                        <div class="comment-list"></div>
+                        <button class="like-button" onclick="incrementLikes(this)">Like</button>
+                        <span class="like-count">0</span>
+                    </div>
                 </div>
+                <div class="exercise-owner">By: Jorden Doe</div> <!-- Display owner's name -->
+            </div>
+            <div class="exercise-set" data-owner="Jane Doe" onclick="toggleExerciseDetails(this)">
+                <h2>Exercise Set 2</h2>
+                <div class = "exercise-details">
+                    <h3>Exercises in Upper Body Workout</h3>
+                    <p>1. Push-Ups (40 seconds)</p>
+                    <p>2. Dumbbell Bicep Curls (40 seconds)</p>
+                    <p>3. Tricep Dips (40 seconds)</p>
+                    <p>4. Shoulder Taps (40 seconds)</p>
+                    <p>5. Lateral Raises (40 seconds)</p>
+                    <p>6. Bent-Over Rows (40 seconds)</p>
+                    <p>7. Plank (40 seconds)</p>
+                    <p>8. Push-Ups (40 seconds)</p>
+                    <p>9. Dumbbell Bicep Curls (40 seconds)</p>
+                    <p>10. Tricep Dips (40 seconds)</p>
+                    <div class="comments">
+                        <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
+                        <div class="comment-list"></div>
+                        <button class="like-button" onclick="incrementLikes(this)">Like</button>
+                        <span class="like-count">4</span>
+                    </div>
+                </div>
+                <div class="exercise-owner">By: Julian Doe</div> <!-- Display owner's name -->
+            </div>
+            <div class="exercise-set" onclick="toggleExerciseDetails(this)">
+                <h2>Upper Body Workout</h2>
+                <div class="exercise-details">
+                    <h3>Exercises in Upper Body Workout</h3>
+                    <p>1. Push-Ups (40 seconds)</p>
+                    <p>2. Dumbbell Bicep Curls (40 seconds)</p>
+                    <!-- Add more exercises here -->
+                </div>
+                <div class="comments">
+                    <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
+                    <div class="comment-list"></div>
+                    <button class="like-button" onclick="incrementLikes(this)">Like</button>
+                    <span class="like-count">2000</span>
+                </div>
+                <div class="exercise-owner">By: Jake Doe</div> <!-- Display owner's name -->
             </div>
         </div>
-        <div class="exercise-set" onclick="toggleExerciseDetails(this)">
-            <h2>Exercise Set 2</h2>
-            <div class="exercise-details">
-                <h3>Exercises in Upper Body Workout</h3>
-                <p>1. Push-Ups (40 seconds)</p>
-                <p>2. Dumbbell Bicep Curls (40 seconds)</p>
-                <p>3. Tricep Dips (40 seconds)</p>
-                <p>4. Shoulder Taps (40 seconds)</p>
-                <p>5. Lateral Raises (40 seconds)</p>
-                <p>6. Bent-Over Rows (40 seconds)</p>
-                <p>7. Plank (40 seconds)</p>
-                <p>8. Push-Ups (40 seconds)</p>
-                <p>9. Dumbbell Bicep Curls (40 seconds)</p>
-                <p>10. Tricep Dips (40 seconds)</p>
-            </div>
-            <div class="comments">
-                <input class="comment-input" type="text" placeholder="Add a comment and press Enter">
-                <div class="comment-list"></div>
-            </div>
-        </div>
-        <div class="exercise-set" onclick="toggleComments(this)">
-            <h2>Upper Body Workout</h2>
-            
-            <!-- Comments section at the bottom of the exercise set -->
-            <div class="comments">
-                <input class="comment-input" type="text" placeholder="Add a comment and press Enter">
-                <div class="comment-list"></div>
-            </div>
 
-            <div class="exercise-details">
-                <h3>Exercises in Upper Body Workout</h3>
-                <p>1. Push-Ups (40 seconds)</p>
-                <p>2. Dumbbell Bicep Curls (40 seconds)</p>
-                <!-- Add more exercises here -->
-            </div>
-        </div>
-        
+        <button class="add-button" onclick="openExerciseModal()">Add Exercise Set</button>
+
         <!-- Add more exercise sets here -->
     </main>
     <footer>
-        <button class="tab-button" onclick="openTab(event, 'homeScreen')">
+        <button class="tab-button" onclick="location.href = 'HomeScreen.html';">
             <i class="fas fa-home"></i>
         </button>
-        <!-- Add your other footer buttons here -->
+        <button class="tab-button" onclick="location.href = 'MainPage.html'">
+            <i class="fas fa-bullseye"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'WorkoutFunctionality/WorkoutPage.html';">
+            <i class="fas fa-dumbbell"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
+            <i class="fas fa-utensils"></i>
+        </button>
+        <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
+            <i class="fas fa-users"></i>
+        </button>
     </footer>
 
+    <!-- Modal for adding exercise sets -->
+    <div id="exerciseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeExerciseModal()">&times;</span>
+            <h2>Add Exercise Set</h2>
+            <input id="exerciseName" type="text" placeholder="Exercise Set Name" style="font-size: 24px; padding: 10px;">
+            <input id="exerciseDescription" type="text" placeholder="Description" style="font-size: 24px; padding: 10px;">
+            <textarea id="exerciseExercises" placeholder="Enter exercises (one per line)" style="font-size: 24px; padding: 10px;"></textarea>
+            <button onclick="addExerciseSet()" style="font-size: 24px; padding: 10px;">Add Set</button>
+        </div>
+    </div>
+
+
     <script>
-        function toggleExerciseDetails(element) {
-            element.classList.toggle("active");
-        }
-         
-         // JavaScript function to toggle comments section
-         function toggleComments(element) {
-            const comments = element.querySelector('.comments');
-            comments.style.display = comments.style.display === 'block' ? 'none' : 'block';
-        }
 
-        // JavaScript function to toggle comments section
-        function toggleComments(element) {
-            const comments = element.querySelector('.comments');
-            comments.style.display = comments.style.display === 'none' ? 'block' : 'none';
+        // Check if there are any saved exercise sets in localStorage
+        const savedExerciseSets = JSON.parse(localStorage.getItem('exerciseSets')) || [];
+        
+        // Function to initialize exercise sets
+        function initializeExerciseSets() {
+            savedExerciseSets.forEach((exerciseSet) => {
+                createExerciseSet(exerciseSet);
+            });
         }
+        
+// Function to create a new exercise set
+function createExerciseSet(exerciseSetData) {
+    const exerciseContainer = document.querySelector('.exercise-container');
+    const newExerciseSet = document.createElement('div');
+    newExerciseSet.className = 'exercise-set';
+    newExerciseSet.onclick = function() {
+        toggleExerciseDetails(newExerciseSet);
+    };
 
-        // JavaScript code for handling comments
+    // Exercise set content
+    newExerciseSet.innerHTML = `
+        <h2>${exerciseSetData.name}</h2>
+        <div class="exercise-details">
+            <h3>${exerciseSetData.description}</h3>
+            <p>${exerciseSetData.exercises.join('</p><p>')}</p>
+            <div class="comments">
+                <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
+                <div class="comment-list"></div>
+            </div>
+        </div>
+        <div class="exercise-owner">By: ${exerciseSetData.owner}</div> <!-- Display owner's name -->
+    `;
+
+    exerciseContainer.appendChild(newExerciseSet);
+
+    // Set up the event listener for the comment input of the newly added exercise set
+    const commentInput = newExerciseSet.querySelector('.comment-input');
+    const commentList = newExerciseSet.querySelector('.comment-list');
+
+    commentInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const comment = commentInput.value.trim();
+            if (comment) {
+                const commentElement = document.createElement('p');
+                commentElement.textContent = "User: " + comment;
+                commentList.appendChild(commentElement);
+                commentInput.value = '';
+            }
+        }
+    });
+}
+
+
+
+// Function to add a new exercise set
+function addExerciseSet() {
+    // Retrieve input values
+    const exerciseName = document.getElementById('exerciseName').value;
+    const exerciseDescription = document.getElementById('exerciseDescription').value;
+    const exerciseExercises = document.getElementById('exerciseExercises').value;
+
+    // Create a new exercise set
+    const exerciseContainer = document.querySelector('.exercise-container');
+    const newExerciseSet = document.createElement('div');
+    newExerciseSet.className = 'exercise-set';
+    newExerciseSet.onclick = function() {
+        toggleExerciseDetails(newExerciseSet);
+    };
+
+    // Exercise set content
+    newExerciseSet.innerHTML = `
+        <h2>${exerciseName}</h2>
+        <div class="exercise-details">
+            <h3>${exerciseDescription}</h3>
+            <p>${exerciseExercises.split('\n').join('</p><p>')}</p>
+            <div class="comments">
+                <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
+                <div class="comment-list"></div>
+            </div>
+        </div>
+        <div class="exercise-owner">By: User</div> <!-- Set owner as "User" for new exercise sets -->
+    `;
+
+    exerciseContainer.appendChild(newExerciseSet);
+
+    // Rest of your JavaScript code for handling comments
         const commentInputs = document.querySelectorAll('.comment-input');
         const commentLists = document.querySelectorAll('.comment-list');
-
+        
         commentInputs.forEach((input, index) => {
             input.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     const comment = input.value.trim();
                     if (comment) {
                         const commentElement = document.createElement('p');
-                        commentElement.textContent = comment;
+                        commentElement.textContent = "User: " + comment;
                         commentLists[index].appendChild(commentElement);
                         input.value = '';
                     }
                 }
-                
             });
-
+        
             // Stop click event propagation from the comment input
             input.addEventListener('click', (e) => {
                 e.stopPropagation();
             });
         });
-    </script>
+
+    // Add the new exercise set to the savedExerciseSets array
+    const newExerciseSetData = {
+        name: exerciseName,
+        description: exerciseDescription,
+        exercises: exerciseExercises.split('\n').map(exercise => exercise.trim()),
+        owner: "User", // Set owner as "User"
+        likes: 0 // Set initial likes to 0
+    };
+    savedExerciseSets.push(newExerciseSetData);
+
+    // Save all exercise sets to localStorage
+    saveExerciseSets();
+
+    // Clear input fields and close the modal
+    document.getElementById('exerciseName').value = '';
+    document.getElementById('exerciseDescription').value = '';
+    document.getElementById('exerciseExercises').value = '';
+    closeExerciseModal();
+}
+
+function incrementLikes(button) {
+    const likeCount = button.nextElementSibling;
+    const currentLikes = parseInt(likeCount.textContent, 10) || 0;
+    const newLikes = currentLikes + 1;
+    likeCount.textContent = newLikes;
+
+    // Find the exercise set element and update the likes in savedExerciseSets
+    const exerciseSetElement = button.closest('.exercise-set');
+    if (exerciseSetElement) {
+        const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
+        const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
+        if (exerciseSet) {
+            exerciseSet.likes = newLikes;
+            saveExerciseSets();
+        }
+    }
+}
+
+
+        
+        // Save exercise sets to localStorage
+        function saveExerciseSets() {
+            localStorage.setItem('exerciseSets', JSON.stringify(savedExerciseSets));
+        }
+        
+        // Function to open the exercise set modal
+        function openExerciseModal() {
+            const modal = document.getElementById('exerciseModal');
+            modal.style.display = 'block';
+        }
+        
+        // Function to close the exercise set modal
+        function closeExerciseModal() {
+            const modal = document.getElementById('exerciseModal');
+            modal.style.display = 'none';
+        }
+        
+        // Function to toggle exercise details
+        function toggleExerciseDetails(element) {
+            element.classList.toggle("active");
+            const exerciseDetails = element.querySelector('.exercise-details');
+            const comments = element.querySelector('.comments');
+            comments.style.display = comments.style.display === 'block' ? 'none' : 'block';
+            if (exerciseDetails) {
+                exerciseDetails.style.display = exerciseDetails.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+        
+        // Rest of your JavaScript code for handling comments
+        const commentInputs = document.querySelectorAll('.comment-input');
+        const commentLists = document.querySelectorAll('.comment-list');
+        
+        commentInputs.forEach((input, index) => {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const comment = input.value.trim();
+                    if (comment) {
+                        const commentElement = document.createElement('p');
+                        commentElement.textContent = "User: " + comment;
+                        commentLists[index].appendChild(commentElement);
+                        input.value = '';
+                    }
+                }
+            });
+        
+            // Stop click event propagation from the comment input
+            input.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
+        
+        // Call the initialization function to load saved exercise sets
+        initializeExerciseSets();
+        </script>
+        
+
 </body>
 </html>
