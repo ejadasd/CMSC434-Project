@@ -254,29 +254,38 @@ function createExerciseSet(exerciseSetData) {
                 <div class="comment-list"></div>
             </div>
         </div>
-        <div class="exercise-owner">By: ${exerciseSetData.owner}</div> <!-- Display owner's name -->
+        <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
+        <div class="like-container">
+            <button class="like-button" onclick="incrementLikes(this)">Like</button>
+            <span class="like-count">${exerciseSetData.likes || 0}</span>
+        </div>
     `;
 
     exerciseContainer.appendChild(newExerciseSet);
 
-    // Set up the event listener for the comment input of the newly added exercise set
-    const commentInput = newExerciseSet.querySelector('.comment-input');
-    const commentList = newExerciseSet.querySelector('.comment-list');
-
-    commentInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const comment = commentInput.value.trim();
-            if (comment) {
-                const commentElement = document.createElement('p');
-                commentElement.textContent = "User: " + comment;
-                commentList.appendChild(commentElement);
-                commentInput.value = '';
-            }
-        }
-    });
+    // Rest of your JavaScript code for handling comments
+    const commentInputs = document.querySelectorAll('.comment-input');
+        const commentLists = document.querySelectorAll('.comment-list');
+        
+        commentInputs.forEach((input, index) => {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const comment = input.value.trim();
+                    if (comment) {
+                        const commentElement = document.createElement('p');
+                        commentElement.textContent = "User: " + comment;
+                        commentLists[index].appendChild(commentElement);
+                        input.value = '';
+                    }
+                }
+            });
+        
+            // Stop click event propagation from the comment input
+            input.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        });
 }
-
-
 
 // Function to add a new exercise set
 function addExerciseSet() {
@@ -305,12 +314,16 @@ function addExerciseSet() {
             </div>
         </div>
         <div class="exercise-owner">By: User</div> <!-- Set owner as "User" for new exercise sets -->
+        <div class="like-container">
+            <button class="like-button" onclick="incrementLikes(this)">Like</button>
+            <span class="like-count">0</span>
+        </div>
     `;
 
     exerciseContainer.appendChild(newExerciseSet);
 
     // Rest of your JavaScript code for handling comments
-        const commentInputs = document.querySelectorAll('.comment-input');
+    const commentInputs = document.querySelectorAll('.comment-input');
         const commentLists = document.querySelectorAll('.comment-list');
         
         commentInputs.forEach((input, index) => {
@@ -351,6 +364,9 @@ function addExerciseSet() {
     document.getElementById('exerciseExercises').value = '';
     closeExerciseModal();
 }
+
+// Rest of your JavaScript code...
+
 
 function incrementLikes(button) {
     const likeCount = button.nextElementSibling;
