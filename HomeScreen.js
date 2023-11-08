@@ -26,9 +26,6 @@ function loadProfileData() {
       document.getElementById('userCurrWeight').textContent = userCurrWeight;
       const userCurrBMI = (703 * userCurrWeight)/(userHeight*userHeight);
       document.getElementById('userCurrBMI').textContent = userCurrBMI.toFixed(4);  
-
-      const totalWater = userCurrWeight/2;
-      document.getElementById('totalWater').textContent = totalWater;
     }
   }
 
@@ -37,6 +34,10 @@ function loadData() {
     let waterDrank = JSON.parse(localStorage.getItem('userWater')) || [];
     waterDrank = waterDrank[waterDrank.length-1];
     document.getElementById('waterDrank').textContent = waterDrank;
+
+    let storedTargetWater = JSON.parse(localStorage.getItem('targetWater')) || [];
+    storedTargetWater = storedTargetWater[storedTargetWater.length-1];
+    document.getElementById('totalWater').textContent = storedTargetWater;
 
     let calories = JSON.parse(localStorage.getItem('userCalorie')) || [];
     calories = calories[calories.length-1];
