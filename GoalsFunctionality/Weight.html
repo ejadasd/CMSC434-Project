@@ -191,6 +191,7 @@
 
     // Function to add weight data to the chart
     function addData() {
+        const storedProfileData = localStorage.getItem("profileData0101-02");
         const userWeight = document.getElementById("userWeight").value;
         targetWeight = document.getElementById("targetWeight").value;
         if (userWeight !== "") {
@@ -231,6 +232,14 @@
 
             // Set the focus back to the user weight input box
             document.getElementById("userWeight").focus();
+
+            if (storedProfileData) {
+            // Parse the stored data to get the profileData object
+                profileData = JSON.parse(storedProfileData);
+            }
+
+            profileData.currWeight = userWeight;
+            localStorage.setItem("profileData0101-02", JSON.stringify(profileData));
         }
     }
 
