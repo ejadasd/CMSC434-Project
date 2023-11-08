@@ -26,21 +26,25 @@ function loadProfileData() {
       document.getElementById('userCurrWeight').textContent = userCurrWeight;
       const userCurrBMI = (703 * userCurrWeight)/(userHeight*userHeight);
       document.getElementById('userCurrBMI').textContent = userCurrBMI.toFixed(4);  
-
-      const totalWater = userCurrWeight/2;
-      document.getElementById('totalWater').textContent = totalWater;
     }
   }
 
   //this is currrent weight, water, and calories
 function loadData() {
-    const waterDrank = JSON.parse(localStorage.getItem('userWater')) || [];
+    let waterDrank = JSON.parse(localStorage.getItem('userWater')) || [];
+    waterDrank = waterDrank[waterDrank.length-1];
     document.getElementById('waterDrank').textContent = waterDrank;
 
-    const calories = JSON.parse(localStorage.getItem('userCalorie')) || [];
+    let storedTargetWater = JSON.parse(localStorage.getItem('targetWater')) || [];
+    storedTargetWater = storedTargetWater[storedTargetWater.length-1];
+    document.getElementById('totalWater').textContent = storedTargetWater;
+
+    let calories = JSON.parse(localStorage.getItem('userCalorie')) || [];
+    calories = calories[calories.length-1];
     document.getElementById('calories').textContent = calories;
 
-    const storedTargetCalorie = JSON.parse(localStorage.getItem('targetCalorie')) || [];
+    let storedTargetCalorie = JSON.parse(localStorage.getItem('targetCalorie')) || [];
+    storedTargetCalorie = storedTargetCalorie[storedTargetCalorie.length-1];
     document.getElementById('totalCalories').textContent = storedTargetCalorie;
 }
 

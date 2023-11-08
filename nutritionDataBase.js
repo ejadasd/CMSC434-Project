@@ -2,8 +2,7 @@ const searchForm = document.querySelector('form');
 const searchResultDiv = document.querySelector('.search-result');
 const container = document.querySelector('.container');
 let searchQuery = '';
-const APP_ID = 'f7fc2024';
-const APP_key = '0eed8476b12866be3ebb676637ee23b2';
+
 
 
 
@@ -18,41 +17,7 @@ let recipeList = [{image: "recipeImage/PomeloNoodleSalad.jpg", label: "Pomelo No
                 {image: "recipeImage/pizza.jpg", label: "Chorizo, Caper & Rocket Pizza", link: "http://www.bbcgoodfood.com/recipes/1506638/chorizo-caper-and-rocket-pizza", calo: 1029, carbs: 119, fat: 42, protein: 39},
                 {image: "recipeImage/salmon.jpg", label: "Red Pistou Salmon", link: "http://www.frenchrevolutionfood.com/2011/05/french-in-a-flash-so-easy-red-pistou-salmon/", calo: 427, carbs: 3, fat: 28, protein: 35}];
 
-searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    searchQuery = e.target.querySelector('input').value;
-    fetchAPI();
-});
 
-async function fetchAPI() {
-    const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_key}&to=30`;
-    const response = await fetch(baseURL);
-    const data = await response.json();
-    generateHTML(data.hits);
-    console.log(data);
-}
-
-function generateHTML(results){
-
-    let generatedHTML = '';
-    results.map(result => {
-        generatedHTML += 
-        `
-        <div class="item">
-            <img src="${result.recipe.image}" alt="">
-            <div class="flex-container">
-                <h1 class="title">${result.recipe.label}</h1>
-                <a class="view-button" href="${result.recipe.url}" target="_blank">View Recipe</a>
-                <button onclick="save('${result.recipe.url}','${result.recipe.label}');"><ion-icon name="bookmark-outline"></ion-icon></button>
-            </div>
-            <p class="item-data">Calories: ${result.recipe.calories.toFixed(2)}</p>
-            <p class="item-data">Diet label: ${result.recipe.dietLabels.length > 0 ? result.recipe.dietLabels : 'No Data Found'}</p>
-            <p class="item-data">Health Label: ${result.recipe.healthLabels}</p>
-        </div>
-        `
-    })
-    searchResultDiv.innerHTML = generatedHTML; 
-}
 
 function save(link, label) {
 
@@ -168,10 +133,10 @@ function sort_arr() {
                     <a class="view-button" href="${value.link}" target="_blank">View Recipe</a>
                     <button class="icon" onclick="save('${value.link}','${value.label}')"><ion-icon name="bookmark-outline"></ion-icon></button>
                 </div>
-                <p class="item-data">Calories: ${value.calo}</p>
-                <p class="item-data">Carbs: ${value.carbs}</p>
-                <p class="item-data">Fat: ${value.fat}</p>
-                <p class="item-data">Protein: ${value.protein}</p>
+                <p class="item-data">Calories: ${value.calo} g</p>
+                <p class="item-data">Carbs: ${value.carbs} g</p>
+                <p class="item-data">Fat: ${value.fat} g</p>
+                <p class="item-data">Protein: ${value.protein} g</p>
             </div>
             `;
         }
@@ -198,10 +163,10 @@ function sort_arr() {
                     <a class="view-button" href="${value.link}" target="_blank">View Recipe</a>
                     <button onclick="save('${value.link}','${value.label}')"><ion-icon name="bookmark-outline"></ion-icon></button>
                 </div>
-                <p class="item-data">Calories: ${value.calo}</p>
-                <p class="item-data">Carbs: ${value.carbs}</p>
-                <p class="item-data">Fat: ${value.fat}</p>
-                <p class="item-data">Protein: ${value.protein}</p>
+                <p class="item-data">Calories: ${value.calo} g</p>
+                <p class="item-data">Carbs: ${value.carbs} g</p>
+                <p class="item-data">Fat: ${value.fat} g</p>
+                <p class="item-data">Protein: ${value.protein} g</p>
             </div>
             `;
         }
@@ -228,10 +193,10 @@ function sort_arr() {
                     <a class="view-button" href="${value.link}" target="_blank">View Recipe</a>
                     <button onclick="save('${value.link}','${value.label}')"><ion-icon name="bookmark-outline"></ion-icon></button>
                 </div>
-                <p class="item-data">Calories: ${value.calo}</p>
-                <p class="item-data">Carbs: ${value.carbs}</p>
-                <p class="item-data">Fat: ${value.fat}</p>
-                <p class="item-data">Protein: ${value.protein}</p>
+                <p class="item-data">Calories: ${value.calo} g</p>
+                <p class="item-data">Carbs: ${value.carbs} g</p>
+                <p class="item-data">Fat: ${value.fat} g</p>
+                <p class="item-data">Protein: ${value.protein} g</p>
             </div>
             `;
         }
@@ -258,10 +223,10 @@ function sort_arr() {
                     <a class="view-button" href="${value.link}" target="_blank">View Recipe</a>
                     <button onclick="save('${value.link}','${value.label}')"><ion-icon name="bookmark-outline"></ion-icon></button>
                 </div>
-                <p class="item-data">Calories: ${value.calo}</p>
-                <p class="item-data">Carbs: ${value.carbs}</p>
-                <p class="item-data">Fat: ${value.fat}</p>
-                <p class="item-data">Protein: ${value.protein}</p>
+                <p class="item-data">Calories: ${value.calo} g</p>
+                <p class="item-data">Carbs: ${value.carbs} g</p>
+                <p class="item-data">Fat: ${value.fat} g</p>
+                <p class="item-data">Protein: ${value.protein} g</p>
             </div>
             `;
         }

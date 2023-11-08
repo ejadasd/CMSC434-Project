@@ -89,7 +89,7 @@ img {
 html {
     font-family: Arial, sans-serif;
     font-size: 12px;
-    font-weight: 600;
+    color: #094067;
 }
 section{
     min-height: 100vh;
@@ -128,11 +128,12 @@ section{
 }
 
 .btn {
-    color: whitesmoke;
+    background-color: #3da9fc;
+    color: #fffffe;
+    border-color: #3da9fc;
     margin: 20px 10px 0 0;
     font-size: 1.8rem;
     font-weight: 400;
-    background-color: rgb(37, 37, 37);
     border-radius: 4px;
     font-size: 1.4rem;
     width: 130px;
@@ -190,7 +191,7 @@ form input {
 .item {
     width: 100%;
     border-radius: 8px;
-    background-color: rgb(37, 37, 37);
+    background-color: #094067;
     padding: 15px;
     overflow: hidden;
 }
@@ -202,7 +203,8 @@ form input {
 }
 
 .item button {
-    background-color: rgb(37, 37, 37);
+    background-color: #3da9fc;
+    border-color: #3da9fc;
 }
 
 .item img {
@@ -226,7 +228,8 @@ form input {
     text-align: center;
     width: 130px;
     padding: 10px 0;
-    background-color: #404041;
+    background-color: #09675f;
+    border-radius: 8px;
     color: white;
     font-size: 1.4rem;
     margin-top: 20px;
