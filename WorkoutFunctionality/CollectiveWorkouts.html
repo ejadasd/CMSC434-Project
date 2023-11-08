@@ -263,6 +263,16 @@ function createExerciseSet(exerciseSetData) {
 
     exerciseContainer.appendChild(newExerciseSet);
 
+    // Update the event handling for the "Like" buttons
+    const likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach((button) => {
+        button.addEventListener('click', function (e) {
+            e.stopPropagation(); // Prevent the click event from propagating to the parent exercise set
+            incrementLikes(this); // Handle the like logic
+        });
+    });
+
     // Rest of your JavaScript code for handling comments
     const commentInputs = document.querySelectorAll('.comment-input');
         const commentLists = document.querySelectorAll('.comment-list');
@@ -321,6 +331,16 @@ function addExerciseSet() {
     `;
 
     exerciseContainer.appendChild(newExerciseSet);
+
+    // Update the event handling for the "Like" buttons
+    const likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach((button) => {
+        button.addEventListener('click', function (e) {
+            e.stopPropagation(); // Prevent the click event from propagating to the parent exercise set
+            incrementLikes(this); // Handle the like logic
+        });
+    });
 
     // Rest of your JavaScript code for handling comments
     const commentInputs = document.querySelectorAll('.comment-input');
