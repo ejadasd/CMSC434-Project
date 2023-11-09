@@ -127,6 +127,11 @@
     let dateLabelsHistory = [];
     let targetWeight = 0;
 
+    const storedUserWeight = JSON.parse(localStorage.getItem('userWeight')) || [];
+    const storedTargetWeight = JSON.parse(localStorage.getItem('targetWeight')) || [];
+    const storedBmi = JSON.parse(localStorage.getItem('bmi')) || [];
+    const storedDateLabels = JSON.parse(localStorage.getItem('dateLabels')) || [];
+
     // Initialize user weight history, target weight history, bmi history, and date labels history with stored data or empty arrays
     const storedWeightGraph = JSON.parse(localStorage.getItem('weightGraph'));
     if (storedWeightGraph) {
@@ -140,7 +145,7 @@
 
     // Variable to track the currently displayed progress type
     let currentProgress = "Recent Progress";
-    let isPastProgressShown = false; // Track if past progress is shown
+    let isPastProgressShown = true; // Track if past progress is shown
     let currentData = {  // Save the current data
         userWeight: [],
         targetWeight: [],
@@ -149,42 +154,32 @@
     };
 
     // Function to toggle between "Recent Progress" and "Past Progress"
+    // Function to toggle between "Recent Progress" and "Past Progress"
     function toggleProgress() {
         const button = document.getElementById("toggle");
         if (isPastProgressShown) {
             button.innerText = "Show Past Progress";
-            showRecentProgress();
-            currentProgress = "Recent Progress";
+            isPastProgressShown = !isPastProgressShown;
+            showAllData();
         } else {
             button.innerText = "Show Recent Progress";
-            showAllData();
-            currentProgress = "Past Progress";
+            isPastProgressShown = !isPastProgressShown;
+            showRecentProgress();
         }
-        isPastProgressShown = !isPastProgressShown;
     }
 
-    // Function to update the graph with new data
     function updateGraph(data1, data2, data3, labels) {
         chart.data.datasets[0].data = data1;
         chart.data.datasets[1].data = data2;
         chart.data.datasets[2].data = data3;
         chart.data.labels = labels;
         chart.update();
-
-        // Store the updated data in local storage
-        localStorage.setItem('weightGraph', JSON.stringify(chart.data));
-        localStorage.setItem('userWeightHistory', JSON.stringify(userWeightHistory));
-        localStorage.setItem('targetWeightHistory', JSON.stringify(targetWeightHistory));
-        localStorage.setItem('bmiHistory', JSON.stringify(bmiHistory));
-        localStorage.setItem('dateLabelsHistory', JSON.stringify(dateLabelsHistory));
     }
 
-    // Function to show the recent progress
     function showRecentProgress() {
         updateGraph(currentData.userWeight, currentData.targetWeight, currentData.bmi, currentData.labels);
     }
 
-    // Function to show all the previously removed data
     function showAllData() {
         updateGraph(userWeightHistory, targetWeightHistory, bmiHistory, dateLabelsHistory);
     }
@@ -241,6 +236,15 @@
             profileData.currWeight = userWeight;
             localStorage.setItem("profileData0101-02", JSON.stringify(profileData));
         }
+
+            localStorage.setItem('userWeight', JSON.stringify(chart.data.datasets[0].data));
+            localStorage.setItem('targetWeight', JSON.stringify(chart.data.datasets[1].data));
+            localStorage.setItem('bmi', JSON.stringify(chart.data.datasets[2].data));
+            localStorage.setItem('dateLabels', JSON.stringify(chart.data.labels));
+            localStorage.setItem('userWeightHistory', JSON.stringify(userWeightHistory));
+            localStorage.setItem('targetWeightHistory', JSON.stringify(targetWeightHistory));
+            localStorage.setItem('bmiHistory', JSON.stringify(bmiHistory));
+            localStorage.setItem('dateLabelsHistory', JSON.stringify(dateLabelsHistory));
     }
 
     // Function to toggle notifications
