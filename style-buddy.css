@@ -47,8 +47,9 @@ section{
 button{
     width: 60px;
     height: 41px;
-    background-color: rgb(4, 29, 29);
-    color: white;
+    background-color: #3da9fc;
+    border-color: #3da9fc;
+    color: whitesmoke;
     border: none;
     cursor: pointer;
 
@@ -58,13 +59,13 @@ button{
 }
 .text ul{
     position: relative;
-    background-color: #094067;
-    color: white;
+    background-color: #f0f0f0;
+    color: #094067;
     font-size: 30px;
     padding: 7px;
     text-align: left;
     margin-top: 20px;
-    
+    border: 1px solid #ddd;
 }
 .text ul i{
     position: absolute;

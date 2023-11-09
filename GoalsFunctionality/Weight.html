@@ -67,6 +67,24 @@
 </div>
 
 <script>
+window.addEventListener("load", loadProfileData);
+
+function openProfilePage() {
+    window.location.href = '../ProfilePage.html';
+}
+
+function loadProfileData() {
+    const storedProfileData = localStorage.getItem("profileData0101-02");
+    if (storedProfileData) {
+      const profileData = JSON.parse(storedProfileData);
+
+      const userName = profileData.name;
+      document.getElementById('userName').textContent = userName;
+    }
+  }
+
+document.getElementById('profile-icon').addEventListener('click', openProfilePage);
+
     const height = 1.8; // Edit the profile height as needed.
     const maxDataPoints = 7; // Maximum number of data points to display
     const ctx = document.getElementById("myChart").getContext("2d");

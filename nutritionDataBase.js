@@ -1,5 +1,7 @@
 const searchForm = document.querySelector('form');
 const searchResultDiv = document.querySelector('.search-result');
+const fil = document.querySelector('.filter');
+const sub = document.querySelector('.sub');
 const container = document.querySelector('.container');
 let searchQuery = '';
 
@@ -64,7 +66,8 @@ function view() {
         </div>
         `;
     }
-
+    fil.style.visibility = 'hidden';
+    sub.style.visibility = 'hidden';
     searchResultDiv.innerHTML = genHTML;
 }
 
