@@ -178,18 +178,10 @@ function loadProfileData() {
   }
 
 document.getElementById('profile-icon').addEventListener('click', openProfilePage);
-        // Check if there are any saved exercise sets in localStorage
-        const savedExerciseSets = JSON.parse(localStorage.getItem('exerciseSets')) || [];
 
-        // Function to initialize exercise sets
-        function initializeExerciseSets() {
-            savedExerciseSets.forEach((exerciseSet) => {
-                createExerciseSet(exerciseSet);
-            });
-        }
-
+        const preGeneratedWorkouts = []
         if(!localStorage.getItem("firstLoadDone789")){
-            const preGeneratedWorkouts = [
+            preGeneratedWorkouts = [
             {
                 name: "Exercise Set 1",
                 description: "Some lighter cardio work",
@@ -238,14 +230,18 @@ document.getElementById('profile-icon').addEventListener('click', openProfilePag
                 likes: 2000,
             },
         ];
-
-            preGeneratedWorkouts.forEach(function (workoutData) {
-                createExerciseSet(workoutData);
-                savedExerciseSets.push(workoutData);
-            })
             
             localStorage.setItem("firstLoadDone789", "true");
+        }
 
+        // Check if there are any saved exercise sets in localStorage
+        const savedExerciseSets = JSON.parse(localStorage.getItem('exerciseSets')) || preGeneratedWorkouts;
+
+        // Function to initialize exercise sets
+        function initializeExerciseSets() {
+            savedExerciseSets.forEach((exerciseSet) => {
+                createExerciseSet(exerciseSet);
+            });
         }
         
         
@@ -297,7 +293,7 @@ function createExerciseSet(exerciseSetData) {
                     const comment = input.value.trim();
                     if (comment) {
                         const commentElement = document.createElement('p');
-                        commentElement.textContent = "User: " + comment;
+                        commentElement.textContent = userName + comment;
                         commentLists[index].appendChild(commentElement);
                         input.value = '';
                     }
