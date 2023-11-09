@@ -123,68 +123,6 @@
     <main>
         <a href="WorkoutHomePage.html" class="back-arrow">&#8592; Home</a>
         <div class="exercise-container">
-            <div class="exercise-set" data-owner="Jordan Doe" onclick="toggleExerciseDetails(this)">
-                <h2>Exercise Set 1</h2>
-                <div class="exercise-details">
-                    <h3>Some lighter cardio work</h3>
-                    <p>1. Jumping Jacks (40 seconds)</p>
-                    <p>2. High Knees (40 seconds)</p>
-                    <p>3. Burpees (40 seconds)</p>
-                    <p>4. Mountain Climbers (40 seconds)</p>
-                    <p>5. Squat Jumps (40 seconds)</p>
-                    <p>6. Jump Rope (40 seconds)</p>
-                    <p>7. Lunges (40 seconds)</p>
-                    <p>8. Plank (40 seconds)</p>
-                    <p>9. High Knees (40 seconds)</p>
-                    <p>20 seconds rest between each</p>
-                    <div class="comments">
-                        <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
-                        <div class="comment-list"></div>
-                        <button class="like-button" onclick="incrementLikes(this)">Like</button>
-                        <span class="like-count">0</span>
-                    </div>
-                </div>
-                <div class="exercise-owner">By: Jorden Doe</div> <!-- Display owner's name -->
-            </div>
-            <div class="exercise-set" data-owner="Jane Doe" onclick="toggleExerciseDetails(this)">
-                <h2>Exercise Set 2</h2>
-                <div class = "exercise-details">
-                    <h3>Exercises in Upper Body Workout</h3>
-                    <p>1. Push-Ups (40 seconds)</p>
-                    <p>2. Dumbbell Bicep Curls (40 seconds)</p>
-                    <p>3. Tricep Dips (40 seconds)</p>
-                    <p>4. Shoulder Taps (40 seconds)</p>
-                    <p>5. Lateral Raises (40 seconds)</p>
-                    <p>6. Bent-Over Rows (40 seconds)</p>
-                    <p>7. Plank (40 seconds)</p>
-                    <p>8. Push-Ups (40 seconds)</p>
-                    <p>9. Dumbbell Bicep Curls (40 seconds)</p>
-                    <p>10. Tricep Dips (40 seconds)</p>
-                    <div class="comments">
-                        <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
-                        <div class="comment-list"></div>
-                        <button class="like-button" onclick="incrementLikes(this)">Like</button>
-                        <span class="like-count">4</span>
-                    </div>
-                </div>
-                <div class="exercise-owner">By: Julian Doe</div> <!-- Display owner's name -->
-            </div>
-            <div class="exercise-set" onclick="toggleExerciseDetails(this)">
-                <h2>Upper Body Workout</h2>
-                <div class="exercise-details">
-                    <h3>Exercises in Upper Body Workout</h3>
-                    <p>1. Push-Ups (40 seconds)</p>
-                    <p>2. Dumbbell Bicep Curls (40 seconds)</p>
-                    <!-- Add more exercises here -->
-                </div>
-                <div class="comments">
-                    <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
-                    <div class="comment-list"></div>
-                    <button class="like-button" onclick="incrementLikes(this)">Like</button>
-                    <span class="like-count">2000</span>
-                </div>
-                <div class="exercise-owner">By: Jake Doe</div> <!-- Display owner's name -->
-            </div>
         </div>
 
         <button class="add-button" onclick="openExerciseModal()">Add Exercise Set</button>
@@ -223,16 +161,76 @@
 
 
     <script>
-
         // Check if there are any saved exercise sets in localStorage
         const savedExerciseSets = JSON.parse(localStorage.getItem('exerciseSets')) || [];
-        
+
         // Function to initialize exercise sets
         function initializeExerciseSets() {
             savedExerciseSets.forEach((exerciseSet) => {
                 createExerciseSet(exerciseSet);
             });
         }
+
+        if(!localStorage.getItem("firstLoadDone789")){
+            const preGeneratedWorkouts = [
+            {
+                name: "Exercise Set 1",
+                description: "Some lighter cardio work",
+                exercises: [
+                    "1. Jumping Jacks (40 seconds)",
+                    "2. High Knees (40 seconds)",
+                    "3. Burpees (40 seconds)",
+                    "4. Mountain Climbers (40 seconds)",
+                    "5. Squat Jumps (40 seconds)",
+                    "6. Jump Rope (40 seconds)",
+                    "7. Lunges (40 seconds)",
+                    "8. Plank (40 seconds)",
+                    "9. High Knees (40 seconds)",
+                    "20 seconds rest between each",
+                ],
+                owner: "Jordan Doe",
+                likes: 0,
+            },
+            {
+                name: "Exercise Set 2",
+                description: "Exercises in Upper Body Workout",
+                exercises: [
+                    "1. Push-Ups (40 seconds)",
+                    "2. Dumbbell Bicep Curls (40 seconds)",
+                    "3. Tricep Dips (40 seconds)",
+                    "4. Shoulder Taps (40 seconds)",
+                    "5. Lateral Raises (40 seconds)",
+                    "6. Bent-Over Rows (40 seconds)",
+                    "7. Plank (40 seconds)",
+                    "8. Push-Ups (40 seconds)",
+                    "9. Dumbbell Bicep Curls (40 seconds)",
+                    "10. Tricep Dips (40 seconds)",
+                ],
+                owner: "Jane Doe",
+                likes: 4,
+            },
+            {
+                name: "Exercise Set 3",
+                description: "Upper Body Workout",
+                exercises: [
+                    "1. Push-Ups (40 seconds)",
+                    "2. Dumbbell Bicep Curls (40 seconds)",
+                    "3. Tricep Dips (40 seconds)",
+                ],
+                owner: "Jake Doe",
+                likes: 2000,
+            },
+        ];
+
+            preGeneratedWorkouts.forEach(function (workoutData) {
+                createExerciseSet(workoutData);
+                savedExerciseSets.push(workoutData);
+            })
+            
+            localStorage.setItem("firstLoadDone789", "true");
+
+        }
+        
         
 // Function to create a new exercise set
 function createExerciseSet(exerciseSetData) {
@@ -388,23 +386,33 @@ function addExerciseSet() {
 // Rest of your JavaScript code...
 
 
+// Function to increment likes
 function incrementLikes(button) {
-    const likeCount = button.nextElementSibling;
-    const currentLikes = parseInt(likeCount.textContent, 10) || 0;
-    const newLikes = currentLikes + 1;
-    likeCount.textContent = newLikes;
-
-    // Find the exercise set element and update the likes in savedExerciseSets
+    // Find the parent exercise set element
     const exerciseSetElement = button.closest('.exercise-set');
+    
+    // Check if the exercise set element was found
     if (exerciseSetElement) {
-        const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
-        const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
-        if (exerciseSet) {
-            exerciseSet.likes = newLikes;
-            saveExerciseSets();
+        // Find the like count within the exercise set element
+        const likeCount = exerciseSetElement.querySelector('.like-count');
+        
+        // Check if the like count was found
+        if (likeCount) {
+            const currentLikes = parseInt(likeCount.textContent, 10) || 0;
+            const newLikes = currentLikes + 1;
+            likeCount.textContent = newLikes;
+
+            // Update the likes in the savedExerciseSets
+            const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
+            const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
+            if (exerciseSet) {
+                exerciseSet.likes = newLikes;
+                saveExerciseSets();
+            }
         }
     }
 }
+
 
 
         
