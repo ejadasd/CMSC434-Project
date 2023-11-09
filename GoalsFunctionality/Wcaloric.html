@@ -61,6 +61,24 @@
 </div>
 
 <script>
+window.addEventListener("load", loadProfileData);
+
+function openProfilePage() {
+    window.location.href = '../ProfilePage.html';
+}
+
+function loadProfileData() {
+    const storedProfileData = localStorage.getItem("profileData0101-02");
+    if (storedProfileData) {
+      const profileData = JSON.parse(storedProfileData);
+
+      const userName = profileData.name;
+      document.getElementById('userName').textContent = userName;
+    }
+  }
+
+document.getElementById('profile-icon').addEventListener('click', openProfilePage);
+
     // Check if it's the first load
     if (!localStorage.getItem("firstLoadDone727")) {
         const CalorieConsumption = [2100, 2400, 2345, 1987];
