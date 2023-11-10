@@ -96,11 +96,11 @@ document.getElementById('profile-icon').addEventListener('click', openProfilePag
     const chart = new Chart(ctx, {
         type: "line",
         data: {
-            labels: [],
+            labels: storedDateLabels,
             datasets: [
                 {
                     label: 'User Weight',
-                    data: [],
+                    data: storedUserWeight,
                     borderColor: "rgba(0, 0, 255, 1)",
                     borderWidth: 1,
                 },
