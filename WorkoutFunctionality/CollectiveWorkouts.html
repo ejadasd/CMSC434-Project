@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise Sets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="WorkoutPage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
         /* Custom styles for exercise sets */
         .exercise-container {
@@ -115,7 +115,7 @@
 </head>
 <body>
     <header>
-        <p id="welcome">Welcome, <span id="userName"></span></p>
+        <p id="welcome">Welcome, User</p>
         <div class="profile-circle" id="profile-icon">
             <i class="fas fa-person profile-icon"></i>
         </div>
@@ -130,22 +130,22 @@
         <!-- Add more exercise sets here -->
     </main>
     <footer>
-        <button class="tab-button" onclick="location.href = '../HomeScreen.html'">
+        <button class="tab-button" onclick="location.href = 'HomeScreen.html';">
             <i class="fas fa-home"></i>
         </button>
-        <button class="tab-button" onclick="location.href = '../GoalsFunctionality/MainPage.html'">
+        <button class="tab-button" onclick="location.href = 'MainPage.html'">
             <i class="fas fa-bullseye"></i>
-          </button>
-        <button class="tab-button" onclick="location.href = 'WorkoutHomePage.html';">
+        </button>
+        <button class="tab-button" onclick="location.href = 'WorkoutFunctionality/WorkoutPage.html';">
             <i class="fas fa-dumbbell"></i>
         </button>
-        <button class="tab-button" onclick="location.href = '../nutritionDataBase.html';">
+        <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
             <i class="fas fa-utensils"></i>
         </button>
-        <button class="tab-button" onclick="location.href = '../BuddySystem.html';">
+        <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
             <i class="fas fa-users"></i>
         </button>
-      </footer>
+    </footer>
 
     <!-- Modal for adding exercise sets -->
     <div id="exerciseModal" class="modal">
@@ -162,291 +162,232 @@
 
     <script>
         window.addEventListener("load", loadProfileData);
-
-function openProfilePage() {
-    window.location.href = '../ProfilePage.html';
-}
-
-function loadProfileData() {
-    const storedProfileData = localStorage.getItem("profileData0101-02");
-    if (storedProfileData) {
-      const profileData = JSON.parse(storedProfileData);
-
-      const userName = profileData.name;
-      document.getElementById('userName').textContent = userName;
-    }
-  }
-
-document.getElementById('profile-icon').addEventListener('click', openProfilePage);
-
-        const preGeneratedWorkouts = []
-        if(!localStorage.getItem("firstLoadDone789")){
-            preGeneratedWorkouts = [
-            {
-                name: "Exercise Set 1",
-                description: "Some lighter cardio work",
-                exercises: [
-                    "1. Jumping Jacks (40 seconds)",
-                    "2. High Knees (40 seconds)",
-                    "3. Burpees (40 seconds)",
-                    "4. Mountain Climbers (40 seconds)",
-                    "5. Squat Jumps (40 seconds)",
-                    "6. Jump Rope (40 seconds)",
-                    "7. Lunges (40 seconds)",
-                    "8. Plank (40 seconds)",
-                    "9. High Knees (40 seconds)",
-                    "20 seconds rest between each",
-                ],
-                owner: "Jordan Doe",
-                likes: 0,
-            },
-            {
-                name: "Exercise Set 2",
-                description: "Exercises in Upper Body Workout",
-                exercises: [
-                    "1. Push-Ups (40 seconds)",
-                    "2. Dumbbell Bicep Curls (40 seconds)",
-                    "3. Tricep Dips (40 seconds)",
-                    "4. Shoulder Taps (40 seconds)",
-                    "5. Lateral Raises (40 seconds)",
-                    "6. Bent-Over Rows (40 seconds)",
-                    "7. Plank (40 seconds)",
-                    "8. Push-Ups (40 seconds)",
-                    "9. Dumbbell Bicep Curls (40 seconds)",
-                    "10. Tricep Dips (40 seconds)",
-                ],
-                owner: "Jane Doe",
-                likes: 4,
-            },
-            {
-                name: "Exercise Set 3",
-                description: "Upper Body Workout",
-                exercises: [
-                    "1. Push-Ups (40 seconds)",
-                    "2. Dumbbell Bicep Curls (40 seconds)",
-                    "3. Tricep Dips (40 seconds)",
-                ],
-                owner: "Jake Doe",
-                likes: 2000,
-            },
-        ];
-            
+    
+        function openProfilePage() {
+            window.location.href = '../ProfilePage.html';
+        }
+    
+        function loadProfileData() {
+            const storedProfileData = localStorage.getItem("profileData0101-02");
+            if (storedProfileData) {
+                const profileData = JSON.parse(storedProfileData);
+                const userName = profileData.name;
+                document.getElementById('userName').textContent = userName;
+            }
+        }
+    
+        document.getElementById('profile-icon').addEventListener('click', openProfilePage);
+    
+        const savedExerciseSets = JSON.parse(localStorage.getItem('exerciseSets')) || [];
+    
+        if (!localStorage.getItem("firstLoadDone789")) {
+            const preGeneratedWorkouts = [
+                {
+                    name: "Exercise Set 1",
+                    description: "Some lighter cardio work",
+                    exercises: [
+                        "1. Jumping Jacks (40 seconds)",
+                        "2. High Knees (40 seconds)",
+                        "3. Burpees (40 seconds)",
+                        "4. Mountain Climbers (40 seconds)",
+                        "5. Squat Jumps (40 seconds)",
+                        "6. Jump Rope (40 seconds)",
+                        "7. Lunges (40 seconds)",
+                        "8. Plank (40 seconds)",
+                        "9. High Knees (40 seconds)",
+                        "20 seconds rest between each",
+                    ],
+                    owner: "Jordan Doe",
+                    likes: 0,
+                },
+                {
+                    name: "Exercise Set 2",
+                    description: "Exercises in Upper Body Workout",
+                    exercises: [
+                        "1. Push-Ups (40 seconds)",
+                        "2. Dumbbell Bicep Curls (40 seconds)",
+                        "3. Tricep Dips (40 seconds)",
+                        "4. Shoulder Taps (40 seconds)",
+                        "5. Lateral Raises (40 seconds)",
+                        "6. Bent-Over Rows (40 seconds)",
+                        "7. Plank (40 seconds)",
+                        "8. Push-Ups (40 seconds)",
+                        "9. Dumbbell Bicep Curls (40 seconds)",
+                        "10. Tricep Dips (40 seconds)",
+                    ],
+                    owner: "Jane Doe",
+                    likes: 4,
+                },
+                {
+                    name: "Exercise Set 3",
+                    description: "Upper Body Workout",
+                    exercises: [
+                        "1. Push-Ups (40 seconds)",
+                        "2. Dumbbell Bicep Curls (40 seconds)",
+                        "3. Tricep Dips (40 seconds)",
+                    ],
+                    owner: "Jake Doe",
+                    likes: 2000,
+                },
+            ];
+    
+            preGeneratedWorkouts.forEach(function (workoutData) {
+                savedExerciseSets.push(workoutData);
+            });
+    
             localStorage.setItem("firstLoadDone789", "true");
         }
-
-        // Check if there are any saved exercise sets in localStorage
-        const savedExerciseSets = JSON.parse(localStorage.getItem('exerciseSets')) || preGeneratedWorkouts;
-
-        // Function to initialize exercise sets
+    
         function initializeExerciseSets() {
             savedExerciseSets.forEach((exerciseSet) => {
                 createExerciseSet(exerciseSet);
             });
         }
-        
-        
-// Function to create a new exercise set
-function createExerciseSet(exerciseSetData) {
-    const exerciseContainer = document.querySelector('.exercise-container');
-    const newExerciseSet = document.createElement('div');
-    newExerciseSet.className = 'exercise-set';
-    newExerciseSet.onclick = function() {
-        toggleExerciseDetails(newExerciseSet);
-    };
-
-    // Exercise set content
-    newExerciseSet.innerHTML = `
-        <h2>${exerciseSetData.name}</h2>
-        <div class="exercise-details">
-            <h3>${exerciseSetData.description}</h3>
-            <p>${exerciseSetData.exercises.join('</p><p>')}</p>
-            <div class="comments">
-                <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
-                <div class="comment-list"></div>
+    
+        function createExerciseSet(exerciseSetData) {
+            const exerciseContainer = document.querySelector('.exercise-container');
+            const newExerciseSet = document.createElement('div');
+            newExerciseSet.className = 'exercise-set';
+            newExerciseSet.onclick = function () {
+                toggleExerciseDetails(newExerciseSet);
+            };
+    
+            newExerciseSet.innerHTML = `
+            <h2>${exerciseSetData.name}</h2>
+            <div class="exercise-details">
+                <h3>${exerciseSetData.description}</h3>
+                <p>${exerciseSetData.exercises.join('</p><p>')}</p>
+                <div class="comments">
+                    <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="handleCommentInputKeyPress(event, this, ${savedExerciseSets.indexOf(exerciseSetData)})">
+                    <div class="comment-list"></div>
+                </div>
             </div>
-        </div>
-        <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
-        <div class="like-container">
-            <button class="like-button" onclick="incrementLikes(this)">Like</button>
-        </div>
-    `;
-
-    exerciseContainer.appendChild(newExerciseSet);
-
-    // Update the event handling for the "Like" buttons
-    const likeButtons = document.querySelectorAll('.like-button');
-
-    likeButtons.forEach((button) => {
-        button.addEventListener('click', function (e) {
-            e.stopPropagation(); // Prevent the click event from propagating to the parent exercise set
-            incrementLikes(this); // Handle the like logic
-        });
-    });
-
-    // Rest of your JavaScript code for handling comments
-    const commentInputs = document.querySelectorAll('.comment-input');
-        const commentLists = document.querySelectorAll('.comment-list');
-        
-        commentInputs.forEach((input, index) => {
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    const comment = input.value.trim();
-                    if (comment) {
-                        const commentElement = document.createElement('p');
-                        commentElement.textContent = userName + comment;
-                        commentLists[index].appendChild(commentElement);
-                        input.value = '';
-                    }
-                }
-            });
-        
-            // Stop click event propagation from the comment input
-            input.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-        });
-}
-
-// Function to add a new exercise set
-function addExerciseSet() {
-    // Retrieve input values
-    const exerciseName = document.getElementById('exerciseName').value;
-    const exerciseDescription = document.getElementById('exerciseDescription').value;
-    const exerciseExercises = document.getElementById('exerciseExercises').value;
-
-    // Create a new exercise set
-    const exerciseContainer = document.querySelector('.exercise-container');
-    const newExerciseSet = document.createElement('div');
-    newExerciseSet.className = 'exercise-set';
-    newExerciseSet.onclick = function() {
-        toggleExerciseDetails(newExerciseSet);
-    };
-
-    // Exercise set content
-    newExerciseSet.innerHTML = `
-        <h2>${exerciseName}</h2>
-        <div class="exercise-details">
-            <h3>${exerciseDescription}</h3>
-            <p>${exerciseExercises.split('\n').join('</p><p>')}</p>
-            <div class="comments">
-                <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="addComment(this)">
-                <div class="comment-list"></div>
+            <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
+            <div class="like-container">
+                <button class="like-button" onclick="incrementLikes(this)">Like</button>
             </div>
-        </div>
-        <div class="exercise-owner">By: User</div> <!-- Set owner as "User" for new exercise sets -->
-        <div class="like-container">
-            <button class="like-button" onclick="incrementLikes(this)">Like</button>
-        </div>
-    `;
-
-    exerciseContainer.appendChild(newExerciseSet);
-
-    // Update the event handling for the "Like" buttons
-    const likeButtons = document.querySelectorAll('.like-button');
-
-    likeButtons.forEach((button) => {
-        button.addEventListener('click', function (e) {
-            e.stopPropagation(); // Prevent the click event from propagating to the parent exercise set
-            incrementLikes(this); // Handle the like logic
-        });
-    });
-
-    // Rest of your JavaScript code for handling comments
-    const commentInputs = document.querySelectorAll('.comment-input');
-        const commentLists = document.querySelectorAll('.comment-list');
-        
-        commentInputs.forEach((input, index) => {
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    const comment = input.value.trim();
-                    if (comment) {
-                        const commentElement = document.createElement('p');
-                        commentElement.textContent = "User: " + comment;
-                        commentLists[index].appendChild(commentElement);
-                        input.value = '';
-                    }
-                }
+        `;
+    
+            exerciseContainer.appendChild(newExerciseSet);
+    
+            const likeButtons = document.querySelectorAll('.like-button');
+    
+            likeButtons.forEach((button) => {
+                button.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    incrementLikes(this);
+                });
             });
-        
-            // Stop click event propagation from the comment input
-            input.addEventListener('click', (e) => {
-                e.stopPropagation();
+    
+            const commentInputs = document.querySelectorAll('.comment-input');
+            const commentLists = document.querySelectorAll('.comment-list');
+    
+            commentInputs.forEach((input, index) => {
+                input.addEventListener('keypress', (e) => {
+                    handleCommentInputKeyPress(e, input, index);
+                });
+    
+                input.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
             });
-        });
-
-    // Add the new exercise set to the savedExerciseSets array
-    const newExerciseSetData = {
-        name: exerciseName,
-        description: exerciseDescription,
-        exercises: exerciseExercises.split('\n').map(exercise => exercise.trim()),
-        owner: "User", // Set owner as "User"
-        likes: 0 // Set initial likes to 0
-    };
-    savedExerciseSets.push(newExerciseSetData);
-
-    // Save all exercise sets to localStorage
-    saveExerciseSets();
-
-    // Clear input fields and close the modal
-    document.getElementById('exerciseName').value = '';
-    document.getElementById('exerciseDescription').value = '';
-    document.getElementById('exerciseExercises').value = '';
-    closeExerciseModal();
-}
-
-// Rest of your JavaScript code...
-
-
-function incrementLikes(button) {
-    // Find the parent exercise set element
-    const exerciseSetElement = button.closest('.exercise-set');
-
-    // Check if the exercise set element was found
-    if (exerciseSetElement) {
-        // Find the exercise set name within the exercise set element
-        const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
-
-        // Find the corresponding exercise set in the savedExerciseSets array
-        const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
-
-        // Check if the exercise set was found
-        if (exerciseSet) {
-            if (exerciseSet.likes === undefined || exerciseSet.likes === 0) {
-                // If the exercise set has no likes or 0 likes, set it to 1 and display "You liked this"
-                exerciseSet.likes = 1;
-                button.textContent = "You liked this";
-            } else {
-                // If the exercise set already has likes, decrement it to 0 and display an empty string
-                exerciseSet.likes = 0;
-                button.textContent = "";
-            }
-            saveExerciseSets(); // Update the savedExerciseSets in localStorage
+    
+            // Save the reference to the comments element in exercise set data
+            exerciseSetData.commentsElement = newExerciseSet.querySelector('.comment-list');
+            
+            // Display existing comments
+            displayExistingComments(exerciseSetData);
         }
-    }
-}
 
+        function addExerciseSet() {
+            const exerciseNameInput = document.getElementById('exerciseName');
+            const exerciseDescriptionInput = document.getElementById('exerciseDescription');
+            const exerciseExercisesInput = document.getElementById('exerciseExercises');
 
+            const newExerciseSet = {
+                name: exerciseNameInput.value.trim(),
+                description: exerciseDescriptionInput.value.trim(),
+                exercises: exerciseExercisesInput.value.trim().split('\n'),
+                owner: "User",
+                likes: 0,
+            };
 
+            savedExerciseSets.push(newExerciseSet);
+            saveExerciseSets();
+            createExerciseSet(newExerciseSet);
 
-        
-        // Save exercise sets to localStorage
+            // Clear input fields
+            exerciseNameInput.value = '';
+            exerciseDescriptionInput.value = '';
+            exerciseExercisesInput.value = '';
+
+            // Close the modal
+            closeExerciseModal();
+        }
+    
+        function displayExistingComments(exerciseSetData) {
+            const commentList = exerciseSetData.commentsElement;
+            if (exerciseSetData.comments && exerciseSetData.comments.length > 0) {
+                exerciseSetData.comments.forEach(comment => {
+                    const commentElement = document.createElement('p');
+                    commentElement.textContent = `${comment.user}: ${comment.comment}`;
+                    commentList.appendChild(commentElement);
+                });
+            }
+        }
+    
+        function handleCommentInputKeyPress(event, input, index) {
+            if (event.key === 'Enter') {
+                const comment = input.value.trim();
+                if (comment) {
+                    const commentElement = document.createElement('p');
+                    commentElement.textContent = "User: " + comment;
+                    const commentList = savedExerciseSets[index].commentsElement;
+                    commentList.appendChild(commentElement);
+    
+                    savedExerciseSets[index].comments = savedExerciseSets[index].comments || [];
+                    savedExerciseSets[index].comments.push({ user: "User", comment });
+                    saveExerciseSets();
+    
+                    input.value = '';
+                }
+            }
+        }
+    
+        function incrementLikes(button) {
+            const exerciseSetElement = button.closest('.exercise-set');
+    
+            if (exerciseSetElement) {
+                const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
+                const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
+    
+                if (exerciseSet) {
+                    exerciseSet.likes = (exerciseSet.likes || 0) + 1;
+                    button.textContent = "You liked this";
+                    saveExerciseSets();
+    
+                    const likeCount = exerciseSetElement.querySelector('.like-count');
+                    if (likeCount) {
+                        likeCount.textContent = exerciseSet.likes;
+                    }
+                }
+            }
+        }
+    
         function saveExerciseSets() {
             localStorage.setItem('exerciseSets', JSON.stringify(savedExerciseSets));
         }
-        
-        // Function to open the exercise set modal
+    
         function openExerciseModal() {
             const modal = document.getElementById('exerciseModal');
             modal.style.display = 'block';
         }
-        
-        // Function to close the exercise set modal
+    
         function closeExerciseModal() {
             const modal = document.getElementById('exerciseModal');
             modal.style.display = 'none';
         }
-        
-        // Function to toggle exercise details
+    
         function toggleExerciseDetails(element) {
             element.classList.toggle("active");
             const exerciseDetails = element.querySelector('.exercise-details');
@@ -456,33 +397,11 @@ function incrementLikes(button) {
                 exerciseDetails.style.display = exerciseDetails.style.display === 'block' ? 'none' : 'block';
             }
         }
-        
-        // Rest of your JavaScript code for handling comments
-        const commentInputs = document.querySelectorAll('.comment-input');
-        const commentLists = document.querySelectorAll('.comment-list');
-        
-        commentInputs.forEach((input, index) => {
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    const comment = input.value.trim();
-                    if (comment) {
-                        const commentElement = document.createElement('p');
-                        commentElement.textContent = "User: " + comment;
-                        commentLists[index].appendChild(commentElement);
-                        input.value = '';
-                    }
-                }
-            });
-        
-            // Stop click event propagation from the comment input
-            input.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-        });
-        
-        // Call the initialization function to load saved exercise sets
+    
         initializeExerciseSets();
-        </script>
+    </script>
+    
+    
         
 
 </body>
