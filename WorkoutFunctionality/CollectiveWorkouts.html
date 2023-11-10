@@ -265,7 +265,6 @@
             <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
             <div class="like-container">
                 <button class="like-button" onclick="incrementLikes(this)">Like</button>
-                <span class="like-count">${exerciseSetData.likes || 0}</span>
             </div>
         `;
     
@@ -356,33 +355,24 @@
         }
     
         function incrementLikes(button) {
-    // Find the parent exercise set element
-    const exerciseSetElement = button.closest('.exercise-set');
-
-    // Check if the exercise set element was found
-    if (exerciseSetElement) {
-        // Find the exercise set name within the exercise set element
-        const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
-
-        // Find the corresponding exercise set in the savedExerciseSets array
-        const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
-
-        // Check if the exercise set was found
-        if (exerciseSet) {
-            if (exerciseSet.likes === undefined || exerciseSet.likes === 0) {
-                // If the exercise set has no likes or 0 likes, set it to 1 and display "You liked this"
-                exerciseSet.likes = 1;
-                button.textContent = "You liked this";
-            } else {
-                // If the exercise set already has likes, decrement it to 0 and display an empty string
-                exerciseSet.likes = 0;
-                button.textContent = "Like";
+            const exerciseSetElement = button.closest('.exercise-set');
+    
+            if (exerciseSetElement) {
+                const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
+                const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
+    
+                if (exerciseSet) {
+                    exerciseSet.likes = (exerciseSet.likes || 0) + 1;
+                    button.textContent = "You liked this";
+                    saveExerciseSets();
+    
+                    const likeCount = exerciseSetElement.querySelector('.like-count');
+                    if (likeCount) {
+                        likeCount.textContent = exerciseSet.likes;
+                    }
+                }
             }
-            saveExerciseSets(); // Update the savedExerciseSets in localStorage
         }
-    }
-}
-
     
         function saveExerciseSets() {
             localStorage.setItem('exerciseSets', JSON.stringify(savedExerciseSets));
