@@ -57,7 +57,7 @@ button{
     border-radius: 2px;
     font-size: 20px;
 }
-.text ul{
+.friend-list ul{
     position: relative;
     background-color: #f0f0f0;
     color: #094067;
@@ -67,7 +67,7 @@ button{
     margin-top: 20px;
     border: 1px solid #ddd;
 }
-.text ul i{
+.friend-list ul i{
     position: absolute;
     right: 10px;
     cursor: pointer;
