@@ -85,6 +85,11 @@ function loadProfileData() {
 
 document.getElementById('profile-icon').addEventListener('click', openProfilePage);
 
+    const storedUserWeight = JSON.parse(localStorage.getItem('userWeight')) || [];
+    const storedTargetWeight = JSON.parse(localStorage.getItem('targetWeight')) || [];
+    const storedBmi = JSON.parse(localStorage.getItem('bmi')) || [];
+    const storedDateLabels = JSON.parse(localStorage.getItem('dateLabels')) || [];
+
     const height = 1.8; // Edit the profile height as needed.
     const maxDataPoints = 7; // Maximum number of data points to display
     const ctx = document.getElementById("myChart").getContext("2d");
@@ -145,11 +150,6 @@ document.getElementById('profile-icon').addEventListener('click', openProfilePag
     let dateLabelsHistory = [];
     let targetWeight = 0;
 
-    const storedUserWeight = JSON.parse(localStorage.getItem('userWeight')) || [];
-    const storedTargetWeight = JSON.parse(localStorage.getItem('targetWeight')) || [];
-    const storedBmi = JSON.parse(localStorage.getItem('bmi')) || [];
-    const storedDateLabels = JSON.parse(localStorage.getItem('dateLabels')) || [];
-
     // Initialize user weight history, target weight history, bmi history, and date labels history with stored data or empty arrays
     const storedWeightGraph = JSON.parse(localStorage.getItem('weightGraph'));
     if (storedWeightGraph) {
@@ -162,28 +162,31 @@ document.getElementById('profile-icon').addEventListener('click', openProfilePag
     }
 
     // Variable to track the currently displayed progress type
-    let currentProgress = "Recent Progress";
+    let currentProgress = localStorage.getItem('currentProgress') || "Recent Progress"; // Retrieve from localStorage or default to "Recent Progress"
     let isPastProgressShown = true; // Track if past progress is shown
-    let currentData = {  // Save the current data
-        userWeight: [],
-        targetWeight: [],
-        bmi: [],
-        labels: [],
+    let currentData = {
+    userWeight: [],
+    targetWeight: [],
+    bmi: [],
+    labels: [],
     };
 
     // Function to toggle between "Recent Progress" and "Past Progress"
     // Function to toggle between "Recent Progress" and "Past Progress"
     function toggleProgress() {
-        const button = document.getElementById("toggle");
-        if (isPastProgressShown) {
-            button.innerText = "Show Past Progress";
-            isPastProgressShown = !isPastProgressShown;
-            showAllData();
-        } else {
-            button.innerText = "Show Recent Progress";
-            isPastProgressShown = !isPastProgressShown;
-            showRecentProgress();
-        }
+    const button = document.getElementById("toggle");
+    if (isPastProgressShown) {
+        button.innerText = "Show Past Progress";
+        isPastProgressShown = !isPastProgressShown;
+        showAllData();
+    } else {
+        button.innerText = "Show Recent Progress";
+        isPastProgressShown = !isPastProgressShown;
+        showRecentProgress();
+    }
+
+    // Save the current progress type to localStorage
+    localStorage.setItem('currentProgress', currentProgress);
     }
 
     function updateGraph(data1, data2, data3, labels) {
