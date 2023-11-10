@@ -115,7 +115,7 @@
 </head>
 <body>
     <header>
-        <p id="welcome">Welcome, User</p>
+        <p1 id="welcome">Welcome, <span id="userName"></span></p1>
         <div class="profile-circle" id="profile-icon">
             <i class="fas fa-person profile-icon"></i>
         </div>
@@ -264,7 +264,7 @@
                 <div class="comment-list"></div>
             </div>
         </div>
-        <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
+        <div class="exercise-owner">By: ${userName}</div>
         <div class="like-container">
             <button class="like-button" onclick="incrementLikes(this)">${likeButtonText}</button>
         </div>
@@ -312,7 +312,7 @@
                 name: exerciseNameInput.value.trim(),
                 description: exerciseDescriptionInput.value.trim(),
                 exercises: exerciseExercisesInput.value.trim().split('\n'),
-                owner: "User",
+                owner: document.getElementById('userName').value,
                 likes: 0,
             };
 
@@ -345,12 +345,12 @@
                 const comment = input.value.trim();
                 if (comment) {
                     const commentElement = document.createElement('p');
-                    commentElement.textContent = "User: " + comment;
+                    commentElement.textContent = userName + comment;
                     const commentList = savedExerciseSets[index].commentsElement;
                     commentList.appendChild(commentElement);
     
                     savedExerciseSets[index].comments = savedExerciseSets[index].comments || [];
-                    savedExerciseSets[index].comments.push({ user: "User", comment });
+                    savedExerciseSets[index].comments.push({ user: userName, comment });
                     saveExerciseSets();
     
                     input.value = '';
