@@ -216,7 +216,7 @@
                         "10. Tricep Dips (40 seconds)",
                     ],
                     owner: "Jane Doe",
-                    likes: 4,
+                    likes: 0,
                 },
                 {
                     name: "Exercise Set 3",
@@ -227,7 +227,7 @@
                         "3. Tricep Dips (40 seconds)",
                     ],
                     owner: "Jake Doe",
-                    likes: 2000,
+                    likes: 0,
                 },
             ];
     
@@ -245,59 +245,63 @@
         }
     
         function createExerciseSet(exerciseSetData) {
-            const exerciseContainer = document.querySelector('.exercise-container');
-            const newExerciseSet = document.createElement('div');
-            newExerciseSet.className = 'exercise-set';
-            newExerciseSet.onclick = function () {
-                toggleExerciseDetails(newExerciseSet);
-            };
-    
-            newExerciseSet.innerHTML = `
-            <h2>${exerciseSetData.name}</h2>
-            <div class="exercise-details">
-                <h3>${exerciseSetData.description}</h3>
-                <p>${exerciseSetData.exercises.join('</p><p>')}</p>
-                <div class="comments">
-                    <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="handleCommentInputKeyPress(event, this, ${savedExerciseSets.indexOf(exerciseSetData)})">
-                    <div class="comment-list"></div>
-                </div>
+    const exerciseContainer = document.querySelector('.exercise-container');
+    const newExerciseSet = document.createElement('div');
+    newExerciseSet.className = 'exercise-set';
+    newExerciseSet.onclick = function () {
+        toggleExerciseDetails(newExerciseSet);
+    };
+
+    const likeButtonText = exerciseSetData.likes > 1 ? "You liked this" : "Like";
+
+    newExerciseSet.innerHTML = `
+        <h2>${exerciseSetData.name}</h2>
+        <div class="exercise-details">
+            <h3>${exerciseSetData.description}</h3>
+            <p>${exerciseSetData.exercises.join('</p><p>')}</p>
+            <div class="comments">
+                <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="handleCommentInputKeyPress(event, this, ${savedExerciseSets.indexOf(exerciseSetData)})">
+                <div class="comment-list"></div>
             </div>
-            <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
-            <div class="like-container">
-                <button class="like-button" onclick="incrementLikes(this)">Like</button>
-            </div>
-        `;
-    
-            exerciseContainer.appendChild(newExerciseSet);
-    
-            const likeButtons = document.querySelectorAll('.like-button');
-    
-            likeButtons.forEach((button) => {
-                button.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    incrementLikes(this);
-                });
-            });
-    
-            const commentInputs = document.querySelectorAll('.comment-input');
-            const commentLists = document.querySelectorAll('.comment-list');
-    
-            commentInputs.forEach((input, index) => {
-                input.addEventListener('keypress', (e) => {
-                    handleCommentInputKeyPress(e, input, index);
-                });
-    
-                input.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                });
-            });
-    
-            // Save the reference to the comments element in exercise set data
-            exerciseSetData.commentsElement = newExerciseSet.querySelector('.comment-list');
-            
-            // Display existing comments
-            displayExistingComments(exerciseSetData);
-        }
+        </div>
+        <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
+        <div class="like-container">
+            <button class="like-button" onclick="incrementLikes(this)">${likeButtonText}</button>
+        </div>
+    `;
+
+    exerciseContainer.appendChild(newExerciseSet);
+
+    const likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach((button) => {
+        button.addEventListener('click', function (e) {
+            e.stopPropagation();
+            incrementLikes(this);
+        });
+    });
+
+    const commentInputs = document.querySelectorAll('.comment-input');
+    const commentLists = document.querySelectorAll('.comment-list');
+
+    commentInputs.forEach((input, index) => {
+        input.addEventListener('keypress', (e) => {
+            handleCommentInputKeyPress(e, input, index);
+        });
+
+        input.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+
+    // Save the reference to the comments element in exercise set data
+    exerciseSetData.commentsElement = newExerciseSet.querySelector('.comment-list');
+
+    // Display existing comments
+    displayExistingComments(exerciseSetData);
+}
+
+
 
         function addExerciseSet() {
             const exerciseNameInput = document.getElementById('exerciseName');
