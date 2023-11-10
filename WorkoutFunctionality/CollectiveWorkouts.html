@@ -115,7 +115,7 @@
 </head>
 <body>
     <header>
-        <p id="welcome">Welcome, <span id="userName"></span></p>
+        <p id="welcome">Welcome, User</p>
         <div class="profile-circle" id="profile-icon">
             <i class="fas fa-person profile-icon"></i>
         </div>
@@ -130,19 +130,19 @@
         <!-- Add more exercise sets here -->
     </main>
     <footer>
-        <button class="tab-button" onclick="location.href = './HomeScreen.html';">
+        <button class="tab-button" onclick="location.href = 'HomeScreen.html';">
             <i class="fas fa-home"></i>
         </button>
-        <button class="tab-button" onclick="location.href = './MainPage.html'">
+        <button class="tab-button" onclick="location.href = 'MainPage.html'">
             <i class="fas fa-bullseye"></i>
         </button>
-        <button class="tab-button" onclick="location.href = './WorkoutFunctionality/WorkoutPage.html';">
+        <button class="tab-button" onclick="location.href = 'WorkoutFunctionality/WorkoutPage.html';">
             <i class="fas fa-dumbbell"></i>
         </button>
-        <button class="tab-button" onclick="location.href = './nutritionDataBase.html';">
+        <button class="tab-button" onclick="location.href = 'nutritionDataBase.html';">
             <i class="fas fa-utensils"></i>
         </button>
-        <button class="tab-button" onclick="location.href = './BuddySystem.html';">
+        <button class="tab-button" onclick="location.href = 'BuddySystem.html';">
             <i class="fas fa-users"></i>
         </button>
     </footer>
@@ -161,23 +161,22 @@
 
 
     <script>
-    window.addEventListener("load", loadProfileData);
-
-    function openProfilePage() {
-        window.location.href = '../ProfilePage.html';
-    }
-
-    function loadProfileData() {
-        const storedProfileData = localStorage.getItem("profileData0101-02");
-        if (storedProfileData) {
-        const profileData = JSON.parse(storedProfileData);
-
-        const userName = profileData.name;
-        document.getElementById('userName').textContent = userName;
+        window.addEventListener("load", loadProfileData);
+    
+        function openProfilePage() {
+            window.location.href = '../ProfilePage.html';
         }
-    }
-
-    document.getElementById('profile-icon').addEventListener('click', openProfilePage);
+    
+        function loadProfileData() {
+            const storedProfileData = localStorage.getItem("profileData0101-02");
+            if (storedProfileData) {
+                const profileData = JSON.parse(storedProfileData);
+                const userName = profileData.name;
+                document.getElementById('userName').textContent = userName;
+            }
+        }
+    
+        document.getElementById('profile-icon').addEventListener('click', openProfilePage);
     
         const savedExerciseSets = JSON.parse(localStorage.getItem('exerciseSets')) || [];
     
@@ -217,7 +216,7 @@
                         "10. Tricep Dips (40 seconds)",
                     ],
                     owner: "Jane Doe",
-                    likes: 0,
+                    likes: 4,
                 },
                 {
                     name: "Exercise Set 3",
@@ -228,7 +227,7 @@
                         "3. Tricep Dips (40 seconds)",
                     ],
                     owner: "Jake Doe",
-                    likes: 0,
+                    likes: 2000,
                 },
             ];
     
@@ -246,71 +245,60 @@
         }
     
         function createExerciseSet(exerciseSetData) {
-    const exerciseContainer = document.querySelector('.exercise-container');
-    const newExerciseSet = document.createElement('div');
-    newExerciseSet.className = 'exercise-set';
-    newExerciseSet.onclick = function () {
-        toggleExerciseDetails(newExerciseSet);
-    };
-
-    const likeButtonText = exerciseSetData.likes > 1 ? "You liked this" : "Like";
-
-    newExerciseSet.innerHTML = `
-        <h2>${exerciseSetData.name}</h2>
-        <div class="exercise-details">
-            <h3>${exerciseSetData.description}</h3>
-            <p>${exerciseSetData.exercises.join('</p><p>')}</p>
-            <div class="comments">
-                <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="handleCommentInputKeyPress(event, this, ${savedExerciseSets.indexOf(exerciseSetData)})">
-                <div class="comment-list"></div>
+            const exerciseContainer = document.querySelector('.exercise-container');
+            const newExerciseSet = document.createElement('div');
+            newExerciseSet.className = 'exercise-set';
+            newExerciseSet.onclick = function () {
+                toggleExerciseDetails(newExerciseSet);
+            };
+    
+            newExerciseSet.innerHTML = `
+            <h2>${exerciseSetData.name}</h2>
+            <div class="exercise-details">
+                <h3>${exerciseSetData.description}</h3>
+                <p>${exerciseSetData.exercises.join('</p><p>')}</p>
+                <div class="comments">
+                    <input class="comment-input" type="text" placeholder="Add a comment and press Enter" onkeypress="handleCommentInputKeyPress(event, this, ${savedExerciseSets.indexOf(exerciseSetData)})">
+                    <div class="comment-list"></div>
+                </div>
             </div>
-        </div>
-        <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
-        <div class="like-container">
-            <button class="like-button" onclick="incrementLikes(this)">${likeButtonText}</button>
-        </div>
-    `;
-
-    exerciseContainer.appendChild(newExerciseSet);
-
-    const likeButtons = document.querySelectorAll('.like-button');
-
-    likeButtons.forEach((button) => {
-        button.addEventListener('click', function (e) {
-            e.stopPropagation();
-            incrementLikes(this);
-        });
-    });
-
-    const commentInputs = document.querySelectorAll('.comment-input');
-    const commentLists = document.querySelectorAll('.comment-list');
-
-    commentInputs.forEach((input, index) => {
-        input.addEventListener('keypress', (e) => {
-            handleCommentInputKeyPress(e, input, index);
-        });
-
-        input.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    });
-
-    // Save the reference to the comments element in exercise set data
-    exerciseSetData.commentsElement = newExerciseSet.querySelector('.comment-list');
-
-    // Display existing comments
-    displayExistingComments(exerciseSetData);
-}
-
-function getUserName() {
-    const storedProfileData = localStorage.getItem("profileData0101-02");
-    if (storedProfileData) {
-        const profileData = JSON.parse(storedProfileData);
-        return profileData.name;
-    }
-    return "User";
-}
-
+            <div class="exercise-owner">By: ${exerciseSetData.owner}</div>
+            <div class="like-container">
+                <button class="like-button" onclick="incrementLikes(this)">Like</button>
+                <span class="like-count">${exerciseSetData.likes || 0}</span>
+            </div>
+        `;
+    
+            exerciseContainer.appendChild(newExerciseSet);
+    
+            const likeButtons = document.querySelectorAll('.like-button');
+    
+            likeButtons.forEach((button) => {
+                button.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    incrementLikes(this);
+                });
+            });
+    
+            const commentInputs = document.querySelectorAll('.comment-input');
+            const commentLists = document.querySelectorAll('.comment-list');
+    
+            commentInputs.forEach((input, index) => {
+                input.addEventListener('keypress', (e) => {
+                    handleCommentInputKeyPress(e, input, index);
+                });
+    
+                input.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            });
+    
+            // Save the reference to the comments element in exercise set data
+            exerciseSetData.commentsElement = newExerciseSet.querySelector('.comment-list');
+            
+            // Display existing comments
+            displayExistingComments(exerciseSetData);
+        }
 
         function addExerciseSet() {
             const exerciseNameInput = document.getElementById('exerciseName');
@@ -321,7 +309,7 @@ function getUserName() {
                 name: exerciseNameInput.value.trim(),
                 description: exerciseDescriptionInput.value.trim(),
                 exercises: exerciseExercisesInput.value.trim().split('\n'),
-                owner: getUserName(),
+                owner: "User",
                 likes: 0,
             };
 
@@ -343,25 +331,23 @@ function getUserName() {
             if (exerciseSetData.comments && exerciseSetData.comments.length > 0) {
                 exerciseSetData.comments.forEach(comment => {
                     const commentElement = document.createElement('p');
-                    const name = getUserName(); // Use the getUserName function to get the username
-                    commentElement.textContent = `${name}: ${comment.comment}`;
+                    commentElement.textContent = `${comment.user}: ${comment.comment}`;
                     commentList.appendChild(commentElement);
                 });
             }
         }
-
     
         function handleCommentInputKeyPress(event, input, index) {
             if (event.key === 'Enter') {
                 const comment = input.value.trim();
                 if (comment) {
                     const commentElement = document.createElement('p');
-                    commentElement.textContent = getUserName() + ": " + comment;
+                    commentElement.textContent = "User: " + comment;
                     const commentList = savedExerciseSets[index].commentsElement;
                     commentList.appendChild(commentElement);
     
                     savedExerciseSets[index].comments = savedExerciseSets[index].comments || [];
-                    savedExerciseSets[index].comments.push({ user: userName, comment });
+                    savedExerciseSets[index].comments.push({ user: "User", comment });
                     saveExerciseSets();
     
                     input.value = '';
@@ -370,24 +356,33 @@ function getUserName() {
         }
     
         function incrementLikes(button) {
-            const exerciseSetElement = button.closest('.exercise-set');
-    
-            if (exerciseSetElement) {
-                const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
-                const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
-    
-                if (exerciseSet) {
-                    exerciseSet.likes = (exerciseSet.likes || 0) + 1;
-                    button.textContent = "You liked this";
-                    saveExerciseSets();
-    
-                    const likeCount = exerciseSetElement.querySelector('.like-count');
-                    if (likeCount) {
-                        likeCount.textContent = exerciseSet.likes;
-                    }
-                }
+    // Find the parent exercise set element
+    const exerciseSetElement = button.closest('.exercise-set');
+
+    // Check if the exercise set element was found
+    if (exerciseSetElement) {
+        // Find the exercise set name within the exercise set element
+        const exerciseSetName = exerciseSetElement.querySelector('h2').textContent;
+
+        // Find the corresponding exercise set in the savedExerciseSets array
+        const exerciseSet = savedExerciseSets.find((set) => set.name === exerciseSetName);
+
+        // Check if the exercise set was found
+        if (exerciseSet) {
+            if (exerciseSet.likes === undefined || exerciseSet.likes === 0) {
+                // If the exercise set has no likes or 0 likes, set it to 1 and display "You liked this"
+                exerciseSet.likes = 1;
+                button.textContent = "You liked this";
+            } else {
+                // If the exercise set already has likes, decrement it to 0 and display an empty string
+                exerciseSet.likes = 0;
+                button.textContent = "Like";
             }
+            saveExerciseSets(); // Update the savedExerciseSets in localStorage
         }
+    }
+}
+
     
         function saveExerciseSets() {
             localStorage.setItem('exerciseSets', JSON.stringify(savedExerciseSets));
