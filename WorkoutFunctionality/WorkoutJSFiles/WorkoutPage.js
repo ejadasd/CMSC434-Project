@@ -194,15 +194,16 @@ function generateUniqueId(id) {
 }
 
 function addWorkoutFromDatabaseToCurr(exerciseId) {
-  confirm("Click ok to add to workout")
-  let exercises = getWorkoutDatabase();
-  let curr_workout = exercises.find((exercise) => exercise.id === exerciseId);
-  // deep copy of curr_workout
-  //   issue: Exercises with specific ids; Curr_exercises which will just be copies of the same id ;The issue is if you add multiple of the same exercises into curr_exercises
-  let uniqueIdForCopyOfCurrentWorkout = generateUniqueId(exerciseId);
-  let copyOfCurrWorkout = structuredClone(curr_workout);
-  copyOfCurrWorkout.id = uniqueIdForCopyOfCurrentWorkout;
-  modifyCurrentWorkouts(copyOfCurrWorkout);
+  if(confirm("Click ok to confirm the addition of this exercise to the workout database")){
+    let exercises = getWorkoutDatabase();
+    let curr_workout = exercises.find((exercise) => exercise.id === exerciseId);
+    // deep copy of curr_workout
+    //   issue: Exercises with specific ids; Curr_exercises which will just be copies of the same id ;The issue is if you add multiple of the same exercises into curr_exercises
+    let uniqueIdForCopyOfCurrentWorkout = generateUniqueId(exerciseId);
+    let copyOfCurrWorkout = structuredClone(curr_workout);
+    copyOfCurrWorkout.id = uniqueIdForCopyOfCurrentWorkout;
+    modifyCurrentWorkouts(copyOfCurrWorkout);
+  }
 }
 
 function deleteExercise(exerciseId) {
