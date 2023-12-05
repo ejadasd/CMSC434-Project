@@ -194,6 +194,7 @@ function generateUniqueId(id) {
 }
 
 function addWorkoutFromDatabaseToCurr(exerciseId) {
+  confirm("Click ok to add to workout")
   let exercises = getWorkoutDatabase();
   let curr_workout = exercises.find((exercise) => exercise.id === exerciseId);
   // deep copy of curr_workout
